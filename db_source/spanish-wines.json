@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Alía Vino de Extremadura",
+    "type": "red",
+    "winery": "Bodega Carabal",
+    "variety": "Syrah",
+    "region": "Spain",
+    "year": 2012,
+    "price": 15.00,
+    "tags": ["pair with poultry", "smooth"]
+  },
+  {
+    "type": "red",
+    "winery": "Bodegas Ercavio",
+    "variety": "Tempranillo",
+    "region": "Spain",
+    "year": 2012,
+    "price": 14.00,
+    "tags": ["pair with beef", "juicy"]
+  },
+  {
+    "name": "Rioja Reserva",
+    "type": "red",
+    "winery": "Bodegas Patrocinio Sancho Garcés",
+    "variety": "Tempranillo",
+    "region": "Spain",
+    "year": 2007,
+    "price": 16.00,
+    "tags": ["pair with pork", "bold"]
+  },
+  {
+    "name": "Barrel Fermented",
+    "type": "white",
+    "winery": "Bodegas Amaren",
+    "variety": "Viura",
+    "region": "Spain",
+    "year": 2011,
+    "price": 33.00,
+    "tags": ["pair with poultry", "rich"]
+  },
+  {
+    "name": "Monte Real Reserva",
+    "type": "red",
+    "winery": "Bodegas Riojanas",
+    "variety": "Tempranillo",
+    "region": "Spain",
+    "year": 2007,
+    "price": 30.00,
+    "tags": ["pair with pork", "rich"]
+  },
+  {
+    "name": "Catalan Eagle",
+    "type": "white",
+    "winery": "La Bascula",
+    "variety": "Grenache Blanc",
+    "region": "Spain",
+    "year": 2013,
+    "price": 17.00,
+    "tags": ["pair with pork", "rich"]
+  },
+  {
+    "name": "Gran Reserva",
+    "type": "red",
+    "winery": "Lealtanza",
+    "variety": "Tempranillo",
+    "region": "Spain",
+    "year": 2005,
+    "price": 34.00,
+    "tags": ["pair with beef", "smooth"]
+  },
+  {
+    "name": "Reserva",
+    "type": "red",
+    "winery": "Lealtanza",
+    "variety": "Tempranillo",
+    "region": "Spain",
+    "year": 2008,
+    "price": 20.00,
+    "tags": ["pair with beef", "smooth"]
+  },
+  {
+    "name": "El Pajaro Rojo",
+    "type": "red",
+    "winery": "Losada Vinos de Finca",
+    "variety": "Mencia",
+    "region": "Spain",
+    "year": 2014,
+    "price": 16.00,
+    "tags": ["pair with beef", "smooth"]
+  },
+  {
+    "type": "red",
+    "winery": "Prior de Panton Finca Cuarta",
+    "variety": "Mencia",
+    "region": "Spain",
+    "year": 2012,
+    "price": 15.00,
+    "tags": ["pair with pork", "spicy"]
+  }
+]
