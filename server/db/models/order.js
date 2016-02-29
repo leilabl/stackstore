@@ -2,15 +2,50 @@
 
 var mongoose = require('mongoose');
 
-// Order
+// NOTES FOR 3/1:
 
-//     Orders must belong to a user OR guest session (authenticated vs unauthenticated)
-//     Orders must contain line items that capture the price, current product ID and quantity
-//     If a user completes an order, that order should keep the price of the item at the time when they checked out even if the price of the product later changes
+// MAYBE worth having CART and ORDER be two separate models - when you "check out" the cart gets saved as a new ORDER object for that user. At this time, Price is set in the DB
 
+// Each user would have 1 cart at a time, and it will only exist until they either "check out" (it turns into an order on the DB) or until they delete their cart/cookies. AKA this would happen on the front-end, JSData?
+
+// cart.submitOrder({
+//   owner: this.user,
+//   items: [
+//     {
+//       wine: this.wine,
+//       price: this.price,
+//       quantity: this.quantity
+//     }
+//   ]
+// })
 
 var OrderSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+
+  items: [
+    {
+      wine: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Wine',
+        required: true
+      },
+      price: {
+        type: Number,
+        required: true
+      },
+      quantity: {
+        type: Number,
+        required: true
+      }
+
+    }
+  ]
 
 })
+
 
 mongoose.model('Order', OrderSchema);
