@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 //       wine: this.wine,
 //       price: this.price,
 //       quantity: this.quantity
-//     }
+//     } 
 //   ]
 // })
 
@@ -25,15 +25,7 @@ var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
           "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
           "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
-var OrderSchema = new mongoose.Schema({
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-
-  items: [
-    {
+var LineItemSchema = new mongoose.Schema({
       wine: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Wine',
@@ -47,10 +39,9 @@ var OrderSchema = new mongoose.Schema({
         type: Number,
         required: true
       }
-    }
-  ],
+})
 
-  shippingAddress: {
+var ShippingAddressSchema = new mongoose.Schema({
     street: {
       type: String,
       required: true
@@ -68,7 +59,18 @@ var OrderSchema = new mongoose.Schema({
       type: Number,
       required: true
     }
+})
+
+var OrderSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
+
+  items: [LineItemSchema],
+
+  shippingAddress: ShippingAddressSchema,
 
   shippingRate: {
     type: Number,
