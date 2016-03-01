@@ -3,20 +3,17 @@ var mongoose = require('mongoose');
 
 var ReviewSchema = new Schema({
   stars: {
-    type: Number
+    type: Number,
+    min: 1,
+    max: 5
   },
   description: {
     type: String
-  },
-  wine: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Wine'
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   }
-
 });
 
 mongoose.model('Review', schema);

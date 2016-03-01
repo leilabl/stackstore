@@ -35,7 +35,7 @@ var WineSchema = new Schema({
   },
   inventory: {
   	type: Number,
-  	required: true
+    default: 10
   },
   //unit mL; maybe take care on front-end
   size: {
@@ -45,7 +45,11 @@ var WineSchema = new Schema({
   image: {
   	type: String,
   	required: true
-  }
+  },
+  reviews: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'review'
+  }]
 });
 
 //files currently do not exist - need to create
@@ -54,5 +58,11 @@ WineSchema.pre('validate', function(next) {
 	this.image = '/img/' + this.type + randomNumber + '.png'
 })
 
+WineSchema.virtual('rating').get(function(){
+  var total = this.reviews.reduce(function(sum, elem) {
+    return sum + elem.stars
+  }, 0)
+  return total/this.reviews.length
+})
 
 mongoose.model('Wine', schema);
