@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var Review = require('./review');
 
 var WineSchema = new mongoose.Schema({
   type: { 
@@ -45,11 +45,7 @@ var WineSchema = new mongoose.Schema({
   image: {
   	type: String,
   	required: true
-  },
-  reviews: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'review'
-  }]
+  }
 });
 
 //files currently do not exist - need to create
@@ -60,10 +56,15 @@ WineSchema.pre('validate', function (next) {
 });
 
 WineSchema.virtual('rating').get(function(){
-  var total = this.reviews.reduce(function(sum, elem) {
-    return sum + elem.stars;
-  }, 0);
-  return total/this.reviews.length;
+  Review.find({
+    wine: this._id
+  })
+  .then(function(reviews) {
+    var total = reviews.reduce(function(sum, elem) {
+      return sum + elem.stars;
+    }, 0);
+    return total/reviews.length;
+  });
 });
 
 WineSchema.virtual('displayName').get(function(){
@@ -74,5 +75,14 @@ WineSchema.virtual('displayName').get(function(){
   else displayName = this.year + " " + this.winery + " - " + this.variety;
   return displayName;
 });
+
+WineSchema.methods.findReviews = function () {
+  Review.find({
+    wine: this._id
+  })
+  .then(function(reviews) {
+    return reviews;
+  });
+};
 
 mongoose.model('Wine', WineSchema);

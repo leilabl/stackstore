@@ -14,6 +14,11 @@ var ReviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  wine: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Wine',
+    require: true
   }
 });
 
