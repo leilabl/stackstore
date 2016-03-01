@@ -44,7 +44,12 @@ var OrderSchema = new mongoose.Schema({
 
     }
   ]
+})
 
+OrderSchema.virtual('total').get(function() {
+  return this.items.reduce(function(sum, next){
+    return sum + (next.price * next.quantity)
+  }, 0)
 })
 
 
