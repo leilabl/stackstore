@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Baltazar Neffiez, Languedoc",
+    "type": "red",
+    "winery": "Les Vignerons d’Alignan du Vent Cépages",
+    "variety": "Syrah",
+    "region": "France",
+    "year": 2011,
+    "price": 28.00,
+    "tags": ["pair with vegetables", "bold"]
+  },
+    {
+    "name": "Brumont Torus, Madiran",
+    "type": "red",
+    "winery": "Alain Brumont",
+    "variety": "Syrah",
+    "region": "France",
+    "year": 2010,
+    "price": 18.00,
+    "tags": ["pair with meat", "spicy"]
+  },
+    {
+    "name": "Col des Vents, Corbières",
+    "type": "red",
+    "winery": "Castelmaure",
+    "variety": "Carignan",
+    "region": "France",
+    "year": 2013,
+    "price": 12.00,
+    "tags": ["pair with pork", "juicy"]
+  },
+    {
+    "name": "Pomerol",
+    "type": "red",
+    "winery": "Château Gombaude-Guillot",
+    "variety": "Merlot",
+    "region": "France",
+    "year": 2006,
+    "price": 68.00,
+    "tags": ["pair with meat", "rich"]
+  },
+    {
+    "name": "Calendreau Bordeaux Supérieur",
+    "type": "red",
+    "winery": "Château La Croix Calendreau",
+    "variety": "Merlot",
+    "region": "France",
+    "year": 2011,
+    "price": 14.00,
+    "tags": ["pair with pork", "bold"]
+  },
+    {
+    "name": "Pech Quisou, Minervois",
+    "type": "red",
+    "winery": "Château Mignan",
+    "variety": "Syrah",
+    "region": "France",
+    "year": 2012,
+    "price": 14.00,
+    "tags": ["pair with meat", "spicy"]
+  },
+    {
+    "name": "Excellence Bordeaux Supérieur",
+    "type": "red",
+    "winery": "Château Sénailhac",
+    "variety": "Red Blend",
+    "region": "France",
+    "year": 2010,
+    "price": 28.00,
+    "tags": ["pair with meat", "rich"]
+  },
+    {
+    "name": "Graves",
+    "type": "red",
+    "winery": "Château Venus",
+    "variety": "Merlot",
+    "region": "France",
+    "year": 2010,
+    "price": 29.00,
+    "tags": ["pair with meat", "rich"]
+  },
+    {
+    "name": "Font de Blanche, Côtes du Rhône",
+    "type": "red",
+    "winery": "Clos du Mont-Olivet",
+    "variety": "Grenache",
+    "region": "France",
+    "year": 2011,
+    "price": 17.00,
+    "tags": ["pair with meat", "juicy"]
+  },
+    {
+    "name": "Solis, Cahors",
+    "type": "red",
+    "winery": "Domaine Cosse et Maisonneuve",
+    "variety": "Malbec",
+    "region": "France",
+    "year": 2011,
+    "price": 17.00,
+    "tags": ["pair with meat", "juicy"]
+  },
+    {
+    "name": "Pouilly-Fumé Les Pierres Blanches",
+    "type": "white",
+    "winery": "Domaine de Bel Air",
+    "variety": "Sauvignon Blanc",
+    "region": "France",
+    "year": 2012,
+    "price": 20.00,
+    "tags": ["pair with seafood", "juicy"]
+  },
+    {
+    "name": "Sauvignon, Loire Valley",
+    "type": "white",
+    "winery": "Château de la Viaudière",
+    "variety": "Sauvignon Blanc",
+    "region": "France",
+    "year": 2012,
+    "price": 13.00,
+    "tags": ["pair with seafood", "juicy"]
+  },
+    {
+    "name": "Quincy",
+    "type": "white",
+    "winery": "Domaine André Pigeat",
+    "variety": "Sauvignon Blanc",
+    "region": "France",
+    "year": 2013,
+    "price": 26.00,
+    "tags": ["pair with vegetables", "juicy"]
+  },
+    {
+    "name": "Riesling, Alsace Grand Cru Kessler",
+    "type": "white",
+    "winery": "Domaine Dirler-Cade ",
+    "variety": "Riesling",
+    "region": "France",
+    "year": 2011,
+    "price": 35.00,
+    "tags": ["pair with poultry", "juicy"]
+  }
+]
