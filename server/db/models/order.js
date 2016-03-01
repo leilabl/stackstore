@@ -19,6 +19,12 @@ var mongoose = require('mongoose');
 //   ]
 // })
 
+var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", 
+          "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
+          "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
+          "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
+          "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+
 var OrderSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -41,15 +47,45 @@ var OrderSchema = new mongoose.Schema({
         type: Number,
         required: true
       }
-
     }
-  ]
+  ],
+
+  shippingAddress: {
+    street: {
+      type: String,
+      required: true
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    state: {
+      type: String,
+      enum: states,
+      required: true
+    },
+    zip: {
+      type: Number,
+      required: true
+    }
+  },
+
+  shippingRate: {
+    type: Number,
+    enum: [4.95, 12.95],
+    default: 4.95
+  }
+})
+
+OrderSchema.virtual('tax').get(function() {
+  return 0.06;
 })
 
 OrderSchema.virtual('total').get(function() {
-  return this.items.reduce(function(sum, next){
+  var subTotal = this.items.reduce(function(sum, next){
     return sum + (next.price * next.quantity)
   }, 0)
+  return subTotal + (subTotal * this.tax) + this.shippingRate;
 })
 
 
