@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var WineSchema = new Schema({
+var WineSchema = new mongoose.Schema({
   type: { 
     type: String,
     enum: ['red', 'white'],
@@ -41,7 +41,7 @@ var WineSchema = new Schema({
   size: {
     type: Number,
     default: 750
-  }
+  },
   image: {
   	type: String,
   	required: true
@@ -53,16 +53,26 @@ var WineSchema = new Schema({
 });
 
 //files currently do not exist - need to create
-WineSchema.pre('validate', function(next) {
-	var randomNumber = Math.ceil(Math.random()*5)
-	this.image = '/img/' + this.type + randomNumber + '.png'
-})
+WineSchema.pre('validate', function (next) {
+	var randomNumber = Math.ceil(Math.random()*5);
+	this.image = '/img/' + this.type + randomNumber + '.png';
+  next();
+});
 
 WineSchema.virtual('rating').get(function(){
   var total = this.reviews.reduce(function(sum, elem) {
-    return sum + elem.stars
-  }, 0)
-  return total/this.reviews.length
-})
+    return sum + elem.stars;
+  }, 0);
+  return total/this.reviews.length;
+});
 
-mongoose.model('Wine', schema);
+WineSchema.virtual('displayName').get(function(){
+  var displayName;
+  if (this.name) {
+    displayName = this.year + " " + this.winery + " " + this.name + " - " + this.variety;
+  }
+  else displayName = this.year + " " + this.winery + " - " + this.variety;
+  return displayName;
+});
+
+mongoose.model('Wine', WineSchema);

@@ -110,7 +110,7 @@
     "tags": ["pair with seafood", "juicy"]
   },
     {
-    "name": "Sauvignon, Loire Valley",
+    "name": "Loire Valley",
     "type": "white",
     "winery": "Château de la Viaudière",
     "variety": "Sauvignon Blanc",
@@ -130,7 +130,7 @@
     "tags": ["pair with vegetables", "juicy"]
   },
     {
-    "name": "Riesling, Alsace Grand Cru Kessler",
+    "name": "Alsace Grand Cru Kessler",
     "type": "white",
     "winery": "Domaine Dirler-Cade ",
     "variety": "Riesling",

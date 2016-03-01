@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 
-var ReviewSchema = new Schema({
+var ReviewSchema = new mongoose.Schema({
   stars: {
     type: Number,
     min: 1,
@@ -12,8 +12,9 @@ var ReviewSchema = new Schema({
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   }
 });
 
-mongoose.model('Review', schema);
+mongoose.model('Review', ReviewSchema);
