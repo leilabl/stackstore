@@ -33,17 +33,22 @@ var WineSchema = new Schema({
   tags: {
     type: [String]
   },
-  quantity: {
+  inventory: {
   	type: Number,
   	required: true
   },
+  //unit mL; maybe take care on front-end
+  size: {
+    type: Number,
+    default: 750
+  }
   image: {
   	type: String,
   	required: true
   }
 });
 
-
+//files currently do not exist - need to create
 WineSchema.pre('validate', function(next) {
 	var randomNumber = Math.ceil(Math.random()*5)
 	this.image = '/img/' + this.type + randomNumber + '.png'
