@@ -1,0 +1,96 @@
+[
+  {
+    "type": "red",
+    "winery": "J Nico Wines",
+    "variety": "Cabernet Sauvignon",
+    "region": "California",
+    "year": 2010,
+    "price": 19.95,
+    "tags": ["pair with beef", "rich"]
+  },
+  {
+    "type": "red",
+    "winery": "Fleur de California Winery",
+    "variety": "Pinot Noir",
+    "region": "California",
+    "year": 2013,
+    "price": 15.99,
+    "tags": ["pair with poultry", "fruity"]
+  },
+  {
+    "name": "Heritage Vines",
+    "type": "red",
+    "winery": "Dry Creek Vineyard",
+    "variety": "Zinfandel",
+    "region": "California",
+    "year": 2014,
+    "price": 22.00,
+    "tags": ["pair with beef", "bold"],
+    "size": 750
+  },
+  {
+    "type": "red",
+    "winery": "Heringer Estates Family Vineyards & Winery",
+    "variety": "Malbec",
+    "region": "California",
+    "year": 2013,
+    "price": 30.00,
+    "tags": ["pair with steak", "robust"]
+  },
+  {
+    "name": "Small Lot Blend",
+    "type": "red",
+    "winery": "Parducci Wine Cellars",
+    "variety": "Pinot Noir",
+    "region": "California",
+    "year": 2013,
+    "price": 14.00,
+    "tags": ["pair with pork", "juicy"]
+  },
+  {
+    "type": "white",
+    "winery": "Zaca Mesa Winery",
+    "variety": "Chardonnay",
+    "region": "California",
+    "year": 2013,
+    "price": 16.00,
+    "tags": ["pair with poultry", "fruity"]
+  },
+  {
+    "type": "white",
+    "winery": "Vampire Vineyards",
+    "variety": "Pinot Grigio",
+    "region": "Spain",
+    "year": 2013,
+    "price": 18.00,
+    "tags": ["pair with beef", "floral"]
+  },
+  {
+    "name": "American",
+    "type": "white",
+    "winery": "Georgetown Vineyards",
+    "variety": "Moscato",
+    "region": "California",
+    "year": 2008,
+    "price": 11.00,
+    "tags": ["pair with dessert", "sweet"]
+  },
+  {
+    "type": "white",
+    "winery": "HALL Wines",
+    "variety": "Sauvignon Blanc",
+    "region": "California",
+    "year": 2014,
+    "price": 24.00,
+    "tags": ["pair with fish", "citrus"]
+  },
+  {
+    "type": "white",
+    "winery": "Delish Cellars",
+    "variety": "Sauvignon Blanc",
+    "region": "California",
+    "year": 2013,
+    "price": 14.00,
+    "tags": ["pair with fish", "citrus"]
+  }
+]
