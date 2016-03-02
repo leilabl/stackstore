@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Review = require('./review');
+var Review = mongoose.model('Review');
+
 
 var WineSchema = new mongoose.Schema({
   type: { 
@@ -55,18 +57,6 @@ WineSchema.pre('validate', function (next) {
   next();
 });
 
-WineSchema.virtual('rating').get(function(){
-  Review.find({
-    wine: this._id
-  })
-  .then(function(reviews) {
-    var total = reviews.reduce(function(sum, elem) {
-      return sum + elem.stars;
-    }, 0);
-    return total/reviews.length;
-  });
-});
-
 WineSchema.virtual('displayName').get(function(){
   var displayName;
   if (this.name) {
@@ -77,12 +67,23 @@ WineSchema.virtual('displayName').get(function(){
 });
 
 WineSchema.methods.findReviews = function () {
-  Review.find({
+  return Review.find({
     wine: this._id
   })
   .then(function(reviews) {
     return reviews;
   });
 };
+
+WineSchema.methods.rating = function() {
+  return this.findReviews()
+  .then(function(reviews) {
+    var total = reviews.reduce(function(sum, elem) {
+      return sum + elem.stars;
+    }, 0);
+    return total/reviews.length;
+  });
+};
+
 
 mongoose.model('Wine', WineSchema);

@@ -31,14 +31,14 @@ describe('Review model', function () {
                 stars: 4
             });
 
-        it('should create a new document', function (done) {
-            review.save().then(function (savedReview) {
-                expect(savedReview.stars).to.equal(4);
-            })
-            done();
+        it('it should not create a new document if required fields are not passed', function (done) {
+            review.validate(function(err) {
+                expect(err).to.be.an('object');
+                expect(err.message).to.equal('Review validation failed');
+                done()
+            }) 
 
         });
-
 
     });
 

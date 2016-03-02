@@ -11,6 +11,7 @@ require('../../../server/db/models');
 
 var Wine = mongoose.model('Wine');
 var Review = mongoose.model('Review');
+var User = mongoose.model('User');
 
 describe('Wine model', function () {
 
@@ -29,6 +30,11 @@ describe('Wine model', function () {
 
     describe('Wines', function () {
 
+        
+            var user = new User({
+                email: 'GHA@gmail.com'
+            })
+
             var wine = new Wine({
                 type: "red",
                 variety: "Malbec",
@@ -38,6 +44,17 @@ describe('Wine model', function () {
                 price: 10
             });
 
+            var review1 = new Review({
+                stars: 3,
+                wine: wine._id,
+                author: user._id
+            });
+
+            var review2 = new Review({
+                stars: 5,
+                wine: wine._id,
+                author: user._id
+            });
 
         it('should create a new document', function (done) {
 
@@ -57,41 +74,29 @@ describe('Wine model', function () {
 
         });
 
-        it('should create reviews', function (done) {
+        it('should find reviews for a wine and have a rating', function (done) {
+            var savedUser = user.save()
+            var savedWine = wine.save()
 
-            wine.save().then(function (savedWine) {
-
-                var review1 = new Review({
-                    stars: 3,
-                    wine: savedWine._id
-                });
-
-                var review2 = new Review({
-                    stars: 5,
-                    wine: savedWine._id
-                });
-
+            Promise.all([savedUser, savedWine])
+            .spread(function(user, wine) {
                 var saved1 = review1.save();
                 var saved2 = review2.save();
 
-                Promise.all([saved1, saved2])
-                .then(function(values) {
-                    console.log("Promise all values", values)
-                });
-
-
-                // review1.save().then(function(review1) {
-                // console.log(savedWine.reviews)
-                //     review2.save().then(function(review2) {
-                //         console.log('here')
-                //         expect(savedWine.reviews).to.equal([review1, review2])
-                //     })
-                // })
-
-                
-                done();
-            }).then(null, done);
-
+                return Promise.all([saved1, saved2])
+            })
+            .then(function(values) {
+                return wine.findReviews()
+            })
+            .then(function(reviews) {
+                expect(reviews.length).to.equal(2)
+                return wine.rating()
+            })
+            .then(function(rating) {
+                expect(rating).to.equal(4)
+                done()
+            })
+            .then(null, done)
         });
 
 
@@ -111,7 +116,6 @@ describe('Wine model', function () {
             })
 
         });
-
 
     });
 
