@@ -108,5 +108,21 @@ OrderSchema.virtual('total').get(function() {
   return 0;
 })
 
+OrderSchema.statics.findByUserId = function (userId) {
+  
+}
+
+OrderSchema.methods.findSimilar = function () {
+
+}
+
+OrderSchema.methods.cancel = function () {
+
+}
+
+OrderSchema.methods.reorder = function () {
+  
+}
+
 
 mongoose.model('Order', OrderSchema);
