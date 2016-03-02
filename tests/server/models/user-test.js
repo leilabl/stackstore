@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 
 // Require in all models.
 require('../../../server/db/models');
-
 var User = mongoose.model('User');
 
 describe('User model', function () {
