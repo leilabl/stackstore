@@ -22,6 +22,7 @@ router.get('/:id', function(req, res) {
 	})
 	.then(null, function(err) {
 		console.log(err)
+		res.sendStatus(404)
 	})
 })
 
@@ -37,6 +38,7 @@ router.get('/:id/reviews', function(req, res) {
 	})
 	.then(null, function(err) {
 		console.log(err)
+		res.sendStatus(404)
 	})
 })
 
@@ -52,6 +54,7 @@ router.get('/:id/rating', function(req, res) {
 	})
 	.then(null, function(err) {
 		console.log(err)
+		res.sendStatus(404)
 	})
 })
 
@@ -63,25 +66,37 @@ router.post('/', function(req, res) {
 	})
 	.then(null, function(err) {
 		console.log(err)
+		res.sendStatus(404)
 	})
 })
 
+router.put('/:id', function(req, res) {
+	var id = req.params.id
+	mongoose.model('Wine')
+	.findByIdAndUpdate(id, {$set: req.body}, {new: true, runValidators: true})
+	.then(function(updatedWine) {
+		res.json(updatedWine)
+	})
+	.then(null, function(err) {
+		console.log(err)
+		res.sendStatus(404)
+	})
+})
 
+router.delete('/:id', function(req, res) {
+	var id = req.params.id
+	mongoose.model('Wine')
+	.findByIdAndRemove({_id: id})
+	.then(function() {
+		res.sendStatus(204)
+	})
+	.then(null, function(err) {
+		console.log(err)
+		res.sendStatus(404)
+	})
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// maybe...
+// router.delete('/:id/reviews/:reviewId' ...
 
 modules.exports = router;
