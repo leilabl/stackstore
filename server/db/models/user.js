@@ -2,6 +2,8 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
+var Order = require('./order');
+var Review = require('./review');
 
 var schema = new mongoose.Schema({
     email: {
@@ -31,6 +33,18 @@ var schema = new mongoose.Schema({
 schema.methods.sanitize =  function () {
     return _.omit(this.toJSON(), ['password', 'salt']);
 };
+
+schema.methods.findOrders = function () {
+    return Order.find({
+        owner: this._id;
+    });
+}
+
+schema.methods.findReviews = function () {
+    return Review.find({
+        author: this._id;
+    });
+}
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
 // are all used for local authentication security.
