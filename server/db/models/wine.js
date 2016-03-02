@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Review = require('./review');
+require('./review');
 var Review = mongoose.model('Review');
 
 
