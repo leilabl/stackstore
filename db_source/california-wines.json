@@ -38,13 +38,13 @@
     "tags": ["pair with steak", "robust"]
   },
   {
-    "name": "Tous Ensemble",
+    "name": "Small Lot Blend",
     "type": "red",
-    "winery": "Copain",
-    "variety": "Tempranillo",
+    "winery": "Parducci Wine Cellars",
+    "variety": "Pinot Noir",
     "region": "California",
-    "year": 2011,
-    "price": 24.00,
+    "year": 2013,
+    "price": 14.00,
     "tags": ["pair with pork", "juicy"]
   },
   {
@@ -73,25 +73,24 @@
     "region": "California",
     "year": 2008,
     "price": 11.00,
-    "tags": ["", ""]
+    "tags": ["pair with dessert", "sweet"]
   },
   {
-    "name": "El Pajaro Rojo",
-    "type": "red",
-    "winery": "Losada Vinos de Finca",
-    "variety": "Mencia",
-    "region": "Spain",
+    "type": "white",
+    "winery": "HALL Wines",
+    "variety": "Sauvignon Blanc",
+    "region": "California",
     "year": 2014,
-    "price": 16.00,
-    "tags": ["pair with beef", "smooth"]
+    "price": 24.00,
+    "tags": ["pair with fish", "citrus"]
   },
   {
-    "type": "red",
-    "winery": "Prior de Panton Finca Cuarta",
-    "variety": "Mencia",
-    "region": "Spain",
-    "year": 2012,
-    "price": 15.00,
-    "tags": ["pair with pork", "spicy"]
+    "type": "white",
+    "winery": "Delish Cellars",
+    "variety": "Sauvignon Blanc",
+    "region": "California",
+    "year": 2013,
+    "price": 14.00,
+    "tags": ["pair with fish", "citrus"]
   }
 ]
