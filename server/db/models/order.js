@@ -87,13 +87,13 @@ OrderSchema.virtual('tax').get(function() {
 })
 
 OrderSchema.virtual('total').get(function() {
-  var subTotal = this.items.reduce(function(sum, curr){
-    console.log('sum is: ', sum);
-    console.log('curr item is: ', curr);
-    return sum + (curr.price * curr.quantity);
-  }, 0)
-  console.log(subTotal)
-  return subTotal + (subTotal * this.tax) + this.shippingRate;
+  if (this.items.length > 0) {
+    var subTotal = this.items.reduce(function(sum, curr){
+      return sum + (curr.price * curr.quantity);
+    }, 0)
+    return subTotal + this.shippingRate + (subTotal * this.tax);
+  }
+  return 0;
 })
 
 

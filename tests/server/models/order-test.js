@@ -239,65 +239,68 @@ describe('Order model', function () {
         })
     })
 
-    // describe('virtuals', function() {
+    describe('virtuals', function() {
 
-    //     var order, user, wine;
-    //     beforeEach('Establish DB connection', function() {
-    //         console.log('running before each');
-    //         user = new User();
-    //         order = new Order({
-    //             owner: user._id,
-    //             items: [],//[{wine: wine1._id, price: wine1.price, quantity: 1},
-    //                     //{wine: wine2._id, price: wine2.price, quantity: 3}],
-    //             shippingAddress: {
-    //                     street: "123 Broadway",
-    //                     city: "New York",
-    //                     state: "NY",
-    //                     zip: 10001
-    //             }
-    //         });
-    //     });
+        var order, user, wine;
+        beforeEach('Establish DB connection', function() {
+            console.log('running before each');
+            user = new User();
+            order = new Order({
+                owner: user._id,
+                items: [],//[{wine: wine1._id, price: wine1.price, quantity: 1},
+                        //{wine: wine2._id, price: wine2.price, quantity: 3}],
+                shippingAddress: {
+                        street: "123 Broadway",
+                        city: "New York",
+                        state: "NY",
+                        zip: 10001
+                }
+            });
+        });
 
-    //     describe('tax rate', function() {
+        describe('tax rate', function() {
 
-    //         it('returns a number between 0 - 1', function() {
-    //             expect(order.tax).to.be.within(0,1);
-    //         })
+            it('returns a number between 0 - 1', function() {
+                expect(order.tax).to.be.within(0,1);
+            })
 
-    //     })
+        })
 
-    //     describe('total', function() {
+        describe('total', function() {
 
-    //         it('returns cost of items, tax, & shipping', function() {
-    //             order.items.push({price: 10, quantity: 1});
-    //             expect(order.total).to.equal(10 + 4.95 + (10 * order.tax));
-    //         })
+            it('returns cost of items, tax, & shipping', function() {
+                order.items.push({price: 10, quantity: 1});
+                expect(order.total).to.equal(10 + 4.95 + (10 * order.tax));
+            })
 
-    //         it('works with express shipping', function() {
-    //             order.shippingRate = 12.95;
-    //             order.items.push({price: 10, quantity: 1});
-    //             expect(order.total).to.equal(10 + 12.95 + (10 * order.tax));
-    //         })
+            it('works with express shipping', function() {
+                order.shippingRate = 12.95;
+                order.items.push({price: 10, quantity: 1});
+                expect(order.total).to.equal(10 + 12.95 + (10 * order.tax));
+            })
 
-    //         it('works with no items', function() {
-    //             expect(order.total).to.equal(0);
-    //         })
+            it('works with no items', function() {
+                expect(order.total).to.equal(0);
+            })
 
-    //         it('works with multiple items', function() {
-    //             order.item1 = {price: 10, quantity: 1};
-    //             order.item2 = {price: 20, quantity: 1};
-    //             order.items.concat(item1, item2);
-    //             expect(order.total).to.equal(30 + 4.95 + (30 * order.tax) );
-    //         });
+            it('works with multiple items', function() {
+                var item1 = {price: 10, quantity: 1};
+                var item2 = {price: 20, quantity: 1};
+                order.items = [item1, item2];
+                console.log("multiple items" + order.items)
+                var total = 30 + 4.95 + (30 * order.tax);
+                expect(order.total).to.equal( total );
+            });
             
-    //         it('works with quantities larger than one', function() {
-    //             order.item = {price: 10, quantity: 10};
-    //             order.items.push(item);
-    //             expect(order.total).to.equal(100 + 4.95 + (100 * order.tax) );
-    //         });
+            it('works with quantities larger than one', function() {
+                var item = {price: 10, quantity: 10};
+                order.items.push(item);
+                var total = 100 + 4.95 + (100 * order.tax);
+                expect(order.total).to.equal( total );
+            });
 
-    //     });
+        });
 
-    // });
+    });
 
 });
