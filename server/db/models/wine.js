@@ -69,13 +69,11 @@ WineSchema.virtual('displayName').get(function(){
 WineSchema.methods.findReviews = function () {
   return Review.find({
     wine: this._id
-  })
-  .then(function(reviews) {
-    return reviews;
   });
 };
 
-WineSchema.methods.rating = function() {
+WineSchema.methods.findRating = function() {
+  //virtuals cannot be async
   return this.findReviews()
   .then(function(reviews) {
     var total = reviews.reduce(function(sum, elem) {
