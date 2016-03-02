@@ -125,12 +125,12 @@ describe('Order model', function () {
 
         describe('shipping rate', function() {
 
-            it('defaults to 4.95', function() {
-                expect(order.shippingRate).to.equal(4.95);
+            it('defaults to standard', function() {
+                expect(order.shippingRate).to.equal("standard");
             })
 
-            it('cannot be a number other than 4.95 or 12.95', function(done) {
-                order.shippingRate = 1.00;
+            it('cannot be a value other than standard, express or overnight', function(done) {
+                order.shippingRate = "extra fast";
                 order.validate()
                 .then(successCB(done, 'Order', 'invalid shippingRate'), errorCB(done))
 
@@ -272,7 +272,7 @@ describe('Order model', function () {
             })
 
             it('works with express shipping', function() {
-                order.shippingRate = 12.95;
+                order.shippingRate = "express";
                 order.items.push({price: 10, quantity: 1});
                 expect(order.total).to.equal(10 + 12.95 + (10 * order.tax));
             })

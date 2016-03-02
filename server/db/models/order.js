@@ -27,6 +27,12 @@ var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
           "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
           "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
+var shippingRates = {
+  "standard": 4.95,
+  "express": 12.95,
+  "overnight": 25.95
+}
+
 var LineItemSchema = new mongoose.Schema({
       wine: {
         type: mongoose.Schema.Types.ObjectId,
@@ -76,9 +82,9 @@ var OrderSchema = new mongoose.Schema({
   shippingAddress: ShippingAddressSchema,
 
   shippingRate: {
-    type: Number,
-    enum: [4.95, 12.95],
-    default: 4.95
+    type: String,
+    enum: Object.keys(shippingRates),
+    default: "standard"
   }
 })
 
@@ -91,7 +97,7 @@ OrderSchema.virtual('total').get(function() {
     var subTotal = this.items.reduce(function(sum, curr){
       return sum + (curr.price * curr.quantity);
     }, 0)
-    return subTotal + this.shippingRate + (subTotal * this.tax);
+    return subTotal + shippingRates[this.shippingRate] + (subTotal * this.tax);
   }
   return 0;
 })
