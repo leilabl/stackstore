@@ -4,3 +4,4 @@
 require('./user');
 require('./order');
 require('./wine');
+require('./review');
