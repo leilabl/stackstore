@@ -19,6 +19,8 @@ var mongoose = require('mongoose');
 //   ]
 // })
 
+// ROUTE TEST: if the order's owner is not a User in DB, don't save the order
+
 var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", 
           "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
           "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
@@ -37,6 +39,7 @@ var LineItemSchema = new mongoose.Schema({
       },
       quantity: {
         type: Number,
+        min: 1,
         required: true
       }
 })
@@ -84,9 +87,12 @@ OrderSchema.virtual('tax').get(function() {
 })
 
 OrderSchema.virtual('total').get(function() {
-  var subTotal = this.items.reduce(function(sum, next){
-    return sum + (next.price * next.quantity)
+  var subTotal = this.items.reduce(function(sum, curr){
+    console.log('sum is: ', sum);
+    console.log('curr item is: ', curr);
+    return sum + (curr.price * curr.quantity);
   }, 0)
+  console.log(subTotal)
   return subTotal + (subTotal * this.tax) + this.shippingRate;
 })
 
