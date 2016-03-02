@@ -1,0 +1,93 @@
+[
+    {
+    "type": "red",
+    "winery": "Prelius",
+    "variety": "Cabernet Sauvignon",
+    "region": "Italy",
+    "year": 2013,
+    "price": 14.99,
+    "tags": ["Smooth & Supple"]
+    },
+    {
+    "type": "red",
+    "winery": "Fattoria del Cerro",
+    "variety": "Sangiovese",
+    "region": "Italy",
+    "year": 2011,
+    "price": 18.99,
+    "tags": ["Pair with grilled meats"]
+    },
+    {
+    "type": "red",
+    "winery": "Fattoria Viticcio",
+    "variety": "Sangiovese",
+    "region": "Italy",
+    "year": 2012,
+    "price": 16.99,
+    "tags": ["Smooth & Supple", "y"]
+    },
+    {
+    "type": "red",
+    "winery": "Podere Il Palazzino",
+    "variety": "Sangiovese",
+    "region": "Italy",
+    "year": 2009,
+    "price": 19.99,
+    "tags": ["fruity aromas of red berries and plum"]
+    },
+    {
+    "type": "red",
+    "winery": "Mauro Veglio",
+    "variety": "Barbera",
+    "region": "Italy",
+    "year": 2013,
+    "price": 18.99,
+    "tags": ["Medium-bodied", "Harmonious & Velvety"]
+    },
+    {
+    "type": "white",
+    "winery": "Abbazia di Novacella",
+    "variety": "Pinot Grigio",
+    "region": "Italy",
+    "year": 2014,
+    "price": 19.99,
+    "tags": ["Light & Crisp", "Pair with poultry"]
+    },
+    {
+    "type": "white",
+    "winery": "Terlato Family Vineyards",
+    "variety": "Pinot Grigio",
+    "region": "Italy",
+    "year": 2014,
+    "price": 19.99,
+    "tags": ["Fruity & Smooth"]
+    },
+    {
+    "type": "white",
+    "winery": "Braida-Bologna",
+    "variety": "Moscato",
+    "region": "Italy",
+    "year": 2006,
+    "price": 17.00,
+    "tags": ["aromas of orange blossoms and roses", "pair with dessert"]
+    },
+    {
+    "name": "Costamolino",
+    "type": "white",
+    "winery": "Argiolas",
+    "variety": "Vermentino",
+    "region": "Italy",
+    "year": 2006,
+    "price": 13.00,
+    "tags": ["pair with seafood"]
+    },
+    {
+    "type": "white",
+    "winery": "Alois Lageder",
+    "variety": "Pinot Bianco",
+    "region": "Italy",
+    "year": 2006,
+    "price": 14.00,
+    "tags": ["pair with seafood"]
+    }
+]
