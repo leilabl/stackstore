@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
+require('./review');
+var Review = mongoose.model('Review');
 
 
-var WineSchema = new Schema({
+var WineSchema = new mongoose.Schema({
   type: { 
     type: String,
     enum: ['red', 'white'],
@@ -35,13 +37,13 @@ var WineSchema = new Schema({
   },
   inventory: {
   	type: Number,
-  	required: true
+    default: 10
   },
   //unit mL; maybe take care on front-end
   size: {
     type: Number,
     default: 750
-  }
+  },
   image: {
   	type: String,
   	required: true
@@ -49,10 +51,39 @@ var WineSchema = new Schema({
 });
 
 //files currently do not exist - need to create
-WineSchema.pre('validate', function(next) {
-	var randomNumber = Math.ceil(Math.random()*5)
-	this.image = '/img/' + this.type + randomNumber + '.png'
-})
+WineSchema.pre('validate', function (next) {
+	var randomNumber = Math.ceil(Math.random()*5);
+	this.image = '/img/' + this.type + randomNumber + '.png';
+  next();
+});
+
+WineSchema.virtual('displayName').get(function(){
+  var displayName;
+  if (this.name) {
+    displayName = this.year + " " + this.winery + " " + this.name + " - " + this.variety;
+  }
+  else displayName = this.year + " " + this.winery + " - " + this.variety;
+  return displayName;
+});
+
+WineSchema.methods.findReviews = function () {
+  return Review.find({
+    wine: this._id
+  })
+  .then(function(reviews) {
+    return reviews;
+  });
+};
+
+WineSchema.methods.rating = function() {
+  return this.findReviews()
+  .then(function(reviews) {
+    var total = reviews.reduce(function(sum, elem) {
+      return sum + elem.stars;
+    }, 0);
+    return total/reviews.length;
+  });
+};
 
 
-mongoose.model('Wine', schema);
+mongoose.model('Wine', WineSchema);
