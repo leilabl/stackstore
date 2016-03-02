@@ -64,7 +64,6 @@ describe('Order model', function () {
     
         var order, user, wine;
         beforeEach('Establish DB connection', function() {
-            console.log('running before each');
             user = new User();
             order = new Order({
                 owner: user._id,
