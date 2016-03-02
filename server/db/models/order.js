@@ -65,8 +65,14 @@ var ShippingAddressSchema = new mongoose.Schema({
       required: true
     },
     zip: {
-      type: Number,
-      required: true
+      type: String,
+      required: true,
+      validate: {
+        validator: function(value){
+          return /\d{5}/.test(value);
+        },
+        message: '{VALUE} is not a valid zip code'
+      }
     }
 })
 

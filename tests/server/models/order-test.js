@@ -74,7 +74,7 @@ describe('Order model', function () {
                         street: "123 Broadway",
                         city: "New York",
                         state: "NY",
-                        zip: 10001
+                        zip: "10001"
                 }
             });
         });
@@ -84,13 +84,13 @@ describe('Order model', function () {
             it('is required', function(done) {
                 order.owner = null;
                 order.validate()
-                .then(successCB(done, 'Order', 'owner'), errorCB(done))
+                .then(successCB(done, 'Order', 'no owner'), errorCB(done))
             })
 
             it('must be valid user', function(done) {
                 order.owner = 'foo';
                 order.validate()
-                .then(successCB(done, 'Order', 'valid User'), errorCB(done))
+                .then(successCB(done, 'Order', 'invalid User'), errorCB(done))
             });
 
         })
@@ -154,7 +154,7 @@ describe('Order model', function () {
                         street: "123 Broadway",
                         city: "New York",
                         state: "NY",
-                        zip: 10001
+                        zip: "10001"
                 }
             });
         });
@@ -165,21 +165,21 @@ describe('Order model', function () {
                 var item = {price: 10.00, quantity: 1};
                 order.items.push(item);
                 order.validate()
-                .then(successCB(done, 'LineItem', 'valid wine'), errorCB(done))
+                .then(successCB(done, 'LineItem', 'invalid wine'), errorCB(done))
             });
 
             it('must have a price', function(done) {
                 var item = {quantity: 1};
                 order.items.push(item);
                 order.validate()
-                .then(successCB(done, 'lineItem', 'price'), errorCB(done))
+                .then(successCB(done, 'lineItem', 'no price'), errorCB(done))
             });
 
             it('must have a quantity', function(done) {
                 var item = {price: 10.00};
                 order.items.push(item);
                 order.validate()
-                .then(successCB(done, 'lineItem', 'quantity'), errorCB(done))
+                .then(successCB(done, 'lineItem', 'no quantity'), errorCB(done))
 
             });
 
@@ -187,7 +187,7 @@ describe('Order model', function () {
                 var item = {price: 10.00, quantity: -1};
                 order.items.push(item);
                 order.validate()
-                .then(successCB(done, 'lineItem', 'quantity > 0'), errorCB(done))
+                .then(successCB(done, 'lineItem', 'quantity < 0'), errorCB(done))
 
             });
         })
@@ -197,41 +197,41 @@ describe('Order model', function () {
             it('must have a street', function(done) {
                 order.shippingAddress.street = null;
                 order.validate()
-                .then(successCB(done, 'shippingAddress', 'street'), errorCB(done))
+                .then(successCB(done, 'shippingAddress', 'no street'), errorCB(done))
 
             });
 
             it('must have a city', function(done) {
                 order.shippingAddress.city = null;
                 order.validate()
-                .then(successCB(done, 'shippingAddress', 'city'), errorCB(done))  
+                .then(successCB(done, 'shippingAddress', 'no city'), errorCB(done))  
             });
 
             it('must have a state', function(done) {
                 order.shippingAddress.state = null;
                 order.validate()
-                .then(successCB(done, 'shippingAddress', 'state'), errorCB(done))
+                .then(successCB(done, 'shippingAddress', 'no state'), errorCB(done))
 
             })
 
             it('only accepts valid state abbreviation', function(done) {
                 order.shippingAddress.state = 'California';
                 order.validate()
-                .then(successCB(done, 'shippingAddress', 'valid state'), errorCB(done))
+                .then(successCB(done, 'shippingAddress', 'invalid state'), errorCB(done))
 
             })
 
             it('must have a zip', function(done) {
                 order.shippingAddress.zip = null;
                 order.validate()
-                .then(successCB(done, 'shippingAddress', 'zip'), errorCB(done))
+                .then(successCB(done, 'shippingAddress', 'no zip'), errorCB(done))
 
             })
 
             it('must have valid zip code', function(done) {
-                order.shippingAddress.zip = 2;
+                order.shippingAddress.zip = "zip code";
                 order.validate()
-                .then(successCB(done, 'shippingAddress', 'valid zip'), errorCB(done))
+                .then(successCB(done, 'shippingAddress', 'invalid zip'), errorCB(done))
 
             })
         })
@@ -251,7 +251,7 @@ describe('Order model', function () {
                         street: "123 Broadway",
                         city: "New York",
                         state: "NY",
-                        zip: 10001
+                        zip: "10001"
                 }
             });
         });
