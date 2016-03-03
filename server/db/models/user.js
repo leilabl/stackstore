@@ -43,13 +43,13 @@ schema.methods.sanitize =  function () {
 
 schema.methods.findOrders = function () {
     return Order.find({ 
-        owner: this._id;
+        owner: this._id
     });
 }
 
 schema.methods.findReviews = function () {
     return Review.find({
-        author: this._id;
+        author: this._id
     });
 }
 

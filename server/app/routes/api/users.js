@@ -17,7 +17,7 @@ router.param('userId', function (req, res, next, userId){
 
 // only available to admin
 router.get('/', function (req, res, next) {
-  User.find()
+  User.find({})
   .then(function(users) {
     res.json(users)
   })
