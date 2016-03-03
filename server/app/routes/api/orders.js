@@ -27,7 +27,7 @@ router.post('/', function (req, res, next) {
 	var newOrder = req.body;
 	Order.create(newOrder)
 	.then(function(order) {
-		res.json(order);
+		res.status(201).json(order);
 	})
 	.then(null, next);
 });
