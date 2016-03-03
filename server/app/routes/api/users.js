@@ -53,6 +53,47 @@ router.get('/:id/orders', function (req, res) {
   })
 })
 
+// post a new user
+router.post('/', function (req, res) {
+  mongoose.model('User')
+  .create(req.body)
+  .then(function(newUser){
+    res.json(newUser)
+  })
+  .then(null, function(err) {
+    console.log(err);
+    res.sendStatus(404);
+  })
+})
+
+// update a user
+router.put('/:id', function (req, res) {
+  var id = req.params.id
+  mongoose.model('User')
+  .findByIdAndUpdate(id, {$set: req.body}, {new: true, runValidators: true})
+  .then(function(updatedUser){
+    res.json(updatedUser)
+  })
+  .then(null, function(err) {
+    console.log(err);
+    res.sendStatus(404);
+  })
+})
+
+// delete a user
+router.delete('/:id', function(req, res) {
+    var id = req.params.id
+    mongoose.model('User')
+    .findByIdAndRemove({_id: id})
+    .then(function() {
+      res.sendStatus(204)
+    })
+    .then(null, function(err) {
+      console.log(err)
+      res.sendStatus(404)
+    })
+})
+
 
 
 module.exports = router;
