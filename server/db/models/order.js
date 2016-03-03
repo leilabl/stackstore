@@ -92,6 +92,12 @@ var OrderSchema = new mongoose.Schema({
     type: String,
     enum: Object.keys(shippingRates),
     default: "standard"
+  },
+
+  status: {
+    type: String,
+    enum: ["pending", "shipped", "cancelled", "returned"],
+    default: "pending"
   }
 })
 
@@ -118,12 +124,7 @@ OrderSchema.methods.findSimilar = function () {
 }
 
 OrderSchema.methods.cancel = function () {
-
+  this.status = "cancelled";
 }
-
-OrderSchema.methods.reorder = function () {
-  
-}
-
 
 mongoose.model('Order', OrderSchema);
