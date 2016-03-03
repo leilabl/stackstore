@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var Wine = mongoose.model('Wine')
 
 //TW Where are your nexts coming from?
-
+//TW router.param
 router.get('/', function(req, res) {
 	Wine.find({})
 	.then(function(wines) {
@@ -66,7 +66,7 @@ router.delete('/:id', function(req, res) {
 	var id = req.params.id
 	Wine.findByIdAndRemove({_id: id}) //TW don't need an object here
 	.then(function() {
-		res.sendStatus(204) //TW might need to call .end();
+		res.sendStatus(204)
 	})
 	.then(null, next)
 })
