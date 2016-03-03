@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
   Review.create(req.body)
   .then(function(review){
     if (review.author === req.params.id) { //TW params?
-      res.json(review);
+      res.json(review); //TW status code?
     } else {
       var err = new Error();
       err.status(403);
