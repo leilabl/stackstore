@@ -66,9 +66,9 @@ WineSchema.virtual('displayName').get(function(){
   return displayName;
 });
 
-WineSchema.methods.findReviews = function () {
+WineSchema.statics.findReviews = function (id) {
   return Review.find({
-    wine: this._id
+    wine: id
   });
 };
 
