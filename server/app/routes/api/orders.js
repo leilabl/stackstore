@@ -6,6 +6,15 @@ require('../../../db/models/order');
 
 var Order = mongoose.model('Order');
 
+router.param('id', function (req, res, next, id) {
+	Order.findById(req.params.id)
+	.then(function (order) {
+		req.order = order;
+		next();
+	})
+	.then(null, next);
+});
+
 router.get('/', function (req, res, next) {
 	Order.find()
 	.then(function(orders) {
@@ -24,20 +33,16 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-	Order.findById(req.params.id)
-	.then(function(order) {
-		res.json(order);
-	})
-	.then(null, next);
+	res.json(req.order);
 });
 
 router.put('/:id', function (req, res, next) {
 	var changedOrder = req.body;
-	Order.findOneAndUpdate({_id: req.params.id}, changedOrder, { new:true })
-	.then(function(order) {
+	req.order.set(changedOrder);
+	req.order.save()
+	.then(function (order) {
 		res.json(order);
-	})
-	.then(null, next);
+	});
 });
 
 module.exports = router;
