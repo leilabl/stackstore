@@ -13,14 +13,57 @@ router.get('/', function (req, res, next) {
   .then(function(reviews) {
     res.json(reviews)
   })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
+  .then(null, next)
 })
 
 router.post('/', function(req, res, next) {
-  var review = req.body;
+  Review.create(req.body)
+  .then(function(review){
+    if (review.author === req.params.id) {
+      res.json(review);
+    } else {
+      var err = new Error();
+      err.status(403);
+      next(err);
+    }  
+  })
+  .then(null, next);
+});
+
+router.get('/:reviewId', function(req, res, next){
+  Review.findById(req.params.reviewId)
+  .then(function(review){
+    res.json(review);
+  })
+  .then(null, next);
+})
+
+router.put('/:reviewId', function(req, res, next) {
+  Review.findById(req.params.reviewId)
+  .then(function(review){
+    if (review.author === req.params.id) {
+      return review.update(req.body)
+    } else {
+      var err = new Error();
+      err.status(403);
+      next(err);
+    }
+  })
+  .then(null, next)
+})
+
+router.delete('/:reviewId', function(req, res, next) {
+  Review.findById(req.params.reviewId)
+  .then(function(review){
+    if (review.author === req.params.id) {
+      return review.remove({});
+    } else {
+      var err = new Error();
+      err.status(403);
+      next(err);
+    }
+  })
+  .then(null, next)
 })
 
 module.exports = router;
