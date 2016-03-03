@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var User = require('User');
 
 // NOTES FOR 3/1:
 
@@ -109,7 +110,7 @@ OrderSchema.virtual('total').get(function() {
 })
 
 OrderSchema.statics.findByUserId = function (userId) {
-  
+  return mongoose.model('Order').find({owner: userId})
 }
 
 OrderSchema.methods.findSimilar = function () {
