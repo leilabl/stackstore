@@ -3,8 +3,9 @@ var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
 require('./order');
-var Order = mongoose.model('Order'); //TW how do you think this is working?
-var Review = require('./review'); //TW how do you think this is working?
+var Order = mongoose.model('Order'); 
+require('./review');
+var Review = mongoose.model('Review');
 
 //TW authenticated users vs. guest users?
 //TW saw admin mentioned in routes? Other types of users...

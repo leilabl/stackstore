@@ -6,7 +6,7 @@ require('../../../db/models/review');
 var Review = mongoose.model('Review');
 
 //TW incorporate router.param
-router.param('reviewId', function(req, res, next, reviewId){
+router.param('reviewId', function (req, res, next, reviewId){
   Review.findById(reviewId)
   .then(function(review){
     req.review = review;
