@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
+router.use('/:id/reviews', require('./reviews'));
+
 // only available to admin
 router.get('/', function (req, res) {
   mongoose.model('User')
@@ -34,6 +36,7 @@ router.get('/:id', function (req, res) {
 })
 
 // admin and user
+// is this already taken care of in orders route??
 router.get('/:id/orders', function (req, res) {
   var id = req.params.id;
   mongoose.model('User')
