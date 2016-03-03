@@ -2,7 +2,7 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var Order = require('./order');
+var Order = require('./order'); //TW how do you think this is working?
 var Review = require('./review');
 
 var schema = new mongoose.Schema({

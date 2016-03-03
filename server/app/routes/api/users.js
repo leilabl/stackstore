@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 
 router.use('/:id/reviews', require('./reviews'));
 
+//TW Where are your nexts coming from?
+
 // only available to admin
 router.get('/', function (req, res) {
   mongoose.model('User')
@@ -21,7 +23,7 @@ router.get('/:id', function (req, res) {
   .findById(id)
   .then(function(user) {
     // is it a promise??
-    return user.sanitize();
+    return user.sanitize(); //TW Why this?
   })
   .then(function(sanitizedUser) {
     res.json(sanitizerUser)
@@ -69,9 +71,9 @@ router.put('/:id', function (req, res) {
 router.delete('/:id', function(req, res) {
     var id = req.params.id
     mongoose.model('User')
-    .findByIdAndRemove({_id: id})
+    .findByIdAndRemove({_id: id}) //TW just pass the id
     .then(function() {
-      res.sendStatus(204)
+      res.sendStatus(204) //TW Might need to call .end()
     })
   .then(null, next);
 })

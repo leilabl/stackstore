@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose')
 var Wine = mongoose.model('Wine')
 
-
+//TW Where are your nexts coming from?
 
 router.get('/', function(req, res) {
 	Wine.find({})
@@ -64,9 +64,9 @@ router.put('/:id', function(req, res) {
 
 router.delete('/:id', function(req, res) {
 	var id = req.params.id
-	Wine.findByIdAndRemove({_id: id})
+	Wine.findByIdAndRemove({_id: id}) //TW don't need an object here
 	.then(function() {
-		res.sendStatus(204)
+		res.sendStatus(204) //TW might need to call .end();
 	})
 	.then(null, next)
 })
