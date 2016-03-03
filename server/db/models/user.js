@@ -35,7 +35,7 @@ schema.methods.sanitize =  function () {
 };
 
 schema.methods.findOrders = function () {
-    return Order.find({
+    return Order.find({ 
         owner: this._id;
     });
 }

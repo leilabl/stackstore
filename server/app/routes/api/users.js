@@ -33,6 +33,7 @@ router.get('/:id', function (req, res) {
   })
 })
 
+// admin and user
 router.get('/:id/orders', function (req, res) {
   var id = req.params.id;
   mongoose.model('User')
@@ -42,22 +43,6 @@ router.get('/:id/orders', function (req, res) {
   })
   .then(function(orders) {
     res.json(orders)
-  })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
-})
-
-router.get('/:id/reviews', function (req, res) {
-  var id = req.params.id;
-  mongoose.model('User')
-  .findById(id)
-  .then(function(user) {
-    return user.findReviews()
-  })
-  .then(function(reviews) {
-    res.json(reviews)
   })
   .then(null, function(err) {
     console.log(err);
