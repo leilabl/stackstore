@@ -1,7 +1,6 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var User = require('User');
 
 // NOTES FOR 3/1:
 
@@ -120,7 +119,12 @@ OrderSchema.statics.findByUserId = function (userId) {
 }
 
 OrderSchema.methods.findSimilar = function () {
+  // grab all orders that share an item with this one
+  // gather hash of all items in those orders (other than this item)
+  // sort by # occurences
+  // return list of most popular (could be 5, 10, etc., depending on UI)
 
+  // this may make more sense in the WineSchema?
 }
 
 OrderSchema.methods.cancel = function () {
