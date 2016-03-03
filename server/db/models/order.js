@@ -91,6 +91,12 @@ var OrderSchema = new mongoose.Schema({
     type: String,
     enum: Object.keys(shippingRates),
     default: "standard"
+  },
+
+  status: {
+    type: String,
+    enum: ["pending", "shipped", "cancelled", "returned"],
+    default: "pending"
   }
 })
 
@@ -108,5 +114,21 @@ OrderSchema.virtual('total').get(function() {
   return 0;
 })
 
+OrderSchema.statics.findByUserId = function (userId) {
+  return mongoose.model('Order').find({owner: userId})
+}
+
+OrderSchema.methods.findSimilar = function () {
+  // grab all orders that share an item with this one
+  // gather hash of all items in those orders (other than this item)
+  // sort by # occurences
+  // return list of most popular (could be 5, 10, etc., depending on UI)
+
+  // this may make more sense in the WineSchema?
+}
+
+OrderSchema.methods.cancel = function () {
+  this.status = "cancelled";
+}
 
 mongoose.model('Order', OrderSchema);
