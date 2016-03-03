@@ -11,10 +11,7 @@ router.get('/', function (req, res) {
   .then(function(users) {
     res.json(users)
   })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
+  .then(null, next);
 })
 
 // only available to admin and user themself?
@@ -29,10 +26,7 @@ router.get('/:id', function (req, res) {
   .then(function(sanitizedUser) {
     res.json(sanitizerUser)
   })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
+  .then(null, next);
 })
 
 // admin and user
@@ -47,10 +41,7 @@ router.get('/:id/orders', function (req, res) {
   .then(function(orders) {
     res.json(orders)
   })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
+  .then(null, next);
 })
 
 // post a new user
@@ -60,10 +51,7 @@ router.post('/', function (req, res) {
   .then(function(newUser){
     res.json(newUser)
   })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
+  .then(null, next);
 })
 
 // update a user
@@ -74,10 +62,7 @@ router.put('/:id', function (req, res) {
   .then(function(updatedUser){
     res.json(updatedUser)
   })
-  .then(null, function(err) {
-    console.log(err);
-    res.sendStatus(404);
-  })
+  .then(null, next);
 })
 
 // delete a user
@@ -88,10 +73,7 @@ router.delete('/:id', function(req, res) {
     .then(function() {
       res.sendStatus(204)
     })
-    .then(null, function(err) {
-      console.log(err)
-      res.sendStatus(404)
-    })
+  .then(null, next);
 })
 
 
