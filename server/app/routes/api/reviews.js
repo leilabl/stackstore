@@ -1,15 +1,15 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({ mergeParams: true });
 var mongoose = require('mongoose');
 
+require('../../../db/models/review');
+var Review = mongoose.model('Review');
+
+
 // available to eveyone
-router.get('/:id/reviews', function (req, res) {
+router.get('/', function (req, res, next) {
   var id = req.params.id;
-  mongoose.model('User')
-  .findById(id)
-  .then(function(user) {
-    return user.findReviews()
-  })
+  Review.find({author: id})
   .then(function(reviews) {
     res.json(reviews)
   })
@@ -18,3 +18,9 @@ router.get('/:id/reviews', function (req, res) {
     res.sendStatus(404);
   })
 })
+
+router.post('/', function(req, res, next) {
+  var review = req.body;
+})
+
+module.exports = router;
