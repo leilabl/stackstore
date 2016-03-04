@@ -5,11 +5,19 @@ var mongoose = require('mongoose');
 require('../../../db/models/review');
 var Review = mongoose.model('Review');
 
+router.param('reviewId', function(req, res, next, reviewId){
+  Review.findById(reviewId)
+  .then(function(review){
+    req.review = review;
+    next();
+  })
+  .then(null, next);
+})
 
-// available to eveyone
+//nesting of routes still needed here in order to get reviews by user from other users
 router.get('/', function (req, res, next) {
-  var id = req.params.id;
-  Review.find({author: id})
+  var author = req.params.userId; 
+  Review.find({author: author})
   .then(function(reviews) {
     res.json(reviews)
   })
@@ -17,53 +25,42 @@ router.get('/', function (req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
-  Review.create(req.body)
+  var review = req.body;
+  review.author = req.user._id;
+  Review.create(review)
   .then(function(review){
-    if (review.author === req.params.id) {
-      res.json(review);
-    } else {
-      var err = new Error();
-      err.status(403);
-      next(err);
-    }  
+    res.status(201).json(review);
   })
   .then(null, next);
 });
 
 router.get('/:reviewId', function(req, res, next){
-  Review.findById(req.params.reviewId)
-  .then(function(review){
-    res.json(review);
-  })
-  .then(null, next);
+  res.json(req.review);
 })
 
 router.put('/:reviewId', function(req, res, next) {
-  Review.findById(req.params.reviewId)
-  .then(function(review){
-    if (review.author === req.params.id) {
-      return review.update(req.body)
-    } else {
-      var err = new Error();
-      err.status(403);
-      next(err);
-    }
-  })
-  .then(null, next)
+  if (req.review.author === req.user._id) {
+    req.review.set(req.body)
+    req.review.save()
+    .then(function(newReview){
+      res.json(newReview);
+    })
+    .then(null, next)
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 router.delete('/:reviewId', function(req, res, next) {
-  Review.findById(req.params.reviewId)
-  .then(function(review){
-    if (review.author === req.params.id) {
-      return review.remove({});
-    } else {
-      var err = new Error();
-      err.status(403);
-      next(err);
-    }
-  })
-  .then(null, next)
+  if (req.review.author === req.user._id) {
+    req.review.remove({})
+    .then(function() {
+      res.sendStatus(204)
+    })
+    .then(null, next);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 module.exports = router;

@@ -128,7 +128,8 @@ OrderSchema.methods.findSimilar = function () {
 }
 
 OrderSchema.methods.cancel = function () {
-  this.status = "cancelled";
+  this.status = "cancelled"; 
+  return this.save();
 }
 
 mongoose.model('Order', OrderSchema);

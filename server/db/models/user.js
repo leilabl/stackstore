@@ -2,15 +2,22 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var Order = require('./order');
-var Review = require('./review');
+require('./order');
+var Order = mongoose.model('Order'); 
+require('./review');
+var Review = mongoose.model('Review');
 
+//TW authenticated users vs. guest users?
+//TW saw admin mentioned in routes? Other types of users...
+//TW guest checkout  
 var schema = new mongoose.Schema({
     email: {
         type: String
     },
     password: {
         type: String
+        //TW sanitize method alternative; 
+        //select: false
     },
     salt: {
         type: String
@@ -36,13 +43,13 @@ schema.methods.sanitize =  function () {
 
 schema.methods.findOrders = function () {
     return Order.find({ 
-        owner: this._id;
+        owner: this._id
     });
 }
 
 schema.methods.findReviews = function () {
     return Review.find({
-        author: this._id;
+        author: this._id
     });
 }
 
