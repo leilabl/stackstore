@@ -5,7 +5,9 @@ app.controller('checkoutCtrl', function ($scope, $state) {
           "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
           "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
+  $scope.checkoutInfo = {};
+
   $scope.submitCheckout = function () {
-    // create
+    $state.go('confirm')
   }
 })
