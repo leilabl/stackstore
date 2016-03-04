@@ -16,12 +16,14 @@ fsg scaffolding, keep in mind that fsg always uses the same database
 name in the environment files.
 
 */
-
+var fs = require('fs');
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
+var Wine = Promise.promisifyAll(mongoose.model('Wine'));
+
 
 var seedUsers = function () {
 
@@ -40,15 +42,45 @@ var seedUsers = function () {
 
 };
 
+
+
+var seedWines = function(){
+    var dummyWines = [];
+
+    var files = fs.readdirSync('./db_source');
+    for (var file in files) {
+        var fileName = files[file];
+        var fileContents = fs.readFileSync('./db_source/' + fileName, {encoding: 'utf8'});
+        var wineList = JSON.parse(fileContents);
+        for (var wine in wineList) {
+            dummyWines.push(wineList[wine]);
+        }
+    }
+
+    return Wine.createAsync(dummyWines);
+}
+
 connectToDb.then(function () {
     User.findAsync({}).then(function (users) {
         if (users.length === 0) {
             return seedUsers();
         } else {
             console.log(chalk.magenta('Seems to already be user data, exiting!'));
+            // process.kill(0);
+        }
+    })
+    .then(function(){
+        return Wine.findAsync({});
+    })
+    .then(function(wines) {
+        if (wines.length === 0) {
+            return seedWines();
+        } else {
+            console.log(chalk.magenta('Seems to already be wine data, exiting!'));
             process.kill(0);
         }
-    }).then(function () {
+    })
+    .then(function () {
         console.log(chalk.green('Seed successful!'));
         process.kill(0);
     }).catch(function (err) {
