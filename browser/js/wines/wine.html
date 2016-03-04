@@ -1,7 +1,24 @@
 <section id="wine">
 	<h2>{{wine.displayName}}</h2>
 	<img src="{{wine.image}}">
-	<
-	
+	<p>{{wine.description}}</p>
+	<table>
+			<tr>
+				<th>Price</th>
+				<td>{{wine.price | currency}}</td>
+			</tr>
+			<tr>
+				<th>Volume</th>
+				<td>{{wine.size}}mL</td>
+			</tr>
+			<tr>
+				<th>Region</th>
+				<td>{{wine.region}}</td>
+			</tr>
+			<tr>
+				<th>Tags</th>
+				<td>{{wine.tags.join(", ")}}</td>
+			</tr>
+	</table>	
 
 </section>
