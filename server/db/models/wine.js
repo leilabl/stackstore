@@ -49,8 +49,8 @@ var WineSchema = new mongoose.Schema({
   	required: true
   },
   description: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   }
 });
 
@@ -59,15 +59,6 @@ WineSchema.pre('validate', function (next) {
 	var randomNumber = Math.ceil(Math.random()*5);
 	this.image = '/img/' + this.type + randomNumber + '.png';
   next();
-});
-
-WineSchema.virtual('displayName').get(function(){
-  var displayName;
-  if (this.name) {
-    displayName = this.year + " " + this.winery + " " + this.name + " - " + this.variety;
-  }
-  else displayName = this.year + " " + this.winery + " - " + this.variety;
-  return displayName;
 });
 
 WineSchema.statics.findReviews = function (id) {
