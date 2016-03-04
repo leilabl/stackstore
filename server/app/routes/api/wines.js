@@ -6,12 +6,12 @@ var Wine = mongoose.model('Wine')
 
 
 router.param('wineId', function (req, res, next, wineId){
-  Wine.findById(wineId)
-  .then(function(wine){
-    req.wine = wine;
-    next();
-  })
-  .then(null, next);
+  	Wine.findById(wineId)
+  	.then(function(wine){
+    	req.wine = wine;
+    	next();
+  	})
+  	.then(null, next);
 })
 
 router.get('/', function (req, res, next) {
@@ -54,19 +54,19 @@ router.post('/', function (req, res, next) {
 
 router.put('/:wineId', function (req, res, next) {
 	req.wine.set(req.body)
-  req.wine.save()
-  .then(function(updatedWine){
+  	req.wine.save()
+  	.then(function(updatedWine){
     res.json(updatedWine);
-  })
-  .then(null, next);
+  	})
+  	.then(null, next);
 })
 
 router.delete('/:wineId', function (req, res, next) {
 	req.wine.remove()
-  .then(function(){
-    res.sendStatus(204)
-  })
-  .then(null, next);
+  	.then(function(){
+    	res.sendStatus(204)
+  	})
+  	.then(null, next);
 })
 
 module.exports = router;
