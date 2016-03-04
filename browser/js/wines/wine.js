@@ -4,16 +4,18 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/wines/wine.html',
         controller: 'WineController',
         resolve: {
-        	//move to wineFactory
-        	//maybe use js-data
         	wine: function(WineFactory, $stateParams) {
         		return WineFactory.getWine($stateParams.wineId)
+        	},
+        	reviews: function(WineFactory, $stateParams) {
+        		return WineFactory.getReviews($stateParams.wineId)
         	}
         }
     });
 });
 
 
+//maybe use js-data
 app.factory('WineFactory', function($http) {
 
 	var WineFactory = {}
@@ -25,12 +27,20 @@ app.factory('WineFactory', function($http) {
 		})
 	}
 
+	WineFactory.getReviews = function(id) {
+		return $http.get('/api/wines/' + id + '/reviews')
+		.then(function(response) {
+			return response.data
+		})
+	}
+
 	return WineFactory
 })
 
 
-app.controller('WineController', function($scope, wine) {
+app.controller('WineController', function($scope, wine, reviews) {
 	$scope.wine = wine
+	$scope.reviews = reviews
 })
 
 
@@ -41,3 +51,36 @@ app.filter('wineDisplayName', function() {
 		return input.name ? input.year + " " + input.winery + " " + input.name + " - " + input.variety : input.year + " " + input.winery + " - " + input.variety;
 	}
 })
+
+
+app.directive('stars', function() {
+
+	return {
+		restrict: 'E',
+		scope: {
+			rating: "="
+		},
+		link: function(scope) {
+			var starList = [];
+			for (var i=1; i<6; i++) {
+				if (i <= Number(scope.rating)) {
+					starList.push('<span class="glyphicon glyphicon-star"></span>')
+				}
+				else {
+					starList.push('<span class="glyphicon glyphicon-star-empty"></span>')
+				}
+			}
+			return starList.join("")
+		}
+
+	}
+
+})
+
+
+
+
+
+
+
+
