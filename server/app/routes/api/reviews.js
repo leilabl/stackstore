@@ -16,7 +16,7 @@ router.param('reviewId', function(req, res, next, reviewId){
 
 //nesting of routes still needed here in order to get reviews by user from other users
 router.get('/', function (req, res, next) {
-  var author = req.params.id; 
+  var author = req.params.userId; 
   Review.find({author: author})
   .then(function(reviews) {
     res.json(reviews)

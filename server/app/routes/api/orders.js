@@ -6,8 +6,8 @@ require('../../../db/models/order');
 
 var Order = mongoose.model('Order');
 
-router.param('id', function (req, res, next, id) {
-	Order.findById(req.params.id)
+router.param('orderId', function (req, res, next, orderId) {
+	Order.findById(req.params.orderId)
 	.then(function (order) {
 		req.order = order;
 		next();
@@ -32,11 +32,11 @@ router.post('/', function (req, res, next) {
 	.then(null, next);
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/:orderId', function (req, res, next) {
 	res.json(req.order);
 });
 
-router.put('/:id', function (req, res, next) {
+router.put('/:orderId', function (req, res, next) {
 	var changedOrder = req.body;
 	req.order.set(changedOrder);
 	req.order.save()
