@@ -1,0 +1,11 @@
+<div>
+    <form class="form" name="checkoutForm" ng-submit="submitCheckout()">
+    <input class="form-control" name="fullName" type="text" required>
+    <input class="form-control" name="streetAddress" type="text" required>
+    <input class="form-control" name="streetAddress2" type="text">
+    <input class="form-control" name="city" type="text" required>
+    <select>
+        <option ng-repeat="state in states">{{state}}</option>
+    </select>
+    <input class="form-control" name="zipCode" type="text" required>
+    
