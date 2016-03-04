@@ -9,7 +9,7 @@ app.config(function ($stateProvider) {
   $stateProvider.state('confirm', {
     url: '/confirm',
     templateUrl: 'js/checkout/templates/confirm.html',
-    controller: 'checkoutCtrl'
+    controller: 'confirmCtrl'
   })
-  
+
 })
