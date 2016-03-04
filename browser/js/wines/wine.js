@@ -63,14 +63,15 @@ app.directive('stars', function() {
 		link: function(scope) {
 			var starList = [];
 			for (var i=1; i<6; i++) {
-				if (i <= Number(scope.rating)) {
+				if (i <= Number(scope.rating) ) {
 					starList.push('<span class="glyphicon glyphicon-star"></span>')
 				}
 				else {
 					starList.push('<span class="glyphicon glyphicon-star-empty"></span>')
 				}
 			}
-			return starList.join("")
+			console.log(starList);
+			return starList.join("");
 		}
 
 	}
