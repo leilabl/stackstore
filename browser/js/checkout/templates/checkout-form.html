@@ -1,11 +1,38 @@
-<div>
+<div class="container">
     <form class="form" name="checkoutForm" ng-submit="submitCheckout()">
-    <input class="form-control" name="fullName" type="text" required>
-    <input class="form-control" name="streetAddress" type="text" required>
-    <input class="form-control" name="streetAddress2" type="text">
-    <input class="form-control" name="city" type="text" required>
-    <select>
-        <option ng-repeat="state in states">{{state}}</option>
-    </select>
-    <input class="form-control" name="zipCode" type="text" required>
-    
+    <div>
+        <div class="form-group">
+            <label for="fullname">Name</label>
+            <input class="form-control" name="fullName" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="streetAddress" placeholder="Street address">Address line 1</label>
+            <input class="form-control" name="streetAddress" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="streetAddress2" placeholder="Apartment, suite, unit">Address line 2 (optional)</label>
+            <input class="form-control" name="streetAddress2" type="text">
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input class="form-control" name="city" type="text" required>
+        </div>
+        <div class="form-group">
+        <select>
+            <option ng-repeat="state in states">{{state}}</option>
+        </select>
+        <input class="form-control" name="zipCode" type="text" required>
+    </div>
+    <div>
+        <input class="form-control" name="cardNumber" type="text" required>
+        <input class="form-control" name="cardName" type="text" required>
+        <select>
+            <option ng-repeat="month in months">{{month}}</option>
+        </select>
+         <select>
+            <option ng-repeat="year in years">{{year}}</option>
+        </select>
+    </div>
+    <button class="btn btn-success" type="submit">Review Order</button>
+    </form>
+</div>
