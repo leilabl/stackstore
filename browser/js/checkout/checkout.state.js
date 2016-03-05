@@ -12,4 +12,10 @@ app.config(function ($stateProvider) {
     controller: 'confirmCtrl'
   })
 
+  $stateProvider.state('thankYou', {
+    url: '/thankyou',
+    templateUrl: 'js/checkout/templates.html',
+    controller: ''
+  })
+
 })

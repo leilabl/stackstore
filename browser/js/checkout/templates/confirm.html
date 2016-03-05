@@ -1,20 +1,22 @@
 <div class="container">
-  <div>
-    <h3>Your Order:</h3>
     <div>
-      <img src="http://placehold.it/300x400">
-      <p>Product Description</p>
+        <h3>Your Order:</h3>
+        <div>
+          <img src="http://placehold.it/300x400">
+          <p>Product Description</p>
+        </div>
+        <h3>Your Shipping Address:</h3>
+        <p>{{checkoutInfo.name}}</p>
+        <p>{{checkoutInfo.address1}}</p>
+        <p>{{checkoutInfo.address2}}</p>
+        <p>{{checkoutInfo.city}}</p>
+        <p>{{checkoutInfo.state}}</p>
+        <p>{{checkoutInfo.zipCode}}</p>
+        <h3>Payment Info:</h3>
+        <p>Card ending in: {{hashedCardNumber}}</p>
+        <p>{{checkoutInfo.cardName}}</p>
+        <p>{{checkoutInfo.month}}</p>
+        <p>{{checkoutInfo.year}}</p>
     </div>
-    <h3>Your Shipping Address:</h3>
-    <p>{{checkoutInfo.name}}</p>
-    <p>{{checkoutInfo.address1}}</p>
-    <p>{{checkoutInfo.address2}}</p>
-    <p>{{checkoutInfo.city}}</p>
-    <p>{{checkoutInfo.state}}</p>
-    <p>{{checkoutInfo.zipCode}}</p>
-    <h3>Payment Info:</h3>
-    <p>Card ending in: {{hashedCardNumber}}</p>
-    <p>{{checkoutInfo.cardName}}</p>
-    <p>{{checkoutInfo.month}}</p>
-    <p>{{checkoutInfo.year}}</p>
+    <button class="btn btn-success" type="submit">Review Order</button>
 </div>
