@@ -69,7 +69,7 @@ WineSchema.statics.findReviews = function (id) {
 
 WineSchema.methods.findRating = function() {
   //virtuals cannot be async
-  return this.findReviews()
+  return Review.find({wine: this._id})
   .then(function(reviews) {
     var total = reviews.reduce(function(sum, elem) {
       return sum + elem.stars;
