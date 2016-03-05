@@ -27,10 +27,6 @@ var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA",
           "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", 
           "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
-var months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
-
-var years = ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026"]
-
 var shippingRates = {
   "standard": 4.95,
   "express": 12.95,
@@ -80,29 +76,6 @@ var ShippingAddressSchema = new mongoose.Schema({
     }
 })
 
-var PaymentSchema = new mongoose.Schema({
-  number: {
-    type: String,
-    minlength: 16,
-    maxlength: 16,
-    required: true
-  },
-  nameOnCard: {
-    type: String,
-    required: true,
-  },
-  expirationMonth: {
-    type: String,
-    enum: months,
-    required: true
-  },
-  expirationYear: {
-    type: String,
-    enum: years,
-    required: true
-  }
-})
-
 var OrderSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -113,8 +86,6 @@ var OrderSchema = new mongoose.Schema({
   items: [LineItemSchema],
 
   shippingAddress: ShippingAddressSchema,
-
-  payment: PaymentSchema,
 
   shippingRate: {
     type: String,

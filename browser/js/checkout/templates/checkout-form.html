@@ -1,5 +1,6 @@
 <div class="container">
-    <form class="form" name="checkoutForm" ng-submit="submitCheckout()">
+    <h3>Shipping Address:</h3>
+    <form class="form" name="checkoutForm" ng-submit="submitOrder()">
     <div>
         <div class="form-group">
             <label for="fullname">Name:</label>
@@ -28,7 +29,7 @@
             <input class="form-control" name="zipCode" type="text" required ng-model="checkoutInfo.zipCode">
         </div>
     </div>
-    <div>
+   <!--  <div>
         <div class="form-group">
             <label for="cardNumber">Card number:</label>
             <input class="form-control" name="cardNumber" type="text" required ng-model="checkoutInfo.cardNumber">
@@ -46,7 +47,7 @@
                     <option ng-repeat="year in years" ng-model="checkoutInfo.year">{{year}}</option>
                 </select>
         </div>
-    </div>
-    <button class="btn btn-success" type="submit">Review Order</button>
+    </div> -->
+    <button class="btn btn-success" type="submit">Submit Order</button>
     </form>
 </div>
