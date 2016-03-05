@@ -51,6 +51,10 @@ var LineItemSchema = new mongoose.Schema({
 })
 
 var ShippingAddressSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true
+    },
     street: {
       type: String,
       required: true

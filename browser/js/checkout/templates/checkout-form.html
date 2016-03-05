@@ -4,29 +4,29 @@
     <div>
         <div class="form-group">
             <label for="fullname">Name:</label>
-            <input class="form-control" name="fullName" type="text" required ng-model="checkoutInfo.name">
+            <input class="form-control" name="fullName" type="text" required ng-model="checkoutInfo.shippingAddress.name">
         </div>
         <div class="form-group">
             <label for="streetAddress" placeholder="Street address">Address line 1:</label>
-            <input class="form-control" name="streetAddress" type="text" required ng-model="checkoutInfo.address1">
+            <input class="form-control" name="streetAddress" type="text" required ng-model="checkoutInfo.shippingAddress.street">
         </div>
         <div class="form-group">
             <label for="streetAddress2" placeholder="Apartment, suite, unit">Address line 2 (optional):</label>
-            <input class="form-control" name="streetAddress2" type="text" ng-model="checkoutInfo.address2">
+            <input class="form-control" name="streetAddress2" type="text">
         </div>
         <div class="form-group">
             <label for="city">City:</label>
-            <input class="form-control" name="city" type="text" required ng-model="checkoutInfo.city">
+            <input class="form-control" name="city" type="text" required ng-model="checkoutInfo.shippingAddress.city">
         </div>
         <div class="form-group">
             <label for="state">State:</label>
-            <select name="state">
-                <option ng-repeat="state in states" ng-model="checkoutInfo.state">{{state}}</option>
+            <select name="state" ng-model="checkoutInfo.shippingAddress.state">
+                <option ng-repeat="state in states">{{state}}</option>
             </select>
         </div>
         <div class="form-group">
             <label for="zipCode">Zip code:</label>
-            <input class="form-control" name="zipCode" type="text" required ng-model="checkoutInfo.zipCode">
+            <input class="form-control" name="zipCode" type="text" required ng-model="checkoutInfo.shippingAddress.zip">
         </div>
     </div>
    <!--  <div>
