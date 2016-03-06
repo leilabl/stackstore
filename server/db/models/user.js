@@ -6,6 +6,7 @@ require('./order');
 var Order = mongoose.model('Order'); 
 require('./review');
 var Review = mongoose.model('Review');
+// var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
 //TW authenticated users vs. guest users?
 //TW saw admin mentioned in routes? Other types of users...
@@ -14,6 +15,7 @@ var schema = new mongoose.Schema({
     email: {
         type: String
     },
+    customerId: String,
     password: {
         type: String
         //TW sanitize method alternative; 

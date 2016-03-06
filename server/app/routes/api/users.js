@@ -19,6 +19,9 @@ router.param('userId', function (req, res, next, userId){
 router.get('/', function (req, res, next) {
   User.find({})
   .then(function(users) {
+    users = users.map(function(user) {
+      return user.sanitize();
+    });
     res.json(users)
   })
   .then(null, next);
