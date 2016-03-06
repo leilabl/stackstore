@@ -15,7 +15,15 @@ var schema = new mongoose.Schema({
     email: {
         type: String
     },
-    customerId: String,
+    username: {
+        type: String,
+        unique: true
+    },
+    paymentMethods: [{
+        customerId: String,
+        name: String,
+        last4: String
+    }],
     password: {
         type: String
         //TW sanitize method alternative; 
@@ -35,6 +43,10 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
+    },
+    joinDate: {
+        type: Date,
+        default: Date.now
     }
 });
 
@@ -85,5 +97,10 @@ schema.statics.encryptPassword = encryptPassword;
 schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
+
+schema.methods.addPaymentMethod = function(data) {
+    this.paymentMethods.push(data);
+    return this.save();
+}
 
 mongoose.model('User', schema);
