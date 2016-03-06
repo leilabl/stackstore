@@ -1,14 +1,13 @@
 app.config(function($stateProvider){
   $stateProvider.state('user', {
     url: '/users/:userId',
-    templateUrl: '/js/users/user.html',
+    templateUrl: 'js/users/user.html',
     controller: 'UserController',
     resolve: {
-      user: function(UserFactory) {
+      user: function(UserFactory, $stateParams) {
         return UserFactory.getUser($stateParams.userId);
       }
     }
-
   })
 })
 
