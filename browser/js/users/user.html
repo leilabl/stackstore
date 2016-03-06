@@ -1,5 +1,11 @@
 <section id="user">
-hello
+HELLO
   <h2>{{user.email}}</h2>
-
+  <h3>Reviews</h3>
+  <div ng-repeat="review in user.reviews">
+    <h4>{{review.title}}</h4>
+    <stars rating="review.stars"></stars>
+    <p>{{review.content}}</p>
+    <hr>
+  </div>
 </section>
