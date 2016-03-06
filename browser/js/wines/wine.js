@@ -5,7 +5,7 @@ app.config(function ($stateProvider) {
         controller: 'WineController',
         resolve: {
         	wine: function(WineFactory, $stateParams) {
-        		return WineFactory.getWine($stateParams.wineId)
+        		return WineFactory.getOneWine($stateParams.wineId)
         	},
         	reviews: function(WineFactory, $stateParams) {
         		return WineFactory.getReviews($stateParams.wineId)
@@ -23,7 +23,7 @@ app.factory('WineFactory', function($http) {
 
 	var WineFactory = {}
 
-	WineFactory.getWine = function(id) {
+	WineFactory.getOneWine = function(id) {
 		return $http.get('/api/wines/' + id)
 		.then(function(response) {
 			return response.data
