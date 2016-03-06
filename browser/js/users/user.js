@@ -24,7 +24,7 @@ app.factory('UserFactory', function($http, $q){
         })
       })
       .then(function(results){
-        user = results[0];
+        var user = results[0];
         user.reviews = results[1];
         return user;
       })
