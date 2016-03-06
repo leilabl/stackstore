@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 require('./order');
 var Order = mongoose.model('Order'); 
+var ShippingAddress = mongoose.model('ShippingAddress');
 require('./review');
 var Review = mongoose.model('Review');
 // var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
@@ -24,6 +25,7 @@ var schema = new mongoose.Schema({
         name: String,
         last4: String
     }],
+    shippingMethods: [ShippingAddress],
     password: {
         type: String
         //TW sanitize method alternative; 

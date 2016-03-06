@@ -74,7 +74,9 @@ var ShippingAddressSchema = new mongoose.Schema({
         message: '{VALUE} is not a valid zip code'
       }
     }
-})
+});
+
+mongoose.model('ShippingAddress', ShippingAddressSchema);
 
 var OrderSchema = new mongoose.Schema({
   owner: {
