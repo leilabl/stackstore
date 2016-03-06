@@ -108,4 +108,9 @@ schema.methods.addPaymentMethod = function(data) {
     return this.save();
 }
 
+schema.methods.addShippingMethod = function(name, address) {
+    this.shippingMethods.push({name: name, address: address});
+    return this.save();
+}
+
 mongoose.model('User', schema);
