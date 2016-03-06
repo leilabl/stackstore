@@ -25,7 +25,10 @@ var schema = new mongoose.Schema({
         name: String,
         last4: String
     }],
-    shippingMethods: [ShippingAddress],
+    shippingMethods: [{
+        name: String,
+        address: ShippingAddress
+    }],
     password: {
         type: String
         //TW sanitize method alternative; 
