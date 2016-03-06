@@ -4,22 +4,34 @@
     <h3>Review:</h3>
     <form class="form" name="reviewForm" ng-submit="submitReview()">
     <div>
+
         <div class="form-group">
             <label for="title">Title:</label>
             <input class="form-control" name="title" type="text" ng-model="review.title">
         </div>
+
+
         <div class="form-group">
             <label for="star">Stars:</label>
-            <input class="form-control" name="star" type="text" required ng-model="review.stars">
+            <select class="form-control" name="star" ng-model="review.stars" required>
+                <option value="1">1</option> 
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
         </div>
+
         <div class="form-group">
             <label for="zipCode">Content:</label>
-            <input class="form-control" name="content" type="text" required ng-model="review.content">
+            <textarea class="form-control" name="content" type="text" required ng-model="review.content"></textarea>
         </div>
+
     </div>
     <button class="btn btn-success" type="submit">Submit Review</button>
+<!-- <pre>{{ form | json }}</pre>     -->
     </form>
-    <pre>{{ form | json }}</pre>
+    
 </div>
 
 </section>

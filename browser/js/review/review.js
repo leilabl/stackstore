@@ -21,15 +21,20 @@ app.factory('ReviewFactory', function($http) {
 
 })
 
-app.controller('ReviewController', function($scope) {
+app.controller('ReviewController', function($scope, ReviewFactory, $state) {
 
 	$scope.review = {
-		author: '56d9f82ab405944e6edf76b2',
-		wine: '56d9f82ab405944e6edf76b4'
+		author: '56d9f852fd13169e0be32b9f',
+		wine: '56d9f880889a54a30b876583'
 	}
 
 	$scope.submitReview = function() {
-		ReviewFactory.create()
+		console.log('submitted form', $scope.review)
+		ReviewFactory.create('56d9f852fd13169e0be32b9f', $scope.review)
+		.then(function() {
+			console.log('successfully posted')
+			$state.go('wines')
+		})
 	}
 
 })
