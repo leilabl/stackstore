@@ -2,10 +2,11 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var _ = require('lodash');
-require('./order');
+var ShippingAddressSchema = require('./order');
 var Order = mongoose.model('Order'); 
 require('./review');
 var Review = mongoose.model('Review');
+// var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
 //TW authenticated users vs. guest users?
 //TW saw admin mentioned in routes? Other types of users...
@@ -14,6 +15,20 @@ var schema = new mongoose.Schema({
     email: {
         type: String
     },
+    username: {
+        type: String,
+        unique: true
+    },
+    isAdmin: Boolean,
+    paymentMethods: [{
+        name: String,
+        customerId: String,
+        last4: Number
+    }],
+    shippingMethods: [{
+        name: String,
+        address: ShippingAddressSchema
+    }],
     password: {
         type: String
         //TW sanitize method alternative; 
@@ -33,6 +48,10 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
+    },
+    joinDate: {
+        type: Date,
+        default: Date.now
     }
 });
 
@@ -48,6 +67,7 @@ schema.methods.findOrders = function () {
 }
 
 schema.methods.findReviews = function () {
+    console.log(this._id)
     return Review.find({
         author: this._id
     });
@@ -83,5 +103,52 @@ schema.statics.encryptPassword = encryptPassword;
 schema.method('correctPassword', function (candidatePassword) {
     return encryptPassword(candidatePassword, this.salt) === this.password;
 });
+
+schema.methods.addPaymentMethod = function(data) {
+    this.paymentMethods.push(data);
+    return this.save();
+}
+
+schema.methods.updatePaymentMethod = function(data) {
+    this.paymentMethods = this.paymentMethods.map(function(method){
+        if (method.name === data.name) {
+            method.last4 = data.last4;
+            method.customerId = data.customerId;
+        }
+        return method;
+    });
+    return this.save();
+}
+
+
+schema.methods.removePaymentMethod = function(data) {
+    this.paymentMethods = this.paymentMethods.filter(function(method) {
+            return method.name !== data.name;
+    });
+    return this.save();
+}
+
+
+schema.methods.addShippingMethod = function(data) {
+    this.shippingMethods.push({
+        name: data.name, address: data.address
+    });
+    return this.save();
+}
+
+schema.methods.updateShippingMethod = function(data){
+    this.shippingMethods = this.shippingMethods.map(function(method){
+        if (method.name === data.name) method.address = data.address;
+        return method;
+    });
+    return this.save();
+}
+
+schema.methods.removeShippingMethod = function(data) {
+    this.shippingMethods = this.shippingMethods.filter(function(method) {
+            return method.name !== data.name;
+    });
+    return this.save();
+}
 
 mongoose.model('User', schema);
