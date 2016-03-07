@@ -1,25 +1,35 @@
 <section id="user">
-  <h2>{{user.username}}</h2>
-  <table>
-    <tr>
-      <th>Email</th>
-      <td>{{user.email}}</td>
-    </tr>
-    <tr>
-      <th>User since</th>
-      <td>{{user.joinDate | date : 'mediumDate'}}</td>
-    </tr>
-    <tr>
-      <th>No. of Reviews</th>
-      <td>{{user.reviews.length}}</td>
-    </tr>
-  </table>
-  <h3>Reviews</h3>
-  <p ng-show="!user.reviews.length">This user has not left any reviews yet!</p>
-  <div ng-repeat="review in user.reviews">
-    <h4>{{review.title}}</h4>
-    <stars rating="review.stars"></stars>
-    <p>{{review.content}}</p>
-    <hr>
+  <div class="container">
+    <div class="col-md-12">
+      <h2>{{user.username}}</h2>
+      <table>
+        <tr>
+          <th>Email</th>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <th>User since</th>
+          <td>{{user.joinDate | date : 'mediumDate'}}</td>
+        </tr>
+        <tr>
+          <th>No. of Reviews</th>
+          <td>{{user.reviews.length}}</td>
+        </tr>
+      </table>
+
+      <hr>
+
+      <h3>Reviews</h3>
+      <p ng-show="!user.reviews.length">This user has not left any reviews yet!</p>
+      <div ng-repeat="review in user.reviews">
+        <h4>{{review.title}}</h4>
+        <stars rating="review.stars"></stars>
+        <p>{{review.content}}</p>
+        <hr>
+      </div>
+      
+    </div>
+  
   </div>
+
 </section>
