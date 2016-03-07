@@ -5,7 +5,7 @@ app.config(function($stateProvider){
     controller: 'UserController',
     resolve: {
       user: function(UserFactory, $stateParams) {
-        return UserFactory.getUser($stateParams.username);
+        return UserFactory.getUser($stateParams.username)
       }
     }
   })
@@ -28,7 +28,6 @@ app.factory('UserFactory', function($http, $q){
         user.reviews = results[1];
         return user;
       })
-      .then(null, next);
     }
 
   UserFactory.getOrders = function(username) {
@@ -36,7 +35,6 @@ app.factory('UserFactory', function($http, $q){
       .then(function(res) {
         return res.data;
       })
-      .then(null, next);
   }
 
   return UserFactory;

@@ -25,7 +25,10 @@ router.get('/orders', function(req, res, next) {
 })
 
 router.get('/reviews', function(req, res, next){
-  req.reqUser.findReviews()
+  User.findById(req.reqUser._id)
+  .then(function(user){
+    return user.findReviews()
+  })
   .then(function(reviews){
     res.json(reviews);
   })

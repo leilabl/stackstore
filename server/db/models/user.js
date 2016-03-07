@@ -66,6 +66,7 @@ schema.methods.findOrders = function () {
 }
 
 schema.methods.findReviews = function () {
+    console.log(this._id)
     return Review.find({
         author: this._id
     });
