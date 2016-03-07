@@ -42,31 +42,41 @@ router.get('/:wineId/rating', function (req, res, next) {
 	.then(null, next)
 })
 
-//on accesssible to admins
-//perhaps need to consider preventing duplicate posts
 router.post('/', function (req, res, next) {
-	Wine.create(req.body)
-	.then(function(newWine) {
-		res.status(201).json(newWine)
-	})
-	.then(null, next)
+  if (req.user.isAdmin) {
+  	Wine.create(req.body)
+  	.then(function(newWine) {
+  		res.status(201).json(newWine)
+  	})
+  	.then(null, next)
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 router.put('/:wineId', function (req, res, next) {
-	req.wine.set(req.body)
-  	req.wine.save()
-  	.then(function(updatedWine){
-    res.json(updatedWine);
-  	})
-  	.then(null, next);
+  if (req.user.isAdmin) {
+  	req.wine.set(req.body)
+    	req.wine.save()
+    	.then(function(updatedWine){
+      res.json(updatedWine);
+    	})
+    	.then(null, next);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 router.delete('/:wineId', function (req, res, next) {
-	req.wine.remove()
-  	.then(function(){
-    	res.sendStatus(204)
-  	})
-  	.then(null, next);
+  if (req.user.isAdmin) {
+  	req.wine.remove()
+    	.then(function(){
+      	res.sendStatus(204)
+    	})
+    	.then(null, next);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 module.exports = router;

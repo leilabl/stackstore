@@ -8,6 +8,7 @@ router.use('/me', require('./me'));
 
 router.use('/:username/reviews', require('./reviews'));
 
+// username URL parameter
 router.param('username', function (req, res, next, username){
   User.findOne({username: username})
   .then(function(user){
@@ -17,25 +18,28 @@ router.param('username', function (req, res, next, username){
   .then(null, next);
 })
 
-// only available to admin
+// get list of all users
 router.get('/', function (req, res, next) {
-  User.find({})
-  .then(function(users) {
-    users = users.map(function(user) {
-      return user.sanitize();
-    });
-    res.json(users)
-  })
-  .then(null, next);
+  if (req.user.isAdmin) {
+    User.find({})
+    .then(function(users) {
+      users = users.map(function(user) {
+        return user.sanitize();
+      });
+      res.json(users)
+    })
+    .then(null, next);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
-// only available to admin and user themself?
+// get user data
 router.get('/:username', function (req, res) {
   res.json(req.reqUser.sanitize())
 })
 
-// admin and user
-// is this already taken care of in orders route??
+// get user's orders
 router.get('/:username/orders', function (req, res, next) {
   if (req.reqUser._id === req.user.id || req.user.isAdmin) {
     req.reqUser.findOrders()
@@ -61,7 +65,7 @@ router.post('/', function (req, res, next) {
 
 // update a user
 router.put('/:username', function (req, res, next) {
-  if (req.reqUser._id === req.user || req.user.isAdmin) {
+  if (req.reqUser._id === req.user._id || req.user.isAdmin) {
     req.reqUser.set(req.body)
     req.reqUser.save()
     .then(function(updatedUser){
@@ -77,7 +81,7 @@ router.put('/:username', function (req, res, next) {
 
 // delete a user
 router.delete('/:username', function (req, res, next) {
-  if (req.reqUser._id === req.user || req.user.isAdmin) {
+  if (req.reqUser._id === req.user._id || req.user.isAdmin) {
     req.reqUser.remove()
     .then(function(){
       res.sendStatus(204)

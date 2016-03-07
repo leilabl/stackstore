@@ -16,15 +16,20 @@ router.param('orderId', function (req, res, next, orderId) {
 });
 
 router.get('/', function (req, res, next) {
-	Order.find()
-	.then(function(orders) {
-		res.json(orders);
-	})
-	.then(null, next);
+	if (req.user.isAdmin) {
+		Order.find()
+		.then(function(orders) {
+			res.json(orders);
+		})
+		.then(null, next);
+	} else {
+		res.sendStatus(403);
+	}
 });
 
 router.post('/', function (req, res, next) {
 	var newOrder = req.body;
+	if (!req.user.isAdmin) newOrder.owner = req.user._id;
 	Order.create(newOrder)
 	.then(function(order) {
 		res.status(201).json(order);
@@ -33,16 +38,24 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/:orderId', function (req, res, next) {
-	res.json(req.order);
+	if (req.user._id === req.order.owner || req.user.isAdmin) {
+		res.json(req.order);
+	} else {
+		res.status(403).end();
+	}
 });
 
 router.put('/:orderId', function (req, res, next) {
-	var changedOrder = req.body;
-	req.order.set(changedOrder);
-	req.order.save()
-	.then(function (order) {
-		res.json(order);
-	});
+	if (req.user._id === req.order.owner || req.user.isAdmin) {
+		var changedOrder = req.body;
+		req.order.set(changedOrder);
+		req.order.save()
+		.then(function (order) {
+			res.json(order);
+		});
+	} else {
+		res.status(403).end();
+	}
 });
 
 module.exports = router;
