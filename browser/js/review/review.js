@@ -33,7 +33,7 @@ app.controller('ReviewController', function($scope, ReviewFactory, $state) {
 		ReviewFactory.create('56d9f852fd13169e0be32b9f', $scope.review)
 		.then(function() {
 			console.log('successfully posted')
-			$state.go('wines')
+			$state.go('wine', {wineId: $scope.review.wine})
 		})
 	}
 
