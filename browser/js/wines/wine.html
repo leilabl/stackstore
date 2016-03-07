@@ -1,0 +1,74 @@
+<section id='wine'>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <img src="{{wine.image}}">
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="thumbnail">
+                    <div class="caption-full">
+                        <h4 class="pull-right">{{wine.price | currency}}</h4>
+                        <h4>{{wine | wineDisplayName}}</h4>
+                        <p>{{wine.description}}</p>
+                        <table>
+							<tr>
+								<th>Volume: </th>
+								<td>{{wine.size}}mL</td>
+							</tr>
+							<tr>
+								<th>Region: </th>
+								<td>{{wine.region}}</td>
+							</tr>
+							<tr>
+								<th>Tags: </th>
+								<td>{{wine.tags.join(", ")}}</td>
+							</tr>
+						</table>
+                    </div>
+                    <div class="ratings">
+                            <div stars star='rating'></div>
+                    </div>
+                    <a class="btn btn-primary">Add to Cart</a>
+                </div>
+
+            </div>
+
+        </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="well">
+
+                        <div class="text-left">
+                            <a ui-sref="newReview" class="btn btn-success">Leave a Review</a>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-12" ng-repeat='review in reviews'>
+                            	{{review.title}}
+                            	<div stars star='review.stars'></div>
+                                <span class="pull-right">Date of Review</span>
+                                <p>{{review.content}}</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</section>
+

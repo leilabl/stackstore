@@ -47,6 +47,10 @@ var WineSchema = new mongoose.Schema({
   image: {
   	type: String,
   	required: true
+  },
+  description: {
+    type: String
+    // required: true
   }
 });
 
@@ -57,15 +61,6 @@ WineSchema.pre('validate', function (next) {
   next();
 });
 
-WineSchema.virtual('displayName').get(function(){
-  var displayName;
-  if (this.name) {
-    displayName = this.year + " " + this.winery + " " + this.name + " - " + this.variety;
-  }
-  else displayName = this.year + " " + this.winery + " - " + this.variety;
-  return displayName;
-});
-
 WineSchema.statics.findReviews = function (id) {
   return Review.find({
     wine: id
@@ -74,7 +69,7 @@ WineSchema.statics.findReviews = function (id) {
 
 WineSchema.methods.findRating = function() {
   //virtuals cannot be async
-  return this.findReviews()
+  return Review.find({wine: this._id})
   .then(function(reviews) {
     var total = reviews.reduce(function(sum, elem) {
       return sum + elem.stars;

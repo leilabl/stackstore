@@ -1,0 +1,36 @@
+<section id='wines'>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- <div class="row"> -->
+
+                    <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="wine in wines">
+                        <div class="thumbnail">
+                            <img src="{{wine.image}}">
+                            <div class="caption">
+                                <h4 class="pull-right">{{wine.price | currency}}</h4>
+                                <h4><a ui-sref='wine({wineId: wine._id})'>{{wine | wineDisplayName}}</a>
+                                </h4>
+                                <p>{{wine.description}}</p>
+                            </div>
+                            <div class="ratings">
+                                <p>
+                                <div stars star='rating'></div>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- </div> -->
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
