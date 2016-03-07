@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 require('../../../db/models/user');
 var User = mongoose.model('User');
 
+router.use('/me', require('./me'));
 router.use('/:username/reviews', require('./reviews'));
 
 router.param('username', function (req, res, next, username){

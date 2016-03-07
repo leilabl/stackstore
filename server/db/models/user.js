@@ -20,8 +20,8 @@ var schema = new mongoose.Schema({
         unique: true
     },
     paymentMethods: [{
-        customerId: String,
         name: String,
+        customerId: String,
         last4: Number
     }],
     shippingMethods: [{
@@ -107,8 +107,45 @@ schema.methods.addPaymentMethod = function(data) {
     return this.save();
 }
 
-schema.methods.addShippingMethod = function(name, address) {
-    this.shippingMethods.push({name: name, address: address});
+schema.methods.updatePaymentMethod = function(data) {
+    this.paymentMethods = this.paymentMethods.map(function(method){
+        if (method.name === data.name) {
+            method.last4 = data.last4;
+            method.customerId = data.customerId;
+        }
+        return method;
+    });
+    return this.save();
+}
+
+
+schema.methods.removePaymentMethod = function(data) {
+    this.paymentMethods = this.paymentMethods.filter(function(method) {
+            return method.name !== data.name;
+    });
+    return this.save();
+}
+
+
+schema.methods.addShippingMethod = function(data) {
+    this.shippingMethods.push({
+        name: data.name, address: data.address
+    });
+    return this.save();
+}
+
+schema.methods.updateShippingMethod = function(data){
+    this.shippingMethods = this.shippingMethods.map(function(method){
+        if (method.name === data.name) method.address = data.address;
+        return method;
+    });
+    return this.save();
+}
+
+schema.methods.removeShippingMethod = function(data) {
+    this.shippingMethods = this.shippingMethods.filter(function(method) {
+            return method.name !== data.name;
+    });
     return this.save();
 }
 
