@@ -18,11 +18,10 @@
                                         <h4 class="text-center">{{wine | wineDisplayName}}</h4>
                                         <h4 class="text-center">{{wine.price | currency}}</h4>
                                         <p class="text-center">{{wine.description}}</p>
-                                        <div ng-show="rating" class="text-center ratings" stars star='rating'></div>
-                                        <!-- <a href='review/new/{{wine._id}}' ng-hide="rating">Be the first to review it!</a> -->
+                                        <div ng-show="wine.rating" class="text-center ratings" stars star='wine.rating'></div>
                                     </div>
                                 </a>
-                                <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="rating">Be the first to review it!</a>
+                                <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="wine.rating">Be the first to review it!{{wine.rating}}</a>
                             </div>
                         <!-- </div> -->
                     </div>

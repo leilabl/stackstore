@@ -4,8 +4,17 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/wines/wines.html',
 		controller: 'WinesController',
 		resolve: {
-			wines: function(WinesFactory) {
+			wines: function(WinesFactory, WineFactory, $q) {
 				return WinesFactory.getAllWines()
+					.then(function(wines) {
+						return $q.all(wines.map(function(wine){
+						    return WineFactory.getRating(wine._id)
+						    .then(function(rating) {
+						        wine.rating = rating;
+						        return wine;
+						    })
+						}))
+					})
 			}
 		}
 	})
@@ -24,9 +33,6 @@ app.factory('WinesFactory', function($http) {
 	return WinesFactory
 })
 
-app.controller('WinesController', function($scope, wines, WineFactory) {
-	$scope.wines = wines
-
-	//rating for each wine
-
+app.controller('WinesController', function($scope, wines) {
+	$scope.wines = wines;
 })

@@ -40,7 +40,6 @@ app.factory('WineFactory', function($http) {
 	WineFactory.getRating = function(id) {
 		return $http.get('api/wines/' + id + '/rating')
 		.then(function(response) {
-			console.log(response)
 			return response.data
 		})
 	}
