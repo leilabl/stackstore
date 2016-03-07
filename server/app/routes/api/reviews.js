@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
-  var review = req.body;
+  var review = req.body; 
   review.author = req.user._id;
   Review.create(review)
   .then(function(review){
