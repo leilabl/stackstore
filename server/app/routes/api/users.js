@@ -56,12 +56,19 @@ router.get('/:username/orders', function (req, res, next) {
 
 // post a new user
 router.post('/', function (req, res, next) {
-  User.create(req.body)
-  .then(function(newUser){
-    res.status(201).json(newUser)
-  })
-  .then(null, next);
-})
+  User.findOne({username: req.body.username})
+  .then(function(user) {
+    if (!user) {
+      User.create(req.body)
+      .then(function(newUser){
+        res.status(201).json(newUser)
+      })
+      .then(null, next);   
+    } else {
+      res.sendStatus(409);
+    }
+  });
+});
 
 // update a user
 router.put('/:username', function (req, res, next) {
