@@ -19,7 +19,10 @@ var schema = new mongoose.Schema({
         type: String,
         unique: true
     },
-    isAdmin: Boolean,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
     paymentMethods: [{
         name: String,
         customerId: String,
