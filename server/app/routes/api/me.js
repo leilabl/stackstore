@@ -79,3 +79,4 @@ router.delete('/payment', function(req, res, next) {
   .then(null, next);
 })
 
+module.exports = router;
