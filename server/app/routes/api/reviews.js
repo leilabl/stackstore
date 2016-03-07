@@ -39,7 +39,7 @@ router.get('/:reviewId', function(req, res, next){
 })
 
 router.put('/:reviewId', function(req, res, next) {
-  if (req.user.isAdmin || req.review.author === req.user._id) {
+  if (req.review.author === req.user._id || req.user.isAdmin) {
     req.review.set(req.body)
     req.review.save()
     .then(function(newReview){
@@ -52,7 +52,7 @@ router.put('/:reviewId', function(req, res, next) {
 })
 
 router.delete('/:reviewId', function(req, res, next) {
-  if (req.user.isAdmin || req.review.author === req.user._id) {
+  if (req.review.author === req.user._id || req.user.isAdmin) {
     req.review.remove({})
     .then(function() {
       res.sendStatus(204)
