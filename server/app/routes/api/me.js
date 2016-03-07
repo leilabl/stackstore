@@ -13,11 +13,11 @@ router.use(function(req, res, next){
 })
 
 router.get('/', function(req, res, next) {
-  res.json(user);
+  res.json(req.reqUser);
 })
 
 router.get('/orders', function(req, res, next) {
-  user.findOrders()
+  req.reqUser.findOrders()
   .then(function(orders) {
     res.json(orders)
   })
@@ -25,7 +25,7 @@ router.get('/orders', function(req, res, next) {
 })
 
 router.get('/reviews', function(req, res, next){
-  user.findReviews()
+  req.reqUser.findReviews()
   .then(function(reviews){
     res.json(reviews);
   })
@@ -33,7 +33,7 @@ router.get('/reviews', function(req, res, next){
 })
 
 router.post('/shipping', function(req, res, next){
-  user.addShippingMethod(req.body)
+  req.reqUser.addShippingMethod(req.body)
   .then(function(user){
     res.status(201).json(user);
   })
@@ -41,7 +41,7 @@ router.post('/shipping', function(req, res, next){
 });
 
 router.put('/shipping', function(req, res, next){
-  user.updateShippingMethod(req.body)
+  req.reqUser.updateShippingMethod(req.body)
   .then(function(user) {
     res.status(201).json(user);
   })
@@ -49,14 +49,14 @@ router.put('/shipping', function(req, res, next){
 })
 
 router.delete('/shipping', function(req, res, next){
-  user.removeShippingMethod(req.body)
+  req.reqUser.removeShippingMethod(req.body)
   .then(function(user){
     res.status(204).json(user);
   });
 });
 
 router.post('/payment', function(req, res, next) {
-  user.addPaymentMethod(req.body)
+  req.reqUser.addPaymentMethod(req.body)
   .then(function(user) {
     res.status(201).json(user);
   })
@@ -64,7 +64,7 @@ router.post('/payment', function(req, res, next) {
 });
 
 router.put('/payment', function(req, res, next){
-  user.updatePaymentMethod(req.body)
+  req.reqUser.updatePaymentMethod(req.body)
   .then(function(user) {
     res.status(201).json(user);
   })
@@ -72,7 +72,7 @@ router.put('/payment', function(req, res, next){
 });
 
 router.delete('/payment', function(req, res, next) {
-  user.removePaymentMethod(req.body)
+  req.reqUser.removePaymentMethod(req.body)
   .then(function(user) {
     res.status(204).json(user);
   })

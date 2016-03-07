@@ -95,6 +95,11 @@ var OrderSchema = new mongoose.Schema({
     default: "standard"
   },
 
+  date: {
+    type: Date,
+    default: Date.now
+  },
+
   status: {
     type: String,
     enum: ["pending", "shipped", "cancelled", "returned"],

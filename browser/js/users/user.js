@@ -28,7 +28,16 @@ app.factory('UserFactory', function($http, $q){
         user.reviews = results[1];
         return user;
       })
+      .then(null, next);
     }
+
+  UserFactory.getOrders = function(username) {
+    return $http.get('/api/users/' + username + '/orders')
+      .then(function(res) {
+        return res.data;
+      })
+      .then(null, next);
+  }
 
   return UserFactory;
 
