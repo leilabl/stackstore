@@ -17,9 +17,12 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/orders', function(req, res, next) {
-  req.reqUser.findOrders()
-  .then(function(orders) {
-    res.json(orders)
+  User.findById(req.reqUser._id)
+  .then(function(user){
+    return user.findOrders()
+  })
+  .then(function(orders){
+    res.json(orders);
   })
   .then(null, next);
 })

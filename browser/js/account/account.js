@@ -8,7 +8,7 @@ app.config(function($stateProvider){
       user: function(UserFactory) {
         return UserFactory.getUser('me');
       },
-      orders: function(user){
+      orders: function(UserFactory){
         return UserFactory.getOrders('me');
       }
     }
@@ -16,7 +16,6 @@ app.config(function($stateProvider){
 });
 
 app.controller('AccountController', function($scope, user, orders) {
-  
   $scope.user = user;
   $scope.orders = orders;
 
