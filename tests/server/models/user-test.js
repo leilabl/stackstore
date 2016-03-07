@@ -8,6 +8,8 @@ var mongoose = require('mongoose');
 // Require in all models.
 require('../../../server/db/models');
 var User = mongoose.model('User');
+var Review = mongoose.model('Review');
+var Order = mongoose.model('Order');
 
 describe('User model', function () {
 
@@ -154,6 +156,91 @@ describe('User model', function () {
                     expect(user.salt).to.be.ok;
                     expect(sanitizedUser.password).to.be.undefined;
                     expect(sanitizedUser.salt).to.be.undefined;
+                });
+            });
+        });
+
+    });
+
+    describe('methods', function(){
+        var user;
+        
+        beforeEach(function(done){
+            var salt = User.generateSalt();
+            User.create({
+                email: 'test@test.com',
+                username: 'testUser',
+                salt: salt,
+                password: User.encryptPassword('password', salt)
+            }).then(function(u) {
+                user = u;
+                done();
+            })
+        });
+
+        afterEach(function(done){
+            User.remove({username: 'testUser'})
+            .then(function(){ done(); })
+        });
+
+        describe('findOrders', function(done){
+            it ('finds a user\'s orders', function() {
+                Order.create({
+                    owner: user._id
+                }).then(function(){
+                    expect(user.findOrders()).to.have.length(1);
+                    done();
+                })
+            });
+        });
+
+        describe('findReviews', function(done){
+            it('finds a user\'s reviews', function(){
+                Review.create({
+                    stars: 4,
+                    content: 'awesome',
+                    author: user._id,
+                    wine: 'abc'
+                }).then(function(){
+                    return Review.create({
+                        stars: 1,
+                        content: 'not good',
+                        author: user._id,
+                        wine: 'abc'
+                    })
+                }).then(function(){
+                    expect(user.findReviews()).to.have.length(2);
+                    done();
+                });
+            });
+        });
+
+        describe('addPaymentMethod', function(done){
+            it('adds a new payment method to a user', function(){
+                user.addPaymentMethod({
+                    customerId: '123',
+                    name: 'Bank of America',
+                    last4: 1234
+                }).then(function() {
+                    expect(user.paymentMethods).to.have.length(1);
+                    done()
+                })
+            })
+        });
+
+        describe('addShippingMethod', function(done){
+            it('adds a new shipment method to a user', function(){
+                user.addShippingMethod({
+                    name: 'Home',
+                    address: {
+                        street: '123 Broadway',
+                        city: 'New York',
+                        state: 'NY',
+                        zip: 10004
+                    }
+                }).then(function(){
+                    expect(user.shippingMethods).to.have.length(1);
+                    done();
                 });
             });
         });

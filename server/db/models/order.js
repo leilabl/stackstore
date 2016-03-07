@@ -76,7 +76,7 @@ var ShippingAddressSchema = new mongoose.Schema({
     }
 });
 
-mongoose.model('ShippingAddress', ShippingAddressSchema);
+module.exports = ShippingAddressSchema;
 
 var OrderSchema = new mongoose.Schema({
   owner: {
