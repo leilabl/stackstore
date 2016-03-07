@@ -50,7 +50,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="item in order.items">
-              <th>{{item.wine | displayName}}</th>
+              <th>{{item.wine | wineDisplayName}}</th>
               <td>{{item.price | currency}}</td>
               <td>x{{item.quantity}}</td>
               <td>{{item.quantity * item.price | currency}}</td>
