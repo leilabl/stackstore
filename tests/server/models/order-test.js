@@ -143,7 +143,6 @@ describe('Order model', function () {
 
         var order, user, wine;
         beforeEach('Establish DB connection', function() {
-            console.log('running before each');
             user = new User();
             order = new Order({
                 owner: user._id,
@@ -240,7 +239,6 @@ describe('Order model', function () {
 
         var order, user, wine;
         beforeEach('Establish DB connection', function() {
-            console.log('running before each');
             user = new User();
             order = new Order({
                 owner: user._id,
@@ -284,7 +282,6 @@ describe('Order model', function () {
                 var item1 = {price: 10, quantity: 1};
                 var item2 = {price: 20, quantity: 1};
                 order.items = [item1, item2];
-                console.log("multiple items" + order.items)
                 var total = 30 + 4.95 + (30 * order.tax);
                 expect(order.total).to.equal( total );
             });
