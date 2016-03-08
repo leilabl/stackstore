@@ -6,27 +6,27 @@ app.config(function ($stateProvider) {
 		resolve: {
 			wines: function(WinesFactory, WineFactory, $q) {
 				return WinesFactory.getAllWines()
-					.then(function(wines) {
-						return $q.all(wines.map(function(wine){
-						    return WineFactory.getRating(wine._id)
-						    .then(function(rating) {
-						        wine.rating = rating;
-						        return wine;
-						    })
-						}))
-					})
 			}
 		}
 	})
 })
 
-app.factory('WinesFactory', function($http) {
+app.factory('WinesFactory', function($http, $q, WineFactory) {
 	var WinesFactory = {}
 
 	WinesFactory.getAllWines = function() {
 		return $http.get('/api/wines')
 		.then(function(response) {
 			return response.data
+		})
+		.then(function(wines) {
+			return $q.all(wines.map(function(wine){
+			    return WineFactory.getRating(wine._id)
+			    .then(function(rating) {
+			        wine.rating = rating;
+			        return wine;
+			    })
+			}))
 		})
 	}
 
@@ -40,13 +40,21 @@ app.factory('WinesFactory', function($http) {
 
 	WinesFactory.getWines = function(queries) {
 		return $http.get('/api/wines' + getQueryString(queries))
-		.then(function(response) {
-			return response.data;
-		})
-
+			.then(function(response) {
+				return response.data;
+			})
+			.then(function(wines) {
+				return $q.all(wines.map(function(wine){
+		    	return WineFactory.getRating(wine._id)
+		    		.then(function(rating) {
+		        	wine.rating = rating;
+		        	return wine;
+			    	})
+			  	}))
+			})
 	}
 
-	return WinesFactory
+	return WinesFactory;
 })
 
 // queries must be given in this format: {key: 'someKey', value: 'someValue'}
@@ -65,11 +73,14 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 		.then(function(wines) {
 			$scope.wines = wines;
 		})
+	} else {
+
 	}
 
 	$scope.wines = wines;
 
-	$scope.varieties = ["Cabernet Sauvignon",
+	$scope.varieties = [
+		"Cabernet Sauvignon",
 		 "Zinfandel",
 		 "Pinot Noir",
 		 "Chardonnay",
