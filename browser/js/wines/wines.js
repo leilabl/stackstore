@@ -30,13 +30,16 @@ app.factory('WinesFactory', function($http) {
 		})
 	}
 
-	WinesFactory.getWines = function(queries) {
+	function getQueryString (queriesList) {
 		var queryString = "?";
-		console.log(queries);
-		queryString += queries.map(function(obj) {
+		queryString += queriesList.map(function(obj) {
 			return obj.key + "=" + obj.value
 		}).join("&");
-		return $http.get('/api/wines' + queryString)
+		return queryString;
+	}
+
+	WinesFactory.getWines = function(queries) {
+		return $http.get('/api/wines' + getQueryString(queries))
 		.then(function(response) {
 			return response.data;
 		})
@@ -51,13 +54,31 @@ app.factory('WinesFactory', function($http) {
 app.controller('WinesController', function($scope, wines, $location, WinesFactory) {
 
 	// we need to grab list of all query key/val pairs from URL on load
+	var queries = [];
+
+	var queriesInUrl = $location.search();
+	if (Object.keys(queriesInUrl).length) {
+		for (var query in queriesInUrl) {
+			queries.push({key: query, value: queriesInUrl[query]});
+		}
+		WinesFactory.getWines(queries)
+		.then(function(wines) {
+			$scope.wines = wines;
+		})
+	}
+
+	console.log(queries)
 
 	$scope.wines = wines;
 
 	$scope.addFilter = function(key, value) {
 		var newQuery = {key: key, value: value};
+		queries.push(newQuery);
+		queries.forEach(function(obj) {
+			$location.search(obj.key, obj.value);
+		})
 		console.log(newQuery);
-		WinesFactory.getWines([newQuery])
+		WinesFactory.getWines(queries)
 		.then(function(wines) {
 			$scope.wines = wines;
 		})
@@ -66,6 +87,5 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	// $scope.red = wines.query({type: 'red'});
 	// console.log('red', red)
 
-	var val = $location.search().booze
-	console.log("this is val", val)
+	// var val = $location.search().booze
 })
