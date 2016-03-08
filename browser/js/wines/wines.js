@@ -4,14 +4,16 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/wines/wines.html',
 		controller: 'WinesController',
 		resolve: {
-			wines: function(WinesFactory, WineFactory, $q) {
+			wines: function(WinesFactory, $q) {
 				return WinesFactory.getAllWines()
 			}
 		}
 	})
 })
 
+
 app.factory('WinesFactory', function($http, $q, WineFactory) {
+
 	var WinesFactory = {}
 
 	WinesFactory.getAllWines = function() {
@@ -29,60 +31,25 @@ app.factory('WinesFactory', function($http, $q, WineFactory) {
 			}))
 		})
 	}
-
-	function getQueryString (queriesList) {
-		var queryString = "?";
-		queryString += queriesList.map(function(obj) {
-			return obj.key + "=" + obj.value
-		}).join("&");
-		return queryString;
-	}
-
-	WinesFactory.getWines = function(queries) {
-		return $http.get('/api/wines' + getQueryString(queries))
-			.then(function(response) {
-				return response.data;
-			})
-			.then(function(wines) {
-				return $q.all(wines.map(function(wine){
-		    	return WineFactory.getRating(wine._id)
-		    		.then(function(rating) {
-		        	wine.rating = rating;
-		        	return wine;
-			    	})
-			  	}))
-			})
-	}
-
 	return WinesFactory;
 })
 
-// queries must be given in this format: {key: 'someKey', value: 'someValue'}
 
 app.controller('WinesController', function($scope, wines, $location, WinesFactory) {
 
-	// we need to grab list of all query key/val pairs from URL on load
-	var queries = [];
-
-	$scope.selected = {};
-
-	$scope.$on('$locationChangeSuccess', function() {
-		var queriesInUrl = $location.search();
-		if (Object.keys(queriesInUrl).length) {
-			for (var query in queriesInUrl) {
-				queries.push({key: query, value: decodeURIComponent(queriesInUrl[query]) })
-				$scope.selected[query] = queriesInUrl[query];
-			}
-			WinesFactory.getWines(queries)
-			.then(function(wines) {
-				$scope.wines = wines;
-			})
-		} else {
-			window.location.reload();
-		}
-	})
-
 	$scope.wines = wines;
+	
+	$scope.isSelected = function(category, value) {
+		return $location.search(category) === value;
+	}
+
+	$scope.toggleFilter = function(key, value) {
+		if ( $location.search(key) === value ) $location.search(key, null);
+		else $location.search(key, value);
+		$scope.$digest();
+	}
+
+	$scope.types = ["Red", "White"];
 
 	$scope.regions = [
 		"California",
@@ -116,36 +83,15 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 		 "Mencia"
 	]
 
-	// this will TOGGLE not add on filters for the same category
-	$scope.addFilter = function(key, value) {
-		var newQuery = {key: key, value: value};
-		queries = queries.filter(function(obj) {
-			return obj.key !== newQuery.key;
-		});
-		queries.push(newQuery);
-		console.log(queries);
-		queries.forEach(function(obj) {
-			$location.search(obj.key, encodeURIComponent(obj.value) )
-		})
-		WinesFactory.getWines(queries)
-		.then(function(wines) {
-			$scope.wines = wines;
+})
+
+app.filter('selectedWines', function($location){
+	return function(wines) {
+		wines.filter(function(wine) {
+			if ( $location.search('type') !== wine.type) return false;
+			if ( $location.search('region') !== wine.region) return false;
+			if ( $location.search('variety') !== wine.variety) return false;
+			return true;
 		})
 	}
-
-	$scope.removeFilter = function(key) {
-		queries = queries.filter(function(obj) {
-			return obj.key !== key
-		});
-		newSearch = {};
-		$location.search().forEach(function(obj) {
-			if (obj.key !== key) newSearch[obj] === $location.search(key);
-		})
-		$location.search() = newSearch;
-		WinesFactory.getWines(queries)
-		.then(function(wines) {
-			$scope.wines = wines;
-		})
-	}
-
 })
