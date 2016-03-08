@@ -5,7 +5,10 @@ app.config(function($stateProvider) {
     controller: 'CartCtrl',
     resolve: {
       contents: function(AuthService, CartFactory) {
-        return CartFactory.getCart(AuthService.getLoggedInUser());
+        return AuthService.getLoggedInUser()
+        .then(function (user) {
+          return CartFactory.getCart(user);          
+        })
       },
       user: function(AuthService) {
         return AuthService.getLoggedInUser();
@@ -14,30 +17,22 @@ app.config(function($stateProvider) {
   })
 })
 
-app.factory('CartFactory', function(localStorageService) {
+app.factory('CartFactory', function(localStorageService, $http) {
   var CartFactory = {};
+
 
   CartFactory.getCart = function (user) {
     if (!user) {
       return localStorageService.get('cart');
     } else {
-      return $http.get('/api/users/' + user._id + 'cart')
+      return $http.get('/api/cart')
         .then(function(res) {
           return res.data;
         });
     }
   }
 
-})
-
-app.controller('CartCtrl', function($scope, localStorageService, contents, user) {
-
-  $scope.user = 'Guest'
-  if (user) $scope.user = user.username;
-
-  $scope.contents = contents;
-
-  $scope.addToCart = function(item) {
+  CartFactory.addToCart = function(item) {
     if ( !localStorageService.get('cart') ) {
       localStorageService.set('cart', [item]);
     } else {
@@ -46,6 +41,27 @@ app.controller('CartCtrl', function($scope, localStorageService, contents, user)
       localStorageService.set('cart', item);
     }  
   }
+
+  return CartFactory;
+
+})
+
+app.controller('CartCtrl', function($scope, localStorageService, user, contents) {
+
+  $scope.user = 'Guest'
+  if (user) $scope.user = user.username;
+
+  $scope.contents = contents.items;
+
+  // $scope.addToCart = function(item) {
+  //   if ( !localStorageService.get('cart') ) {
+  //     localStorageService.set('cart', [item]);
+  //   } else {
+  //     var oldCart = localStorageService.get('cart');
+  //     oldCart.push(item);
+  //     localStorageService.set('cart', item);
+  //   }  
+  // }
 
   // we need to make sure to run localStorageService.$reset() after checkout
 
