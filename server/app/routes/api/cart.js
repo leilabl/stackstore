@@ -3,6 +3,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 require('../../../db/models/cart');
 var Cart = mongoose.model('Cart');
+var CartItem = mongoose.model('CartItem');
+
 
 // as of right now, these only retrieve the current user's cart
 
@@ -33,12 +35,34 @@ router.post('/', function(req, res, next) {
 
 // update your cart
 router.put('/', function(req, res, next) {
-  Cart.findById(req.user._id)
+  Cart.findOne({owner: req.user._id})
   .then(function(cart) {
-    if (!cart) return Cart.create({owner:req.user._id, items: req.body})
+    if (!cart) {
+      return Cart.create({owner:req.user._id})
+      .then(function(cart) {
+        return CartItem.create({wine:req.body._id})
+        .then(function(newItem) {
+          cart.items.push(newItem)
+          return cart.save()
+        })
+      })
+    }
     else {
-      cart.items.push(req.body);
-      return cart.save();
+      var exgItem = false;
+      for (var i=0; i< cart.items.length; i++) {
+        if (cart.items[i].wine == req.body._id) {
+          exgItem = true;
+          cart.items[i].quantity++;
+          return cart.save()
+        }
+      }
+      if (!exgItem) {
+        return CartItem.create({wine:req.body._id})
+          .then(function(newItem) {
+            cart.items.push(newItem)
+            return cart.save()
+          })
+        } 
     }
   })
   .then(function(cart) {

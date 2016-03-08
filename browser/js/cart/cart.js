@@ -26,28 +26,45 @@ app.config(function($stateProvider) {
   })
 })
 
-app.factory('CartFactory', function(localStorageService, $http) {
+app.factory('CartFactory', function(localStorageService, $http, AuthService) {
   var CartFactory = {};
   var currCart = localStorageService.get('cart') || {items: []};
-  console.log(currCart)
+  // console.log(currCart)
 
-  CartFactory.getCart = function (user) {
+  CartFactory.getCart = function () {
+      return AuthService.getLoggedInUser()
+      .then(function (user) {
+          if (!user) {
+            // console.log('no user')
+            return currCart;
+          } else {
+            return $http.get('/api/cart')
+            // console.log('has user')
+              .then(function(res) {
+                return res.json;
+              });
+          }
+      })
       // console.log(localStorageService)
-    if (!user) {
-      // console.log('no user')
-      return currCart;
-    } else {
-      return $http.get('/api/cart')
-        .then(function(res) {
-          return currCart;
-        });
-    }
   }
 
   CartFactory.addToCart = function(item) {
-      currCart.items.push(item);
-      localStorageService.set('cart', currCart);
-      return currCart;
+    return AuthService.getLoggedInUser()
+      .then(function (user) {
+        if(!user) {
+          console.log('here')
+          currCart.items.push(item);
+          localStorageService.set('cart', currCart);
+          return currCart;  
+        } else {
+          return $http.put('/api/cart', item)
+          console.log(item)
+              .then(function(res) {
+                return res.json;
+              });
+        }
+      })
+    // console.log(item)
   }
 
   return CartFactory;
@@ -59,9 +76,9 @@ app.controller('CartCtrl', function($scope, localStorageService, user, contents)
   $scope.user = 'Guest'
   if (user) $scope.user = user.username;
 
-  $scope.contents = contents.items;
+  $scope.contents = contents;
 
-        console.log(contents.items)
+        // console.log(contents)
 
 
   // $scope.addToCart = function(item) {

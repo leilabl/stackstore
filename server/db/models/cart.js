@@ -60,3 +60,4 @@ CartSchema.methods.submitCart = function () {
 }
 
 mongoose.model('Cart', CartSchema);
+mongoose.model('CartItem', CartItem);
