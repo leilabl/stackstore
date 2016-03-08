@@ -33,6 +33,12 @@ app.factory('WinesFactory', function($http) {
 	return WinesFactory
 })
 
-app.controller('WinesController', function($scope, wines) {
+app.controller('WinesController', function($scope, wines, $location) {
 	$scope.wines = wines;
+
+	$scope.red = wines.query({type: 'red'});
+	console.log('red', red)
+
+	var val = $location.search().booze
+	console.log("this is val", val)
 })
