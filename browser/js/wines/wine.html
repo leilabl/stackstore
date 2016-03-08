@@ -14,12 +14,15 @@
                     <div class="caption-full">
                         <h3>{{wine | wineDisplayName}}</h3>
                         <h4><strong>{{wine.price | currency}}</strong></h4>
+                        <div class="ratings" ng-show="rating">
+                            <div stars star='rating'></div>
+                        </div>
                         <br/>
                         <p>{{wine.description}}</p>
-							<p>
-								<span><strong>Volume: </strong></span>
-								<span>{{wine.size}}mL</span>
-							</p>
+                            <p>
+                                <span><strong>Volume: </strong></span>
+                                <span>{{wine.size}}mL</span>
+                            </p>
                             <p>
                                 <span><strong>Region: </strong></span>
                                 <span>{{wine.region}}</span>
@@ -29,10 +32,7 @@
                                 <span>{{wine.tags.join(", ")}}</span>
                             </p>
                     </div>
-                    <div class="ratings" ng-show="wine.rating">
-                        <div stars star='rating'></div>
-                    </div>
-                    <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="wine.rating">Be the first to review it!{{wine.rating}}</a>
+                    <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="rating">Be the first to review it!{{wine.rating}}</a>
                     <br/>
                     <br/>
                     <button class="btn btn-primary">Add to Cart</button>
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-md-12" ng-repeat='review in reviews'>
                             	<h3>{{review.title}}</h3>
-                                <p>By <strong>{{review.author.email}}</strong> in <strong>{{review.date | date : format : mediumDate}}</strong></p>
+                                <p>By <strong>{{review.author.username}}</strong> in <strong>{{review.date | date : format : mediumDate}}</strong></p>
                             	<div stars star='review.stars'></div>
                                 <p>{{review.content}}</p>
                             </div>
