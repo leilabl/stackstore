@@ -1,21 +1,26 @@
 <div class="container">
 
+  <h3>Filter Results</h3>
+
   <div class="form-group">
-      <label>Type</label>
-      <div class="radio">
-          <label>
-              <input ng-click="runfunc()" ng-model="type" type="radio" name="red" id="red" value="red">Red
-          </label>
-      </div>
-      <div class="radio">
-          <label>
-              <input ng-click="runfunc()" ng-model="type" type="radio" name="white" id="white" value="white">White
-          </label>
-      </div>
+      <label for="type">Type</label>
+      <a href="" ng-click="addFilter('type', 'red')"><button class="btn btn-danger">Red</button></a>
+      <a href="" ng-click="addFilter('type', 'white')"><button class="btn btn-warning">White</button></a>
   </div>
 
 </div>
 
+<!--       <div class="radio">
+          
+
+              <input ng-model="type" type="radio" name="red" id="red" value="red">Red
+          </label>
+      </div>
+      <div class="radio">
+          <label>
+              <input ng-model="type" type="radio" name="white" id="white" value="white">White
+          </label>
+      </div> -->
 
 <!--     <h3>Filters:</h3>
     <form class="form" name="filterForm" ng-submit="submitFilter()">

@@ -30,14 +30,41 @@ app.factory('WinesFactory', function($http) {
 		})
 	}
 
+	WinesFactory.getWines = function(queries) {
+		var queryString = "?";
+		console.log(queries);
+		queryString += queries.map(function(obj) {
+			return obj.key + "=" + obj.value
+		}).join("&");
+		return $http.get('/api/wines' + queryString)
+		.then(function(response) {
+			return response.data;
+		})
+
+	}
+
 	return WinesFactory
 })
 
-app.controller('WinesController', function($scope, wines, $location) {
+// queries must be given in this format: {key: 'someKey', value: 'someValue'}
+
+app.controller('WinesController', function($scope, wines, $location, WinesFactory) {
+
+	// we need to grab list of all query key/val pairs from URL on load
+
 	$scope.wines = wines;
 
-	$scope.red = wines.query({type: 'red'});
-	console.log('red', red)
+	$scope.addFilter = function(key, value) {
+		var newQuery = {key: key, value: value};
+		console.log(newQuery);
+		WinesFactory.getWines([newQuery])
+		.then(function(wines) {
+			$scope.wines = wines;
+		})
+	}
+
+	// $scope.red = wines.query({type: 'red'});
+	// console.log('red', red)
 
 	var val = $location.search().booze
 	console.log("this is val", val)
