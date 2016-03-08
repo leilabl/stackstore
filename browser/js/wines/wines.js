@@ -59,7 +59,7 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	var queriesInUrl = $location.search();
 	if (Object.keys(queriesInUrl).length) {
 		for (var query in queriesInUrl) {
-			queries.push({key: query, value: queriesInUrl[query]});
+			queries.push({key: query, value: decodeURIComponent(queriesInUrl[query]) })
 		}
 		WinesFactory.getWines(queries)
 		.then(function(wines) {
@@ -70,27 +70,28 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	$scope.wines = wines;
 
 	$scope.varieties = ["Cabernet Sauvignon",
-	 "Zinfandel",
-	 "Pinot Noir",
-	 "Chardonnay",
-	 "Malbec",
-	 "Pinot Grigio",
-	 "Moscato",
-	 "Sauvignon Blanc",
-	 "Syrah",
-	 "Carignan",
-	 "Merlot",
-	 "Red Blend",
-	 "Grenache",
-	 "Riesling",
-	 "Sangiovese",
-	 "Barbera",
-	 "Vermentino",
-	 "Pinot Bianco",
-	 "Tempranillo",
-	 "Viura",
-	 "Grenache Blanc",
-	 "Mencia"]
+		 "Zinfandel",
+		 "Pinot Noir",
+		 "Chardonnay",
+		 "Malbec",
+		 "Pinot Grigio",
+		 "Moscato",
+		 "Sauvignon Blanc",
+		 "Syrah",
+		 "Carignan",
+		 "Merlot",
+		 "Red Blend",
+		 "Grenache",
+		 "Riesling",
+		 "Sangiovese",
+		 "Barbera",
+		 "Vermentino",
+		 "Pinot Bianco",
+		 "Tempranillo",
+		 "Viura",
+		 "Grenache Blanc",
+		 "Mencia"
+	]
 
 	// this will TOGGLE not add on filters for the same category
 	$scope.addFilter = function(key, value) {
@@ -100,7 +101,7 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 		});
 		queries.push(newQuery);
 		queries.forEach(function(obj) {
-			$location.search(obj.key, obj.value);
+			$location.search(obj.key, encodeURIComponent(obj.value) )
 		})
 		console.log(newQuery);
 		WinesFactory.getWines(queries)
