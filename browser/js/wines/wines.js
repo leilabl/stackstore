@@ -64,18 +64,20 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	// we need to grab list of all query key/val pairs from URL on load
 	var queries = [];
 
-	var queriesInUrl = $location.search();
-	if (Object.keys(queriesInUrl).length) {
-		for (var query in queriesInUrl) {
-			queries.push({key: query, value: decodeURIComponent(queriesInUrl[query]) })
+	$scope.$on('$locationChangeSuccess', function() {
+		var queriesInUrl = $location.search();
+		if (Object.keys(queriesInUrl).length) {
+			for (var query in queriesInUrl) {
+				queries.push({key: query, value: decodeURIComponent(queriesInUrl[query]) })
+			}
+			WinesFactory.getWines(queries)
+			.then(function(wines) {
+				$scope.wines = wines;
+			})
+		} else {
+			window.location.reload();
 		}
-		WinesFactory.getWines(queries)
-		.then(function(wines) {
-			$scope.wines = wines;
-		})
-	} else {
-
-	}
+	})
 
 	$scope.wines = wines;
 

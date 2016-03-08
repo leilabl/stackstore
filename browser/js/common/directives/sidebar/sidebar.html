@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="wineFilters">
 
   <h3>Filter Results</h3>
 
@@ -10,15 +10,15 @@
 
   <div class="form-group">
     <label for="region">Region</label>
-      <a href="" ng-click="addFilter('region', 'California')"><br><button class="btn btn-primary">California</button></a>
-      <a href="" ng-click="addFilter('region', 'Spain')"><br><button class="btn btn-primary">Spain</button></a>
-      <a href="" ng-click="addFilter('region', 'France')"><br><button class="btn btn-primary">France</button></a>
-      <a href="" ng-click="addFilter('region', 'Italy')"><br><button class="btn btn-primary">Italy</button></a>
+      <a href="" ng-click="addFilter('region', 'California')"><br><button class="btn btn-default">California</button></a>
+      <a href="" ng-click="addFilter('region', 'Spain')"><br><button class="btn btn-default">Spain</button></a>
+      <a href="" ng-click="addFilter('region', 'France')"><br><button class="btn btn-default">France</button></a>
+      <a href="" ng-click="addFilter('region', 'Italy')"><br><button class="btn btn-default">Italy</button></a>
   </div>
 
   <div class="form-group">
     <label for="variety">Variety</label>
-      <a href="" ng-repeat="variety in varieties" ng-click="addFilter('variety', variety)"><br><button class="btn btn-primary">{{variety}}</button></a>
+      <a href="" ng-repeat="variety in varieties" ng-click="addFilter('variety', variety)"><br><button class="btn btn-default">{{variety}}</button></a>
   </div>
 
 </div>
