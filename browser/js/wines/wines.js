@@ -46,7 +46,6 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	$scope.toggleFilter = function(key, value) {
 		if ( $location.search(key) === value ) $location.search(key, null);
 		else $location.search(key, value);
-		$scope.$digest();
 	}
 
 	$scope.types = ["Red", "White"];
@@ -87,11 +86,13 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 
 app.filter('selectedWines', function($location){
 	return function(wines) {
-		wines.filter(function(wine) {
-			if ( $location.search('type') !== wine.type) return false;
-			if ( $location.search('region') !== wine.region) return false;
-			if ( $location.search('variety') !== wine.variety) return false;
-			return true;
-		})
+		if ($location.search().length) {
+			return wines.filter(function(wine) {			
+				if ( $location.search('type') !== wine.type) return false;
+				if ( $location.search('region') !== wine.region) return false;
+				if ( $location.search('variety') !== wine.variety) return false;
+				return true;
+			})
+		} else return wines
 	}
 })
