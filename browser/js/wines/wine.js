@@ -52,6 +52,7 @@ app.controller('WineController', function($scope, wine, reviews, rating) {
 	$scope.wine = wine
 	$scope.reviews = reviews
 	$scope.rating = rating
+	console.log('hih',$scope.reviews)
 })
 
 
