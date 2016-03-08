@@ -6,6 +6,9 @@ app.config(function($stateProvider) {
     resolve: {
       contents: function(AuthService, CartFactory) {
         return CartFactory.getCart(AuthService.getLoggedInUser());
+      },
+      user: function(AuthService) {
+        return AuthService.getLoggedInUser();
       }
     }
   })
@@ -27,11 +30,17 @@ app.factory('CartFactory', function(localStorageService) {
 
 })
 
-myApp.controller('CartCtrl', function($scope, localStorageService) {
+app.controller('CartCtrl', function($scope, localStorageService, contents, user) {
 
-  $scope.addToCart(item) {
-    if (!localStorageService.get('cart') ) localStorageService.set('cart', [item]);
-    else {
+  $scope.user = 'Guest'
+  if (user) $scope.user = user.username;
+
+  $scope.contents = contents;
+
+  $scope.addToCart = function(item) {
+    if ( !localStorageService.get('cart') ) {
+      localStorageService.set('cart', [item]);
+    } else {
       var oldCart = localStorageService.get('cart');
       oldCart.push(item);
       localStorageService.set('cart', item);
