@@ -5,8 +5,8 @@
     <h2>My Cart</h2>
     <hr>
     <div ng-repeat="item in contents">
-      <a href="" ui-sref="wine(item.wine._id)"><h3>{{item.wine | wineDisplayName}}</h3></a>
-      <p>Price: {{item.wine.price}}</p>
+      <a href="" ui-sref="wine(item.wine._id)"><h3>{{item | wineDisplayName}}</h3></a>
+      <p>Price: {{item.price}}</p>
       <label for="{{wine._id}}-quantity"><input id="{{wine._id}}-quantity" ng-model="item.quantity">
     </div>
 

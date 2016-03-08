@@ -48,11 +48,14 @@ app.factory('WineFactory', function($http) {
 })
 
 
-app.controller('WineController', function($scope, wine, reviews, rating) {
+app.controller('WineController', function($scope, wine, reviews, rating, CartFactory) {
 	$scope.wine = wine
 	$scope.reviews = reviews
 	$scope.rating = rating
-	console.log('hih',$scope.reviews)
+	$scope.addToCart = function(item) {
+		console.log(item)
+		CartFactory.addToCart(item);
+	}
 })
 
 

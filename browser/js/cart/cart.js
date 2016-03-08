@@ -5,9 +5,18 @@ app.config(function($stateProvider) {
     controller: 'CartCtrl',
     resolve: {
       contents: function(AuthService, CartFactory) {
+        // console.log('hey')
         return AuthService.getLoggedInUser()
-        .then(function (user) {
-          return CartFactory.getCart(user);          
+        .then(function(user) {
+          // console.log(user)
+          if(user){
+              return CartFactory.getCart(user);          
+          }
+          else {
+            // console.log('not logged in')
+            return CartFactory.getCart();
+          }
+          
         })
       },
       user: function(AuthService) {
@@ -19,27 +28,26 @@ app.config(function($stateProvider) {
 
 app.factory('CartFactory', function(localStorageService, $http) {
   var CartFactory = {};
-
+  var currCart = localStorageService.get('cart') || {items: []};
+  console.log(currCart)
 
   CartFactory.getCart = function (user) {
+      // console.log(localStorageService)
     if (!user) {
-      return localStorageService.get('cart');
+      // console.log('no user')
+      return currCart;
     } else {
       return $http.get('/api/cart')
         .then(function(res) {
-          return res.data;
+          return currCart;
         });
     }
   }
 
   CartFactory.addToCart = function(item) {
-    if ( !localStorageService.get('cart') ) {
-      localStorageService.set('cart', [item]);
-    } else {
-      var oldCart = localStorageService.get('cart');
-      oldCart.push(item);
-      localStorageService.set('cart', item);
-    }  
+      currCart.items.push(item);
+      localStorageService.set('cart', currCart);
+      return currCart;
   }
 
   return CartFactory;
@@ -52,6 +60,9 @@ app.controller('CartCtrl', function($scope, localStorageService, user, contents)
   if (user) $scope.user = user.username;
 
   $scope.contents = contents.items;
+
+        console.log(contents.items)
+
 
   // $scope.addToCart = function(item) {
   //   if ( !localStorageService.get('cart') ) {

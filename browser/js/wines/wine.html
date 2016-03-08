@@ -35,7 +35,7 @@
                     <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="rating">Be the first to review it!{{wine.rating}}</a>
                     <br/>
                     <br/>
-                    <button class="btn btn-primary">Add to Cart</button>
+                    <button ng-click="addToCart(wine)" class="btn btn-primary">Add to Cart</button>
                 </div>
 
             </div>
