@@ -4,21 +4,18 @@
 
   <div class="form-group">
       <label for="type">Type</label>
-      <a href="" ng-click="addFilter('type', 'red')"><br><button class="btn btn-danger">Red</button></a>
-      <a href="" ng-click="addFilter('type', 'white')"><br><button class="btn btn-warning">White</button></a>
+      <a href="" ng-click="selected.type==='red' ? removeFilter('type') : addFilter('type', 'red')"><br><button class="btn btn-danger">Red<span ng-show="selected.type==='red'">x</span></button></a>
+      <a href="" ng-click="selected.type==='white' ? removeFilter('type') : addFilter('type', 'white')"><br><button class="btn btn-warning">White <span ng-show="selected.type==='white'">x</span></button></a>
   </div>
 
   <div class="form-group">
     <label for="region">Region</label>
-      <a href="" ng-click="addFilter('region', 'California')"><br><button class="btn btn-default">California</button></a>
-      <a href="" ng-click="addFilter('region', 'Spain')"><br><button class="btn btn-default">Spain</button></a>
-      <a href="" ng-click="addFilter('region', 'France')"><br><button class="btn btn-default">France</button></a>
-      <a href="" ng-click="addFilter('region', 'Italy')"><br><button class="btn btn-default">Italy</button></a>
+      <a href="" ng-repeat="region in regions" ng-click="selected.region === region ? removeFilter('region') : addFilter('region', region)"><br><button class="btn btn-default">{{region}} <span ng-show="selected.region===region">x</span></button></a>
   </div>
 
   <div class="form-group">
     <label for="variety">Variety</label>
-      <a href="" ng-repeat="variety in varieties" ng-click="addFilter('variety', variety)"><br><button class="btn btn-default">{{variety}}</button></a>
+      <a href="" ng-repeat="variety in varieties" ng-click="selected.region === region ? removeFilter('variety') : addFilter('variety', variety)"><br><button class="btn btn-default">{{variety}} <span ng-show="selected.variety===variety">x</span></button></a>
   </div>
 
 </div>

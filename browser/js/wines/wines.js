@@ -64,11 +64,14 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	// we need to grab list of all query key/val pairs from URL on load
 	var queries = [];
 
+	$scope.selected = {};
+
 	$scope.$on('$locationChangeSuccess', function() {
 		var queriesInUrl = $location.search();
 		if (Object.keys(queriesInUrl).length) {
 			for (var query in queriesInUrl) {
 				queries.push({key: query, value: decodeURIComponent(queriesInUrl[query]) })
+				$scope.selected[query] = queriesInUrl[query];
 			}
 			WinesFactory.getWines(queries)
 			.then(function(wines) {
@@ -80,6 +83,13 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	})
 
 	$scope.wines = wines;
+
+	$scope.regions = [
+		"California",
+		"Spain",
+		"France",
+		"Italy"
+	]
 
 	$scope.varieties = [
 		"Cabernet Sauvignon",
@@ -113,18 +123,29 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 			return obj.key !== newQuery.key;
 		});
 		queries.push(newQuery);
+		console.log(queries);
 		queries.forEach(function(obj) {
 			$location.search(obj.key, encodeURIComponent(obj.value) )
 		})
-		console.log(newQuery);
 		WinesFactory.getWines(queries)
 		.then(function(wines) {
 			$scope.wines = wines;
 		})
 	}
 
-	// $scope.red = wines.query({type: 'red'});
-	// console.log('red', red)
+	$scope.removeFilter = function(key) {
+		queries = queries.filter(function(obj) {
+			return obj.key !== key
+		});
+		newSearch = {};
+		$location.search().forEach(function(obj) {
+			if (obj.key !== key) newSearch[obj] === $location.search(key);
+		})
+		$location.search() = newSearch;
+		WinesFactory.getWines(queries)
+		.then(function(wines) {
+			$scope.wines = wines;
+		})
+	}
 
-	// var val = $location.search().booze
 })
