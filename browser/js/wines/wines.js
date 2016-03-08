@@ -67,12 +67,37 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 		})
 	}
 
-	console.log(queries)
-
 	$scope.wines = wines;
 
+	$scope.varieties = ["Cabernet Sauvignon",
+	 "Zinfandel",
+	 "Pinot Noir",
+	 "Chardonnay",
+	 "Malbec",
+	 "Pinot Grigio",
+	 "Moscato",
+	 "Sauvignon Blanc",
+	 "Syrah",
+	 "Carignan",
+	 "Merlot",
+	 "Red Blend",
+	 "Grenache",
+	 "Riesling",
+	 "Sangiovese",
+	 "Barbera",
+	 "Vermentino",
+	 "Pinot Bianco",
+	 "Tempranillo",
+	 "Viura",
+	 "Grenache Blanc",
+	 "Mencia"]
+
+	// this will TOGGLE not add on filters for the same category
 	$scope.addFilter = function(key, value) {
 		var newQuery = {key: key, value: value};
+		queries = queries.filter(function(obj) {
+			return obj.key !== newQuery.key;
+		});
 		queries.push(newQuery);
 		queries.forEach(function(obj) {
 			$location.search(obj.key, obj.value);
