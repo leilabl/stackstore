@@ -4,7 +4,7 @@
 
   <div class="form-group">
       <label for="type">Type</label>
-      <a href="" ng-repeat="type in types" ng-click="toggleFilter('type', 'white')"><br><button ng-class="{ btn: true, 'btn-danger' : type === 'Red', 'btn-warning': type === 'White'}">{{ type }} <span ng-show="isSelected('type', 'white')">x</span></button></a>
+      <a href="" ng-repeat="type in types" ng-click="toggleFilter('type', type)"><br><button ng-class="{ btn: true, 'btn-danger' : type === 'Red', 'btn-warning': type === 'White'}">{{ type }} <span ng-show="isSelected('type', type)">x</span></button></a>
   </div>
 
   <div class="form-group">
