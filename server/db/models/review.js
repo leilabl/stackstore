@@ -23,6 +23,10 @@ var ReviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Wine',
     require: true
+  },
+  date: {
+    type: Date, 
+    default: Date.now
   }
 });
 

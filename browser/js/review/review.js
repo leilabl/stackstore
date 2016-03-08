@@ -42,10 +42,10 @@ app.controller('ReviewController', function($scope, ReviewFactory, $state, wine,
 	}
 
 	$scope.submitReview = function() {
-		console.log('submitted form', $scope.review)
+		// console.log('submitted form', $scope.review)
 		ReviewFactory.create($scope.review.author, $scope.review)
 		.then(function() {
-			console.log('successfully posted')
+			// console.log('successfully posted')
 			$state.go('wine', {wineId: $scope.review.wine})
 		})
 	}
