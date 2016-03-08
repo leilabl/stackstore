@@ -10,30 +10,32 @@
 
             <div class="col-md-6">
 
-                <div class="thumbnail">
+                <div >
                     <div class="caption-full">
-                        <h4 class="pull-right">{{wine.price | currency}}</h4>
-                        <h4>{{wine | wineDisplayName}}</h4>
+                        <h3>{{wine | wineDisplayName}}</h3>
+                        <h4><strong>{{wine.price | currency}}</strong></h4>
+                        <br/>
                         <p>{{wine.description}}</p>
-                        <table>
-							<tr>
-								<th>Volume: </th>
-								<td>{{wine.size}}mL</td>
-							</tr>
-							<tr>
-								<th>Region: </th>
-								<td>{{wine.region}}</td>
-							</tr>
-							<tr>
-								<th>Tags: </th>
-								<td>{{wine.tags.join(", ")}}</td>
-							</tr>
-						</table>
+							<p>
+								<span><strong>Volume: </strong></span>
+								<span>{{wine.size}}mL</span>
+							</p>
+                            <p>
+                                <span><strong>Region: </strong></span>
+                                <span>{{wine.region}}</span>
+                            </p>
+                            <p>
+                                <span><strong>Tags: </strong></span>
+                                <span>{{wine.tags.join(", ")}}</span>
+                            </p>
                     </div>
-                    <div class="ratings">
-                            <div stars star='rating'></div>
+                    <div class="ratings" ng-show="wine.rating">
+                        <div stars star='rating'></div>
                     </div>
-                    <a class="btn btn-primary">Add to Cart</a>
+                    <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="wine.rating">Be the first to review it!{{wine.rating}}</a>
+                    <br/>
+                    <br/>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
 
             </div>

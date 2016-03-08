@@ -1,6 +1,8 @@
 <section id='wine'>
 
 <div class="container">
+    <div class="col-sm-6">
+    <div ng-hide="currentUser" class="alert alert-danger">You must be logged in to submit a review!</div>
     <h3>Review:</h3>
     <form class="form" name="reviewForm" ng-submit="submitReview()">
     <div>
@@ -31,6 +33,7 @@
     <button class="btn btn-success" type="submit">Submit Review</button>
 <!-- <pre>{{ form | json }}</pre>     -->
     </form>
+    </div>
     
 </div>
 

@@ -33,21 +33,28 @@ app.controller('ReviewController', function($scope, ReviewFactory, $state, wine,
 
 	$scope.wine = wine
 	$scope.currentUser = currentUser
-	
-	console.log(currentUser)
 
-	$scope.review = {
-		author: currentUser._id,
-		wine: wine._id
+	if(currentUser) {
+		console.log(currentUser)
+
+		$scope.review = {
+			author: currentUser._id,
+			wine: wine._id
+		}
 	}
+	
+
+
 
 	$scope.submitReview = function() {
+		if(currentUser) {
+			ReviewFactory.create($scope.review.author, $scope.review)
+			.then(function() {
+				// console.log('successfully posted')
+				$state.go('wine', {wineId: $scope.review.wine})
+			})
+		}
 		// console.log('submitted form', $scope.review)
-		ReviewFactory.create($scope.review.author, $scope.review)
-		.then(function() {
-			// console.log('successfully posted')
-			$state.go('wine', {wineId: $scope.review.wine})
-		})
 	}
 
 })
