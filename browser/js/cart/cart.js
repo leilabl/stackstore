@@ -32,15 +32,18 @@ app.factory('CartFactory', function(localStorageService, $http, AuthService) {
   // console.log(currCart)
 
   CartFactory.getCart = function () {
+    console.log('in get cart')
       return AuthService.getLoggedInUser()
       .then(function (user) {
+        console.log(user)
           if (!user) {
-            // console.log('no user')
+            console.log('no user')
             return currCart;
           } else {
             return $http.get('/api/cart')
-            // console.log('has user')
+            console.log('has user')
               .then(function(res) {
+                console.log('res', res)
                 return res.json;
               });
           }
@@ -59,9 +62,9 @@ app.factory('CartFactory', function(localStorageService, $http, AuthService) {
         } else {
           return $http.put('/api/cart', item)
           console.log(item)
-              .then(function(res) {
-                return res.json;
-              });
+            .then(function(res) {
+              return res.json;
+            });
         }
       })
     // console.log(item)
@@ -76,9 +79,9 @@ app.controller('CartCtrl', function($scope, localStorageService, user, contents)
   $scope.user = 'Guest'
   if (user) $scope.user = user.username;
 
-  $scope.contents = contents;
+  $scope.contents = contents.data.items;
 
-        // console.log(contents)
+  console.log(contents.data)
 
 
   // $scope.addToCart = function(item) {
