@@ -7,7 +7,8 @@
     "region": "France",
     "year": 2011,
     "price": 28.00,
-    "tags": ["pair with vegetables", "bold"]
+    "tags": ["pair with vegetables", "bold"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Brumont Torus, Madiran",
@@ -17,7 +18,8 @@
     "region": "France",
     "year": 2010,
     "price": 18.00,
-    "tags": ["pair with meat", "spicy"]
+    "tags": ["pair with meat", "spicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Col des Vents, Corbières",
@@ -27,7 +29,8 @@
     "region": "France",
     "year": 2013,
     "price": 12.00,
-    "tags": ["pair with pork", "juicy"]
+    "tags": ["pair with pork", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Pomerol",
@@ -37,7 +40,8 @@
     "region": "France",
     "year": 2006,
     "price": 68.00,
-    "tags": ["pair with meat", "rich"]
+    "tags": ["pair with meat", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Calendreau Bordeaux Supérieur",
@@ -47,7 +51,8 @@
     "region": "France",
     "year": 2011,
     "price": 14.00,
-    "tags": ["pair with pork", "bold"]
+    "tags": ["pair with pork", "bold"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Pech Quisou, Minervois",
@@ -57,7 +62,8 @@
     "region": "France",
     "year": 2012,
     "price": 14.00,
-    "tags": ["pair with meat", "spicy"]
+    "tags": ["pair with meat", "spicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Excellence Bordeaux Supérieur",
@@ -67,7 +73,8 @@
     "region": "France",
     "year": 2010,
     "price": 28.00,
-    "tags": ["pair with meat", "rich"]
+    "tags": ["pair with meat", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Graves",
@@ -77,7 +84,8 @@
     "region": "France",
     "year": 2010,
     "price": 29.00,
-    "tags": ["pair with meat", "rich"]
+    "tags": ["pair with meat", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Font de Blanche, Côtes du Rhône",
@@ -87,7 +95,8 @@
     "region": "France",
     "year": 2011,
     "price": 17.00,
-    "tags": ["pair with meat", "juicy"]
+    "tags": ["pair with meat", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Solis, Cahors",
@@ -97,7 +106,8 @@
     "region": "France",
     "year": 2011,
     "price": 17.00,
-    "tags": ["pair with meat", "juicy"]
+    "tags": ["pair with meat", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Pouilly-Fumé Les Pierres Blanches",
@@ -107,7 +117,8 @@
     "region": "France",
     "year": 2012,
     "price": 20.00,
-    "tags": ["pair with seafood", "juicy"]
+    "tags": ["pair with seafood", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Loire Valley",
@@ -117,7 +128,8 @@
     "region": "France",
     "year": 2012,
     "price": 13.00,
-    "tags": ["pair with seafood", "juicy"]
+    "tags": ["pair with seafood", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Quincy",
@@ -127,7 +139,8 @@
     "region": "France",
     "year": 2013,
     "price": 26.00,
-    "tags": ["pair with vegetables", "juicy"]
+    "tags": ["pair with vegetables", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
     {
     "name": "Alsace Grand Cru Kessler",
@@ -137,6 +150,7 @@
     "region": "France",
     "year": 2011,
     "price": 35.00,
-    "tags": ["pair with poultry", "juicy"]
+    "tags": ["pair with poultry", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   }
 ]

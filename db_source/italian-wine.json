@@ -6,7 +6,8 @@
     "region": "Italy",
     "year": 2013,
     "price": 14.99,
-    "tags": ["Smooth & Supple"]
+    "tags": ["Smooth & Supple"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "red",
@@ -15,7 +16,8 @@
     "region": "Italy",
     "year": 2011,
     "price": 18.99,
-    "tags": ["Pair with grilled meats"]
+    "tags": ["Pair with grilled meats"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "red",
@@ -24,7 +26,8 @@
     "region": "Italy",
     "year": 2012,
     "price": 16.99,
-    "tags": ["Smooth & Supple", "y"]
+    "tags": ["Smooth & Supple", "y"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "red",
@@ -33,7 +36,8 @@
     "region": "Italy",
     "year": 2009,
     "price": 19.99,
-    "tags": ["fruity aromas of red berries and plum"]
+    "tags": ["fruity aromas of red berries and plum"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "red",
@@ -42,7 +46,8 @@
     "region": "Italy",
     "year": 2013,
     "price": 18.99,
-    "tags": ["Medium-bodied", "Harmonious & Velvety"]
+    "tags": ["Medium-bodied", "Harmonious & Velvety"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "white",
@@ -51,7 +56,8 @@
     "region": "Italy",
     "year": 2014,
     "price": 19.99,
-    "tags": ["Light & Crisp", "Pair with poultry"]
+    "tags": ["Light & Crisp", "Pair with poultry"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "white",
@@ -60,7 +66,8 @@
     "region": "Italy",
     "year": 2014,
     "price": 19.99,
-    "tags": ["Fruity & Smooth"]
+    "tags": ["Fruity & Smooth"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "white",
@@ -69,7 +76,8 @@
     "region": "Italy",
     "year": 2006,
     "price": 17.00,
-    "tags": ["aromas of orange blossoms and roses", "pair with dessert"]
+    "tags": ["aromas of orange blossoms and roses", "pair with dessert"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "name": "Costamolino",
@@ -79,7 +87,8 @@
     "region": "Italy",
     "year": 2006,
     "price": 13.00,
-    "tags": ["pair with seafood"]
+    "tags": ["pair with seafood"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     },
     {
     "type": "white",
@@ -88,6 +97,7 @@
     "region": "Italy",
     "year": 2006,
     "price": 14.00,
-    "tags": ["pair with seafood"]
+    "tags": ["pair with seafood"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
     }
 ]

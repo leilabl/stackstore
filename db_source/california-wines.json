@@ -6,7 +6,8 @@
     "region": "California",
     "year": 2010,
     "price": 19.95,
-    "tags": ["pair with beef", "rich"]
+    "tags": ["pair with beef", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "red",
@@ -15,7 +16,8 @@
     "region": "California",
     "year": 2013,
     "price": 15.99,
-    "tags": ["pair with poultry", "fruity"]
+    "tags": ["pair with poultry", "fruity"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Heritage Vines",
@@ -26,7 +28,8 @@
     "year": 2014,
     "price": 22.00,
     "tags": ["pair with beef", "bold"],
-    "size": 750
+    "size": 750,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "red",
@@ -35,7 +38,8 @@
     "region": "California",
     "year": 2013,
     "price": 30.00,
-    "tags": ["pair with steak", "robust"]
+    "tags": ["pair with steak", "robust"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Small Lot Blend",
@@ -45,7 +49,8 @@
     "region": "California",
     "year": 2013,
     "price": 14.00,
-    "tags": ["pair with pork", "juicy"]
+    "tags": ["pair with pork", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "white",
@@ -54,7 +59,8 @@
     "region": "California",
     "year": 2013,
     "price": 16.00,
-    "tags": ["pair with poultry", "fruity"]
+    "tags": ["pair with poultry", "fruity"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "white",
@@ -63,7 +69,8 @@
     "region": "Spain",
     "year": 2013,
     "price": 18.00,
-    "tags": ["pair with beef", "floral"]
+    "tags": ["pair with beef", "floral"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "American",
@@ -73,7 +80,8 @@
     "region": "California",
     "year": 2008,
     "price": 11.00,
-    "tags": ["pair with dessert", "sweet"]
+    "tags": ["pair with dessert", "sweet"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "white",
@@ -82,7 +90,8 @@
     "region": "California",
     "year": 2014,
     "price": 24.00,
-    "tags": ["pair with fish", "citrus"]
+    "tags": ["pair with fish", "citrus"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "white",
@@ -91,6 +100,7 @@
     "region": "California",
     "year": 2013,
     "price": 14.00,
-    "tags": ["pair with fish", "citrus"]
+    "tags": ["pair with fish", "citrus"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   }
 ]
