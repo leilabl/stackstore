@@ -4,7 +4,7 @@
 
   <div class="form-group" ng-repeat="category in categories">
       <label for="{{category.name}}">{{category.name | capitalize}}</label>
-      <a href="" ng-repeat="option in category.options" ng-click="toggleFilter(category.name, option)"><br><button ng-class="{ btn: true, 'btn-danger' : option === 'red', 'btn-warning': option === 'white'}">{{ option }} <span ng-show="isSelected(category.name, option)"><strong>X</strong></span></button></a>
+      <a href="" ng-repeat="option in category.options" ng-click="toggleFilter(category.name, option)"><br><button ng-class="{ btn: true, 'btn-danger': option === 'Red', 'btn-warning': option === 'White', 'btn-default': option !== 'Red' && option !== 'White'}">{{ option }} <span ng-show="isSelected(category.name, option)"><strong>X</strong></span></button></a>
   </div>
 
 </div>
