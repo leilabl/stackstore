@@ -1,4 +1,13 @@
 <div class="container">
+    <h3>Your order:</h3>
+    <div ng-repeat="item in preOrder">
+      <h4><strong>{{item.wine | wineDisplayName}}</strong></h4>
+      <p>Price: ${{item.wine.price}}</p>
+      <p>Quantity: {{item.quantity}}</p>
+    </div>
+    <br/>
+    <h3>Total: ${{total}}</h3>
+    <br/>
     <h3>Shipping Address:</h3>
     <form class="form" name="checkoutForm" ng-submit="submitOrder()">
     <div>

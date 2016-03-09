@@ -1,4 +1,4 @@
-app.controller('checkoutCtrl', function ($scope, $state, CheckoutFactory) {
+app.controller('checkoutCtrl', function ($scope, $state, CheckoutFactory, $rootScope) {
   
   $scope.states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", 
           "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
@@ -25,4 +25,12 @@ app.controller('checkoutCtrl', function ($scope, $state, CheckoutFactory) {
       $state.go('thankyou')
     })
   }
+
+  $scope.total = 0;
+
+  $rootScope.preOrder.forEach(function (el) {
+    $scope.total += el.wine.price * el.quantity;
+  console.log($scope.total)
+  })
+
 })

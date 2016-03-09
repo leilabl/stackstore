@@ -65,14 +65,19 @@ app.factory('CartFactory', function(localStorageService, $http, AuthService) {
 
 })
 
-app.controller('CartCtrl', function($scope, localStorageService, user, contents) {
+app.controller('CartCtrl', function($scope, localStorageService, user, contents, $state, $rootScope) {
 
   $scope.user = 'Guest'
   if (user) $scope.user = user.username;
 
   $scope.contents = contents.items;
 
-  // console.log($scope.contents)
+  $rootScope.preOrder;
+
+  $scope.checkout = function () {
+    $rootScope.preOrder = $scope.contents;
+    $state.go('checkout')
+  }
 
   // $scope.increase = function (item) {
   //   $scope.contents
