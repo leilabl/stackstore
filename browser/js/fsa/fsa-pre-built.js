@@ -86,6 +86,22 @@
 
         };
 
+        this.signup = function(data) {
+            return $http.post('/api/users', data)
+                .then(function(res) { 
+                    return res.data;
+                })
+                .catch(function() {
+                    return $q.reject({ message: 'User already exists.' });
+                });
+        };
+
+        // this.useOauth = function(type){
+        //     console.log('running useOauth with: ' + type)
+        //     var url = "/auth/" + type
+        //     $http.get(url);
+        // }
+
         this.login = function (credentials) {
             return $http.post('/login', credentials)
                 .then(onSuccessfulLogin)

@@ -8,14 +8,24 @@ var Wine = mongoose.model('Wine')
 router.param('wineId', function (req, res, next, wineId){
   	Wine.findById(wineId)
   	.then(function(wine){
+      console.log(wine)
     	req.wine = wine;
     	next();
   	})
   	.then(null, next);
 })
 
+// router.param('selectedType', function(req, res, next, selectedType) {
+//   Wine.find({type: selectedType})
+//   .then(function(selectedTypes) {
+//     req.selectedTypes = selectedTypes;
+//     next()
+//   })
+//   .then(null, next)
+// })
+
 router.get('/', function (req, res, next) {
-	Wine.find({})
+	Wine.find(req.query)
 	.then(function(wines) {
 		res.json(wines)
 	})
@@ -26,8 +36,13 @@ router.get('/:wineId', function (req, res) {
 	res.json(req.wine);
 })
 
+// router.get('/filter/:selectedType', function(req, res) {
+//   res.json(req.selectedTypes)
+// })
+
 router.get('/:wineId/reviews', function (req, res, next) {
 	Wine.findReviews(req.params.wineId)
+  .populate('author')
 	.then(function(reviews) {
 		res.json(reviews)
 	})
@@ -42,31 +57,41 @@ router.get('/:wineId/rating', function (req, res, next) {
 	.then(null, next)
 })
 
-//on accesssible to admins
-//perhaps need to consider preventing duplicate posts
 router.post('/', function (req, res, next) {
-	Wine.create(req.body)
-	.then(function(newWine) {
-		res.status(201).json(newWine)
-	})
-	.then(null, next)
+  if (req.user.isAdmin) {
+  	Wine.create(req.body)
+  	.then(function(newWine) {
+  		res.status(201).json(newWine)
+  	})
+  	.then(null, next)
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 router.put('/:wineId', function (req, res, next) {
-	req.wine.set(req.body)
-  	req.wine.save()
-  	.then(function(updatedWine){
-    res.json(updatedWine);
-  	})
-  	.then(null, next);
+  if (req.user.isAdmin) {
+  	req.wine.set(req.body)
+    	req.wine.save()
+    	.then(function(updatedWine){
+      res.json(updatedWine);
+    	})
+    	.then(null, next);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 router.delete('/:wineId', function (req, res, next) {
-	req.wine.remove()
-  	.then(function(){
-    	res.sendStatus(204)
-  	})
-  	.then(null, next);
+  if (req.user.isAdmin) {
+  	req.wine.remove()
+    	.then(function(){
+      	res.sendStatus(204)
+    	})
+    	.then(null, next);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 module.exports = router;

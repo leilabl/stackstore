@@ -1,0 +1,40 @@
+<section id='wine'>
+
+<div class="container">
+    <div class="col-sm-6">
+    <div ng-hide="currentUser" class="alert alert-danger">You must be logged in to submit a review!</div>
+    <h3>Review:</h3>
+    <form class="form" name="reviewForm" ng-submit="submitReview()">
+    <div>
+
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input class="form-control" name="title" type="text" ng-model="review.title">
+        </div>
+
+
+        <div class="form-group">
+            <label for="star">Stars:</label>
+            <select class="form-control" name="star" ng-model="review.stars" required>
+                <option value="1">1</option> 
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="zipCode">Content:</label>
+            <textarea rows="5" class="form-control" name="content" type="text" required ng-model="review.content"></textarea>
+        </div>
+
+    </div>
+    <button class="btn btn-success" type="submit">Submit Review</button>
+<!-- <pre>{{ form | json }}</pre>     -->
+    </form>
+    </div>
+    
+</div>
+
+</section>

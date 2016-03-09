@@ -1,0 +1,38 @@
+h4 {
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+@media (min-width: 1185px) {
+	.thumbnail {
+		height: 520px;
+	}
+}
+
+@media (max-width: 1184px) {
+	.thumbnail {
+		height: 450px;
+	}
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+.glyphicon-star, .glyphicon-star-empty {
+	color: #e0c600;
+}
+
+#wineFilters button {
+  margin: 2px;
+}

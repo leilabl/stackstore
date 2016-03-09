@@ -2,25 +2,6 @@
 
 var mongoose = require('mongoose');
 
-// NOTES FOR 3/1:
-
-// MAYBE worth having CART and ORDER be two separate models - when you "check out" the cart gets saved as a new ORDER object for that user. At this time, Price is set in the DB
-
-// Each user would have 1 cart at a time, and it will only exist until they either "check out" (it turns into an order on the DB) or until they delete their cart/cookies. AKA this would happen on the front-end, JSData?
-
-// cart.submitOrder({
-//   owner: this.user,
-//   items: [
-//     {
-//       wine: this.wine,
-//       price: this.price,
-//       quantity: this.quantity
-//     } 
-//   ]
-// })
-
-// ROUTE TEST: if the order's owner is not a User in DB, don't save the order
-
 var states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", 
           "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", 
           "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
@@ -78,7 +59,9 @@ var ShippingAddressSchema = new mongoose.Schema({
         message: '{VALUE} is not a valid zip code'
       }
     }
-})
+});
+
+module.exports = ShippingAddressSchema;
 
 var OrderSchema = new mongoose.Schema({
   owner: {
@@ -95,6 +78,11 @@ var OrderSchema = new mongoose.Schema({
     type: String,
     enum: Object.keys(shippingRates),
     default: "standard"
+  },
+
+  date: {
+    type: Date,
+    default: Date.now
   },
 
   status: {

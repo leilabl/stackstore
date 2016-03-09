@@ -16,14 +16,16 @@ module.exports = function (app) {
     };
 
     var verifyCallback = function (accessToken, refreshToken, profile, done) {
-
         UserModel.findOne({ 'google.id': profile.id }).exec()
             .then(function (user) {
 
                 if (user) {
                     return user;
                 } else {
+                    console.log(profile)
                     return UserModel.create({
+                        username: profile.displayName.join(" "),
+                        email: profile.email,
                         google: {
                             id: profile.id
                         }
