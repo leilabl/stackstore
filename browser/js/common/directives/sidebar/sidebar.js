@@ -17,16 +17,19 @@ app.directive('sidebar', function(WinesFactory, $location){
         }
       }
 
-      scope.types = ["Red", "White"];
+      var types = [
+        "Red",
+        "White"
+      ]
 
-      scope.regions = [
+      var regions = [
         "California",
         "Spain",
         "France",
         "Italy"
       ]
 
-      scope.varieties = [
+      var varieties = [
         "Cabernet Sauvignon",
          "Zinfandel",
          "Pinot Noir",
@@ -50,6 +53,22 @@ app.directive('sidebar', function(WinesFactory, $location){
          "Grenache Blanc",
          "Mencia"
       ]
+
+      scope.categories = [
+        {
+          name: "type",
+          options: types
+        },
+        {
+          name: "region",
+          options: regions
+        },
+        {
+          name: "variety",
+          options: varieties
+        }
+      ]
+      
     }
   }
 })
