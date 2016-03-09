@@ -4,17 +4,17 @@
 
   <div class="form-group">
       <label for="type">Type</label>
-      <a href="" ng-repeat="type in types" ng-click="toggleFilter('type', type)"><br><button ng-class="{ btn: true, 'btn-danger' : type === 'Red', 'btn-warning': type === 'White'}">{{ type }} <span ng-show="isSelected('type', type)">x</span></button></a>
+      <a href="" ng-repeat="type in types" ng-click="toggleFilter('type', type)"><br><button ng-class="{ btn: true, 'btn-danger' : type === 'Red', 'btn-warning': type === 'White'}">{{ type }} <span ng-show="isSelected('type', type)"><strong>X</strong></span></button></a>
   </div>
 
   <div class="form-group">
     <label for="region">Region</label>
-      <a href="" ng-repeat="region in regions" ng-click="toggleFilter('region', region)"><br><button class="btn btn-default">{{ region }} <span ng-show="isSelected('region', region)">x</span></button></a>
+      <a href="" ng-repeat="region in regions" ng-click="toggleFilter('region', region)"><br><button class="btn btn-default">{{ region }} <span ng-show="isSelected('region', region)"><strong>X</strong></span></button></a>
   </div>
 
   <div class="form-group">
     <label for="variety">Variety</label>
-      <a href="" ng-repeat="variety in varieties" ng-click="toggleFilter('variety', variety)"><br><button class="btn btn-default">{{ variety }} <span ng-show="isSelected('variety', variety)">x</span></button></a>
+      <a href="" ng-repeat="variety in varieties" ng-click="toggleFilter('variety', variety)"><br><button class="btn btn-default">{{ variety }} <span ng-show="isSelected('variety', variety)"><strong>X</strong></span></button></a>
   </div>
 
 </div>
