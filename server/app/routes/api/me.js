@@ -6,8 +6,8 @@ var User = mongoose.model('User');
 
 // AW: hmmmmmmmmm re: this router.use
 router.use(function(req, res, next){
-  // AW: WHY ARE YOU RE-RETRIEVING THE REQ.USER?
-  // you already have this user document! 
+  // AW: why re-retrieve the req.user?
+  // you already have this user document
   User.findById(req.user._id)
   .then(function(user) {
     // AW: so basically req.reqUser points to the SAME document
@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/orders', function(req, res, next) {
-  //AW: this doesn't make sense. Why find what you already have?
+  //AW: Why find what you already have?
   User.findById(req.reqUser._id)
   .then(function(user){
     return user.findOrders()
