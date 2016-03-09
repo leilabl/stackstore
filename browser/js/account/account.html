@@ -67,7 +67,7 @@
             </tr>
           </tbody>
         </table>
-        <p><strong>Order Total: {{getTotal(order)}}</strong></p>
+        <p><strong>Order Total: {{getTotal(order) + getTotal(order) * 0.06 + getShippingCost(order) | currency}}</strong></p>
         <p><strong>Order Placed on:</strong> {{order.date | date : short}}</p>
         <p><strong>Status:</strong> {{order.status}}</p>
       </div>
