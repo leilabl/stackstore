@@ -40,14 +40,14 @@ app.controller('WinesController', function($scope, wines, $location, WinesFactor
 	$scope.wines = wines;
 	
 	$scope.isSelected = function(category, value) {
-		return $location.search()[category] === value.toLowerCase();
+		return $location.search()[category] === encodeURI(value.toLowerCase());
 	}
 
 	$scope.toggleFilter = function(key, value) {
-		if ($location.search()[key] === value.toLowerCase()) {
+		if ($location.search()[key] === encodeURI(value.toLowerCase()) ) {
 			$location.search(key, null);
 		} else {
-			$location.search(key, value.toLowerCase());
+			$location.search(key, encodeURI(value.toLowerCase()) );
 		}
 	}
 
@@ -91,9 +91,9 @@ app.filter('selectedWines', function($location){
 	return function(wines) {
 		if (Object.keys($location.search()).length) {
 			return wines.filter(function(wine) {
-				if ( $location.search()['type'] && $location.search()['type'] !== wine.type) return false;
-				if ( $location.search()['region'] && $location.search()['region'] !== wine.region.toLowerCase()) return false;
-				if ( $location.search()['variety'] && $location.search()['variety'] !== wine.variety.toLowerCase()) return false;
+				if ( $location.search()['type'] && $location.search()['type'] !== encodeURI(wine.type)) return false;
+				if ( $location.search()['region'] && $location.search()['region'] !== encodeURI(wine.region.toLowerCase()) ) return false;
+				if ( $location.search()['variety'] && $location.search()['variety'] !== encodeURI(wine.variety.toLowerCase()) ) return false;
 				return true;
 			})
 		} else return wines;
