@@ -27,8 +27,16 @@ router.param('wineId', function (req, res, next, wineId){
 router.get('/', function (req, res, next) {
 	Wine.find(req.query)
 	.then(function(wines) {
-		res.json(wines)
+   /* //AW: 
+
+    return Promise.map(wines, function(w){
+      return w.findRating()
+    })
 	})
+  */
+  .then(function(){
+    res.json(wines)
+  })
 	.then(null, next)
 })
 

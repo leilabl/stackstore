@@ -4,6 +4,7 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/wines/wine.html',
         controller: 'WineController',
         resolve: {
+          // AW: why not use $q.all to take care of all of these request?
         	wine: function(WineFactory, $stateParams) {
         		return WineFactory.getOneWine($stateParams.wineId)
         	},
@@ -70,6 +71,7 @@ app.filter('wineDisplayName', function() {
 
 
 app.directive('stars', function($compile) {
+  // AW: cool. nice use of a directive 
 	return {
 		restrict: 'A',
 		scope: {

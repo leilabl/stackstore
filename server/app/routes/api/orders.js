@@ -16,6 +16,8 @@ router.param('orderId', function (req, res, next, orderId) {
 });
 
 router.get('/', function (req, res, next) {
+	console.log('user: ', req.user.toString())
+
 	if (req.user.isAdmin) {
 		Order.find()
 		.then(function(orders) {

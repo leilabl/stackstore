@@ -7,8 +7,7 @@ app.config(function ($stateProvider) {
 			wines: function(WinesFactory, $q) {
 				return WinesFactory.getAllWines()
 			}
-		}
-	})
+	}
 })
 
 
@@ -22,8 +21,11 @@ app.factory('WinesFactory', function($http, $q, WineFactory) {
 			return response.data
 		})
 		.then(function(wines) {
+
+			// AW: This is not good promise composition 
 			return $q.all(wines.map(function(wine){
 			    return WineFactory.getRating(wine._id)
+			    // this `then` is not good - we don't want to "then-chain"
 			    .then(function(rating) {
 			        wine.rating = rating;
 			        return wine;
