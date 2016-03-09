@@ -1,0 +1,62 @@
+<div class="container">
+    <h3>Your order:</h3>
+    <div ng-repeat="item in preOrder">
+      <h4><strong>{{item.wine | wineDisplayName}}</strong></h4>
+      <p>Price: ${{item.wine.price}}</p>
+      <p>Quantity: {{item.quantity}}</p>
+    </div>
+    <br/>
+    <h3>Total: ${{total}}</h3>
+    <br/>
+    <h3>Shipping Address:</h3>
+    <form class="form" name="checkoutForm" ng-submit="submitOrder()">
+    <div>
+        <div class="form-group">
+            <label for="fullname">Name:</label>
+            <input class="form-control" name="fullName" type="text" required ng-model="checkoutInfo.shippingAddress.name">
+        </div>
+        <div class="form-group">
+            <label for="streetAddress" placeholder="Street address">Address line 1:</label>
+            <input class="form-control" name="streetAddress" type="text" required ng-model="checkoutInfo.shippingAddress.street">
+        </div>
+        <div class="form-group">
+            <label for="streetAddress2" placeholder="Apartment, suite, unit">Address line 2 (optional):</label>
+            <input class="form-control" name="streetAddress2" type="text">
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input class="form-control" name="city" type="text" required ng-model="checkoutInfo.shippingAddress.city">
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <select name="state" ng-model="checkoutInfo.shippingAddress.state">
+                <option ng-repeat="state in states">{{state}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="zipCode">Zip code:</label>
+            <input class="form-control" name="zipCode" type="text" required ng-model="checkoutInfo.shippingAddress.zip">
+        </div>
+    </div>
+   <!--  <div>
+        <div class="form-group">
+            <label for="cardNumber">Card number:</label>
+            <input class="form-control" name="cardNumber" type="text" required ng-model="checkoutInfo.cardNumber">
+        </div>
+        <div class="form-group">
+            <label for="cardName">Name on card:</label>
+            <input class="form-control" name="cardName" type="text" required ng-model="checkoutInfo.cardName">
+        </div>
+        <div class="form-group">
+            <label for="expirationDate">Expiration date:</label>
+                <select>
+                    <option ng-repeat="month in months" ng-model="checkoutInfo.month">{{month}}</option>
+                </select>
+                 <select>
+                    <option ng-repeat="year in years" ng-model="checkoutInfo.year">{{year}}</option>
+                </select>
+        </div>
+    </div> -->
+    <button class="btn btn-success" type="submit">Submit Order</button>
+    </form>
+</div>

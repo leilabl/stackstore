@@ -92,9 +92,9 @@ WineSchema.methods.findRating = function() {
       return sum + elem.stars;
     }, 0);
     var rating = total/reviews.length;
-    // `this` is the wine document because of `bind`
-    this.rating = rating; 
-    return this.save()
+    // AW: `this` is the wine document because of `bind`
+    //this.rating = rating; 
+    //return this.save()
   })
 };
 

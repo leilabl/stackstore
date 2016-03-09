@@ -20,6 +20,18 @@ a:hover {
 	}
 }
 
+@media (max-width: 977px) and (min-width: 753px) {
+	.thumbnail {
+		height: 520px;
+	}
+}
+
+@media (max-width: 752px) {
+	.thumbnail {
+		height: auto;
+	}
+}
+
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -33,3 +45,6 @@ a:hover {
 	color: #e0c600;
 }
 
+#wineFilters button {
+  margin: 2px;
+}

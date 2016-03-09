@@ -15,9 +15,11 @@ app.config(function($stateProvider){
   })
 });
 
-app.controller('AccountController', function($scope, user, orders) {
+app.controller('AccountController', function($scope, user, orders, WineFactory) {
   $scope.user = user;
   $scope.orders = orders;
+
+  console.log(orders[0])
 
   // this is repetitive right now - any ideas for how to remove this duplication?
   var shippingRates = {
@@ -28,6 +30,12 @@ app.controller('AccountController', function($scope, user, orders) {
 
   $scope.getShippingCost = function(order) {
     return shippingRates[order.shippingRate];
+  }
+
+  $scope.getTotal = function(order) {
+    return order.items.reduce(function(sum, el) {
+      return sum + el.price;
+    }, 0)
   }
 
   $scope.cancelOrder = function(order) {

@@ -32,6 +32,12 @@ router.get('/orders', function(req, res, next) {
   User.findById(req.reqUser._id)
   .then(function(user){
     return user.findOrders()
+    .populate({ 
+         path: 'items',
+         populate: {
+           path: 'wine',
+         } 
+    })
   })
   .then(function(orders){
     res.json(orders);

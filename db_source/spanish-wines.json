@@ -7,7 +7,8 @@
     "region": "Spain",
     "year": 2012,
     "price": 15.00,
-    "tags": ["pair with poultry", "smooth"]
+    "tags": ["pair with poultry", "smooth"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "red",
@@ -16,7 +17,8 @@
     "region": "Spain",
     "year": 2012,
     "price": 14.00,
-    "tags": ["pair with beef", "juicy"]
+    "tags": ["pair with beef", "juicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Rioja Reserva",
@@ -26,7 +28,8 @@
     "region": "Spain",
     "year": 2007,
     "price": 16.00,
-    "tags": ["pair with pork", "bold"]
+    "tags": ["pair with pork", "bold"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Barrel Fermented",
@@ -36,7 +39,8 @@
     "region": "Spain",
     "year": 2011,
     "price": 33.00,
-    "tags": ["pair with poultry", "rich"]
+    "tags": ["pair with poultry", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Monte Real Reserva",
@@ -46,7 +50,8 @@
     "region": "Spain",
     "year": 2007,
     "price": 30.00,
-    "tags": ["pair with pork", "rich"]
+    "tags": ["pair with pork", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Catalan Eagle",
@@ -56,7 +61,8 @@
     "region": "Spain",
     "year": 2013,
     "price": 17.00,
-    "tags": ["pair with pork", "rich"]
+    "tags": ["pair with pork", "rich"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Gran Reserva",
@@ -66,7 +72,8 @@
     "region": "Spain",
     "year": 2005,
     "price": 34.00,
-    "tags": ["pair with beef", "smooth"]
+    "tags": ["pair with beef", "smooth"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "Reserva",
@@ -76,7 +83,8 @@
     "region": "Spain",
     "year": 2008,
     "price": 20.00,
-    "tags": ["pair with beef", "smooth"]
+    "tags": ["pair with beef", "smooth"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "name": "El Pajaro Rojo",
@@ -86,7 +94,8 @@
     "region": "Spain",
     "year": 2014,
     "price": 16.00,
-    "tags": ["pair with beef", "smooth"]
+    "tags": ["pair with beef", "smooth"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   },
   {
     "type": "red",
@@ -95,6 +104,7 @@
     "region": "Spain",
     "year": 2012,
     "price": 15.00,
-    "tags": ["pair with pork", "spicy"]
+    "tags": ["pair with pork", "spicy"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor neque auctor molestie fringilla. Vivamus placerat dignissim quam in aliquet. Praesent lacinia sed nunc non sagittis. Etiam mollis libero nulla, quis consequat tellus sollicitudin sit amet. Curabitur a tristique metus. Sed viverra interdum ultrices. Fusce nunc nibh, dictum in purus eget, congue posuere ligula. Proin a ligula id tortor tempus imperdiet. Suspendisse potenti. Fusce vel ligula orci. Sed molestie nunc sem, eget tempor leo suscipit vel."
   }
 ]

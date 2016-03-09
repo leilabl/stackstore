@@ -3,7 +3,7 @@
   <div class="container">
     <div class="col-md-12">
       <h2>My Account</h2>
-      <table>
+      <table class="table">
         <tr>
           <th>Username</th>
           <td>{{user.username}}</td>
@@ -31,15 +31,13 @@
       <h3>My Orders</h3>
       <p ng-show="!orders.length">You haven't placed any orders yet! <a href="" ui-sref="wines">Go shopping?</a></p>
       <div class="panel panel-default" ng-repeat="order in orders">
-        <h4>Order Placed on {{order.date | date : short}}</h4>
-        <small><strong>Status:</strong> {{order.status}}</small>
         <button ng-show="order.status === pending" class="btn btn-danger" ng-click="cancelOrder(order)">Cancel Order</button>
         <p ng-show="order.status === shipped">This order was shipped to: 
           <br>{{order.shippingAddress.street}}
           <br>{{order.shippingAddress.city}}, {{order.shippingAddress.state}}
           <br>{{order.shippingAddress.zip}}
         </p>
-        <table>
+        <table class="table">
           <thead>
             <tr>
               <th>Item</th>
@@ -56,20 +54,22 @@
               <td>{{item.quantity * item.price | currency}}</td>
             </tr>
             <tr>
-              <th>Shipping</th>
-              <td></td>
-              <td>{{order.shippingRate}}</td>
+              <th>Shipping ({{order.shippingRate}})</th>
+              <td>-</td>
               <td>{{getShippingCost(order)}}</td>
+              <td>{{getShippingCost(order) | currency}}</td>
             </tr>
             <tr>
               <th>Tax</th>
-              <td></td>
-              <td>{{order.tax * 100}}%</td>
-              <td>{{order.total * order.tax | currency}}</td>
+              <td>-</td>
+              <td>{{0.06 * 100}}%</td>
+              <td>{{getTotal(order) * 0.06 | currency}}</td>
             </tr>
           </tbody>
         </table>
-        <p><strong>Order Total: {{order.total}}</strong></p>
+        <p><strong>Order Total: {{getTotal(order) + getTotal(order) * 0.06 + getShippingCost(order) | currency}}</strong></p>
+        <p><strong>Order Placed on:</strong> {{order.date | date : short}}</p>
+        <p><strong>Status:</strong> {{order.status}}</p>
       </div>
     </div>
 

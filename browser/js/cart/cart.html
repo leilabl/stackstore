@@ -1,0 +1,31 @@
+<section id="cart">
+
+  <div class="container">
+
+    <h2>My Cart</h2>
+    <hr>
+    <div ng-hide='contents.length'>Your cart is currently empty. <a ui-sref='wines'>Back to wine shop.</a></div>
+    <div ng-show='contents.length' ng-repeat="item in contents">
+      <a ui-sref="wine({wineId: item.wine._id})"><h3>{{item.wine | wineDisplayName}}</h3></a>
+      <p>Price: ${{item.wine.price}}</p>
+      <p>Quantity: {{item.quantity}}</p>
+<!--       <label for="quantity">
+      <div class="input-group">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="decrease()">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        </span>
+        <input type="text" id="quantity" class="form-control input-number" ng-model="item.quantity">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="increase()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </span>
+    	</div> -->
+    </div>
+    <button class="btn btn-success" ng-click="checkout()">Checkout</button>
+
+  </div>
+
+</section>
