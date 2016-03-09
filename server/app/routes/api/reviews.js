@@ -7,7 +7,9 @@ var Review = mongoose.model('Review');
 
 router.param('reviewId', function(req, res, next, reviewId){
   Review.findById(reviewId)
+  .populate(author).exec()
   .then(function(review){
+    console.log(review)
     req.review = review;
     next();
   })

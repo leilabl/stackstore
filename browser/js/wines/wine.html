@@ -10,30 +10,32 @@
 
             <div class="col-md-6">
 
-                <div class="thumbnail">
+                <div >
                     <div class="caption-full">
-                        <h4 class="pull-right">{{wine.price | currency}}</h4>
-                        <h4>{{wine | wineDisplayName}}</h4>
-                        <p>{{wine.description}}</p>
-                        <table>
-							<tr>
-								<th>Volume: </th>
-								<td>{{wine.size}}mL</td>
-							</tr>
-							<tr>
-								<th>Region: </th>
-								<td>{{wine.region}}</td>
-							</tr>
-							<tr>
-								<th>Tags: </th>
-								<td>{{wine.tags.join(", ")}}</td>
-							</tr>
-						</table>
-                    </div>
-                    <div class="ratings">
+                        <h3>{{wine | wineDisplayName}}</h3>
+                        <h4><strong>{{wine.price | currency}}</strong></h4>
+                        <div class="ratings" ng-show="rating">
                             <div stars star='rating'></div>
+                        </div>
+                        <br/>
+                        <p>{{wine.description}}</p>
+                            <p>
+                                <span><strong>Volume: </strong></span>
+                                <span>{{wine.size}}mL</span>
+                            </p>
+                            <p>
+                                <span><strong>Region: </strong></span>
+                                <span>{{wine.region}}</span>
+                            </p>
+                            <p>
+                                <span><strong>Tags: </strong></span>
+                                <span>{{wine.tags.join(", ")}}</span>
+                            </p>
                     </div>
-                    <a class="btn btn-primary">Add to Cart</a>
+                    <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="rating">Be the first to review it!{{wine.rating}}</a>
+                    <br/>
+                    <br/>
+                    <button class="btn btn-primary">Add to Cart</button>
                 </div>
 
             </div>
@@ -54,9 +56,9 @@
 
                         <div class="row">
                             <div class="col-md-12" ng-repeat='review in reviews'>
-                            	{{review.title}}
+                            	<h3>{{review.title}}</h3>
+                                <p>By <strong>{{review.author.username}}</strong> in <strong>{{review.date | date : format : mediumDate}}</strong></p>
                             	<div stars star='review.stars'></div>
-                                <span class="pull-right">Date of Review</span>
                                 <p>{{review.content}}</p>
                             </div>
                         </div>

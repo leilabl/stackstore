@@ -8,6 +8,7 @@ var Wine = mongoose.model('Wine')
 router.param('wineId', function (req, res, next, wineId){
   	Wine.findById(wineId)
   	.then(function(wine){
+      console.log(wine)
     	req.wine = wine;
     	next();
   	})
@@ -41,6 +42,7 @@ router.get('/:wineId', function (req, res) {
 
 router.get('/:wineId/reviews', function (req, res, next) {
 	Wine.findReviews(req.params.wineId)
+  .populate('author')
 	.then(function(reviews) {
 		res.json(reviews)
 	})
