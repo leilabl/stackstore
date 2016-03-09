@@ -1,9 +1,9 @@
-app.directive('sidebar', function(WinesFactory){
+app.directive('sidebar', function(WinesFactory, $location){
 	return {
 		restrict: 'E',
 		templateUrl: 'js/common/directives/sidebar/sidebar.html',
     scope: {},
-    link: function(scope, $location){
+    link: function(scope){
       
       scope.isSelected = function(category, value) {
         return $location.search()[category] === encodeURI(value.toLowerCase());
