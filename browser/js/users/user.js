@@ -14,9 +14,15 @@ app.config(function($stateProvider){
 app.factory('UserFactory', function($http, $q){
   var UserFactory = {};
 
+  // AW: you're using this static on the UserFactory 
+  // to retrieve the `req.user`, which is the loggedInUser
+  // so why not use `AuthService.getLoggedInUser()`....
+  // no need to duplicate this functionality 
   UserFactory.getUser = function(username){
     var userUrl = '/api/users/' + username;
     var reviewsUrl = userUrl + '/reviews';
+    // AW: good to see you folks using $q.all
+    // isn't terrible that $q doesn't ship with a `spread` method ?!
     return $q.all([$http.get(userUrl), $http.get(reviewsUrl)])
       .then(function(responses){
         return responses.map(function(res) {
@@ -38,6 +44,20 @@ app.factory('UserFactory', function($http, $q){
   }
 
   return UserFactory;
+
+  /*
+
+    AW: want to make sure you folks know that you can just do 
+
+      return {
+  
+        getUser: function(username){....}, 
+        getOrders: function(username) {....}
+
+      }
+
+
+  */
 
 });
 

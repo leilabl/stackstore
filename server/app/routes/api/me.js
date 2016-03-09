@@ -4,19 +4,31 @@ var mongoose = require('mongoose');
 require('../../../db/models/user');
 var User = mongoose.model('User');
 
+// AW: hmmmmmmmmm re: this router.use
 router.use(function(req, res, next){
+  // AW: WHY ARE YOU RE-RETRIEVING THE REQ.USER?
+  // you already have this user document! 
   User.findById(req.user._id)
   .then(function(user) {
+    // AW: so basically req.reqUser points to the SAME document
+    // that req.user points to...
     req.reqUser = user.sanitize();
     next();
   })
 })
+
+/*
+AW: since req.user and req.reqUser point to the SAME document, 
+this file doesn't seem to add anything... 
+
+*/
 
 router.get('/', function(req, res, next) {
   res.json(req.reqUser);
 })
 
 router.get('/orders', function(req, res, next) {
+  //AW: this doesn't make sense. Why find what you already have?
   User.findById(req.reqUser._id)
   .then(function(user){
     return user.findOrders()

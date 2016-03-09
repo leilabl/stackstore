@@ -27,6 +27,17 @@ app.factory('ReviewFactory', function($http) {
 
 	return ReviewFactory
 
+
+/* AW: so much simpler to just do: 
+  return {
+      create: function(id, data) {
+      return $http.post('/api/users/' + id + '/reviews', data)
+      .then(function(response){
+        return response.data
+      })
+    }
+  }
+  */
 })
 
 app.controller('ReviewController', function($scope, ReviewFactory, $state, wine, currentUser) {
@@ -54,6 +65,8 @@ app.controller('ReviewController', function($scope, ReviewFactory, $state, wine,
 				$state.go('wine', {wineId: $scope.review.wine})
 			})
 		}
+
+    // there should be an `else` here that tells the user they need to log in before reviewing an item
 		// console.log('submitted form', $scope.review)
 	}
 

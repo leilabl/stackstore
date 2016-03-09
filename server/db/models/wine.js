@@ -51,7 +51,9 @@ var WineSchema = new mongoose.Schema({
   description: {
     type: String
     // required: true
-  }
+  }, 
+  //AW: should have rating field: 
+  // rating: { type: Number }
 });
 
 //files currently do not exist - need to create
@@ -67,6 +69,7 @@ WineSchema.statics.findReviews = function (id) {
   });
 };
 
+// AW: should attach rating to wine and save the wine
 WineSchema.methods.findRating = function() {
   //virtuals cannot be async
   return Review.find({wine: this._id})
@@ -75,7 +78,24 @@ WineSchema.methods.findRating = function() {
       return sum + elem.stars;
     }, 0);
     return total/reviews.length;
-  });
+  })
+
+};
+
+// AW: should attach rating to wine and save the wine
+// and maybe call this method `calculateRating`
+WineSchema.methods.findRating = function() {
+  //virtuals cannot be async
+  return Promise.resolve(Review.find({wine: this._id})).bind(this)
+  .then(function(reviews) {
+    var total = reviews.reduce(function(sum, elem) {
+      return sum + elem.stars;
+    }, 0);
+    var rating = total/reviews.length;
+    // `this` is the wine document because of `bind`
+    this.rating = rating; 
+    return this.save()
+  })
 };
 
 
