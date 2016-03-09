@@ -15,8 +15,17 @@ router.param('wineId', function (req, res, next, wineId){
   	.then(null, next);
 })
 
+// router.param('selectedType', function(req, res, next, selectedType) {
+//   Wine.find({type: selectedType})
+//   .then(function(selectedTypes) {
+//     req.selectedTypes = selectedTypes;
+//     next()
+//   })
+//   .then(null, next)
+// })
+
 router.get('/', function (req, res, next) {
-	Wine.find({})
+	Wine.find(req.query)
 	.then(function(wines) {
 		res.json(wines)
 	})
@@ -26,6 +35,10 @@ router.get('/', function (req, res, next) {
 router.get('/:wineId', function (req, res) {
 	res.json(req.wine);
 })
+
+// router.get('/filter/:selectedType', function(req, res) {
+//   res.json(req.selectedTypes)
+// })
 
 router.get('/:wineId/reviews', function (req, res, next) {
 	Wine.findReviews(req.params.wineId)

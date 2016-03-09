@@ -1,0 +1,98 @@
+<div class="container" id="wineFilters">
+
+  <h3>Filter Results</h3>
+
+  <div class="form-group">
+      <label for="type">Type</label>
+      <a href="" ng-repeat="type in types" ng-click="toggleFilter('type', type)"><br><button ng-class="{ btn: true, 'btn-danger' : type === 'Red', 'btn-warning': type === 'White'}">{{ type }} <span ng-show="isSelected('type', type)"><strong>X</strong></span></button></a>
+  </div>
+
+  <div class="form-group">
+    <label for="region">Region</label>
+      <a href="" ng-repeat="region in regions" ng-click="toggleFilter('region', region)"><br><button class="btn btn-default">{{ region }} <span ng-show="isSelected('region', region)"><strong>X</strong></span></button></a>
+  </div>
+
+  <div class="form-group">
+    <label for="variety">Variety</label>
+      <a href="" ng-repeat="variety in varieties" ng-click="toggleFilter('variety', variety)"><br><button class="btn btn-default">{{ variety }} <span ng-show="isSelected('variety', variety)"><strong>X</strong></span></button></a>
+  </div>
+
+</div>
+
+<!--       <div class="radio">
+          
+
+              <input ng-model="type" type="radio" name="red" id="red" value="red">Red
+          </label>
+      </div>
+      <div class="radio">
+          <label>
+              <input ng-model="type" type="radio" name="white" id="white" value="white">White
+          </label>
+      </div> -->
+
+<!--     <h3>Filters:</h3>
+    <form class="form" name="filterForm" ng-submit="submitFilter()">
+    <div>
+        <div class="form-group">
+            <label for="star">Stars:</label>
+            <select name="star" ng-model="type" required>
+                <option value="red">Red</option> 
+                <option value="white">White</option>
+            </select>
+        </div>
+
+    </div>
+    <button class="btn btn-success" type="submit">Submit Type</button>
+    </form> -->
+
+
+
+
+
+
+
+
+
+
+<!-- <section>
+  <h3>Type</h3>
+  <a ui-sref='category({selectedType: "red"})'>Red</a><br>
+  <a href = "www.google.com">White</a>
+</section>
+
+<section>
+  <h3>Variety</h3>
+</section>
+
+<section>
+  <h3>Region</h3>
+</section>
+
+<section>
+  <h3>Price</h3>
+</section>
+ -->
+
+<!-- <section>
+  <h4 ui-sref-active="active" class="playlist-item active">
+    <a ui-sref="albums">ALBUMS</a>
+  </h4>
+</section>
+<section>
+  <h4 ui-sref-active="active" class="playlist-item">
+    <a ui-sref="artists">ARTISTS</a>
+  </h4>
+</section>
+<hr>
+<section ng-controller="PlaylistsCtrl">
+  <h4 class="text-muted">PLAYLISTS</h4>
+  <p ui-sref-active="active" ng-repeat="playlist in playlists" class="playlist-item">
+    <a ui-sref="playlist({playlistId: playlist._id })">
+      {{ playlist.name }}
+    </a>
+  </p>
+  <p>
+    <a ui-sref="newPlaylist" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>
+  </p>
+</section> -->
