@@ -15,7 +15,9 @@ app.config(function ($urlRouterProvider, $locationProvider, localStorageServiceP
 
 app.filter('capitalize', function() {
   return function(input) {
-      return input.charAt(0).toUpperCase() + input.slice(1);
+      return input.split(" ").map(function(word) {
+            word.charAt(0).toUpperCase() + word.slice(1);
+        }).join(" ");
    }
 });
 
