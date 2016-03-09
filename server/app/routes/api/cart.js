@@ -10,7 +10,13 @@ var CartItem = mongoose.model('CartItem');
 
 // retrieve cart from DB
 router.get('/', function(req, res, next) {
-  Cart.findById(req.user._id)
+  Cart.findOne({owner: req.user._id})
+  .populate({ 
+     path: 'items',
+     populate: {
+       path: 'wine',
+     } 
+  })
   .then(function(cart) {
     if (cart) return cart;
     else {

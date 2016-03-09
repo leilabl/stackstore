@@ -4,20 +4,8 @@ app.config(function($stateProvider) {
     templateUrl: 'js/cart/cart.html',
     controller: 'CartCtrl',
     resolve: {
-      contents: function(AuthService, CartFactory) {
-        // console.log('hey')
-        return AuthService.getLoggedInUser()
-        .then(function(user) {
-          // console.log(user)
-          if(user){
-              return CartFactory.getCart(user);          
-          }
-          else {
-            // console.log('not logged in')
-            return CartFactory.getCart();
-          }
-          
-        })
+      contents: function(CartFactory) {
+            return CartFactory.getCart();   
       },
       user: function(AuthService) {
         return AuthService.getLoggedInUser();
@@ -29,45 +17,48 @@ app.config(function($stateProvider) {
 app.factory('CartFactory', function(localStorageService, $http, AuthService) {
   var CartFactory = {};
   var currCart = localStorageService.get('cart') || {items: []};
-  // console.log(currCart)
 
   CartFactory.getCart = function () {
-    console.log('in get cart')
-      return AuthService.getLoggedInUser()
-      .then(function (user) {
-        console.log(user)
-          if (!user) {
-            console.log('no user')
-            return currCart;
-          } else {
-            return $http.get('/api/cart')
-            console.log('has user')
-              .then(function(res) {
-                console.log('res', res)
-                return res.json;
-              });
-          }
-      })
-      // console.log(localStorageService)
+    return AuthService.getLoggedInUser()
+    .then(function (user) {
+      if (!user) {
+        return currCart;
+      } else {
+        return $http.get('/api/cart')
+          .then(function(res) {
+            return res.data;
+          });
+      }
+    })
   }
 
   CartFactory.addToCart = function(item) {
+    var newItem = {wine: item, quantity: 1}
     return AuthService.getLoggedInUser()
       .then(function (user) {
         if(!user) {
-          console.log('here')
-          currCart.items.push(item);
+          var exg = false;
+          for (var i = 0; i<currCart.items.length; i++) {
+            if(currCart.items[i].wine._id == item._id) {
+              currCart.items[i].quantity++;
+              exg = true;
+            }
+          }
+          if (!exg) {
+            currCart.items.push(newItem);
+          }
+          
           localStorageService.set('cart', currCart);
-          return currCart;  
+        
+          return currCart; 
+
         } else {
           return $http.put('/api/cart', item)
-          console.log(item)
             .then(function(res) {
-              return res.json;
+              return res.data;
             });
         }
       })
-    // console.log(item)
   }
 
   return CartFactory;
@@ -79,19 +70,12 @@ app.controller('CartCtrl', function($scope, localStorageService, user, contents)
   $scope.user = 'Guest'
   if (user) $scope.user = user.username;
 
-  $scope.contents = contents.data.items;
+  $scope.contents = contents.items;
 
-  console.log(contents.data)
+  // console.log($scope.contents)
 
-
-  // $scope.addToCart = function(item) {
-  //   if ( !localStorageService.get('cart') ) {
-  //     localStorageService.set('cart', [item]);
-  //   } else {
-  //     var oldCart = localStorageService.get('cart');
-  //     oldCart.push(item);
-  //     localStorageService.set('cart', item);
-  //   }  
+  // $scope.increase = function (item) {
+  //   $scope.contents
   // }
 
   // we need to make sure to run localStorageService.$reset() after checkout

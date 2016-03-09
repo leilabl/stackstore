@@ -49,12 +49,13 @@ app.factory('WineFactory', function($http) {
 
 
 app.controller('WineController', function($scope, wine, reviews, rating, CartFactory) {
-	$scope.wine = wine
-	$scope.reviews = reviews
-	$scope.rating = rating
+	$scope.wine = wine;
+	$scope.reviews = reviews;
+	$scope.rating = rating;
+	$scope.added = false;
 	$scope.addToCart = function(item) {
-		console.log(item)
 		CartFactory.addToCart(item);
+		$scope.added = true;
 	}
 })
 

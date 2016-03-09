@@ -10,34 +10,33 @@
 
             <div class="col-md-6">
 
-                <div >
-                    <div class="caption-full">
-                        <h3>{{wine | wineDisplayName}}</h3>
-                        <h4><strong>{{wine.price | currency}}</strong></h4>
-                        <div class="ratings" ng-show="rating">
-                            <div stars star='rating'></div>
-                        </div>
-                        <br/>
-                        <p>{{wine.description}}</p>
-                            <p>
-                                <span><strong>Volume: </strong></span>
-                                <span>{{wine.size}}mL</span>
-                            </p>
-                            <p>
-                                <span><strong>Region: </strong></span>
-                                <span>{{wine.region}}</span>
-                            </p>
-                            <p>
-                                <span><strong>Tags: </strong></span>
-                                <span>{{wine.tags.join(", ")}}</span>
-                            </p>
+                <div class="caption-full">
+                    <h3>{{wine | wineDisplayName}}</h3>
+                    <h4><strong>{{wine.price | currency}}</strong></h4>
+                    <div class="ratings" ng-show="rating">
+                        <div stars star='rating'></div>
                     </div>
-                    <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="rating">Be the first to review it!{{wine.rating}}</a>
                     <br/>
-                    <br/>
-                    <button ng-click="addToCart(wine)" class="btn btn-primary">Add to Cart</button>
+                    <p>{{wine.description}}</p>
+                    <p>
+                        <span><strong>Volume: </strong></span>
+                        <span>{{wine.size}}mL</span>
+                    </p>
+                    <p>
+                        <span><strong>Region: </strong></span>
+                        <span>{{wine.region}}</span>
+                    </p>
+                    <p>
+                        <span><strong>Tags: </strong></span>
+                        <span>{{wine.tags.join(", ")}}</span>
+                    </p>
                 </div>
-
+                <a class="text-center" ui-sref='newReview({wineId:wine._id})' ng-hide="rating">Be the first to review it!{{wine.rating}}</a>
+                <br/>
+                <br/>
+                <button ng-click="addToCart(wine)" class="btn btn-primary">Add to Cart</button>
+                <br/>
+                <div ng-show="added" class="alert alert-success">Item successfully added to cart!<a ui-sref="cart"> View cart.</a></div>
             </div>
 
         </div>
