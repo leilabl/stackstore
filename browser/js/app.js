@@ -13,6 +13,13 @@ app.config(function ($urlRouterProvider, $locationProvider, localStorageServiceP
     localStorageServiceProvider.setPrefix('winot');
 });
 
+app.filter('capitalize', function() {
+  return function(input) {
+      return input.charAt(0).toUpperCase() + input.slice(1);
+   }
+});
+
+
 // This app.run is for controlling access to specific states.
 app.run(function ($rootScope, AuthService, $state) {
 
